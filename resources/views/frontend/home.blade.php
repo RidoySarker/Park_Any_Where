@@ -8,6 +8,7 @@
     <title>Park AnyWhere</title>
 </head>
 <body>
+    {{-- Navbar Start --}}
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <a class="navbar-brand" href="#">
             <img src="{{asset('frontend_assets/images/logo1.png')}}" alt="Logo" style="width:220px;">
@@ -30,6 +31,7 @@
             </li>
         </ul>
     </nav>
+    {{-- Navbar end --}}
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
