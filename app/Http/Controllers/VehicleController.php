@@ -14,8 +14,8 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        $vehicle['data'] = Vehicle::get();
-        return view('admin.Vehicle.vehicle',$vehicle);
+        Vehicle::get();
+        return view('admin.Vehicle.vehicle');
     }
 
     /**
@@ -23,10 +23,16 @@ class VehicleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $Vehicle['data'] = Vehicle::paginate(10);
-        return view('admin.Vehicle.list',$Vehicle);
+        $page = $request->input('page', 1);
+        $data['sl'] = (($page - 1) * 10) + 1;
+        $data['search'] = $search = $request->search;
+        $data['vehicle_data'] = Vehicle::when($search, function ($query) use ($search){
+                $query->where('vehicle_type', 'like' ,"%$search%")
+                      ->orwhere('vehicle_charge', 'like' ,"%$search%");
+        })->paginate(10);
+        return view('admin.Vehicle.list',$data);
     }
 
     /**
@@ -67,13 +73,13 @@ class VehicleController extends Controller
     public function show($id)
     {
         $vehicle_model = Vehicle::findOrFail($id);
-        if($vehicle_model->vehicle_status == 0){
-            $vehicle_model->update(["vehicle_status" => 1]);
-            $status = 200;
-        }else{
+        if($vehicle_model->vehicle_status == 1):
             $vehicle_model->update(["vehicle_status" => 0]);
             $status = 201;
-        }
+        else:
+            $vehicle_model->update(["vehicle_status" => 1]);
+            $status = 200;
+        endif;
         return response()->json($vehicle_model , $status);
 
     }
@@ -131,5 +137,5 @@ class VehicleController extends Controller
       return response()->json($vehicle, 200);
 
     }
-    
+
 }
