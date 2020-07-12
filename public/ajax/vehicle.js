@@ -4,7 +4,7 @@ $(document).ready(function() {
         e.preventDefault();
         let data = $(this).serializeArray();
         $.ajax({
-            url: "vehicle/store",
+            url: "/admin/vehicle/store",
             data: data,
             type: "post",
             dataType: "json",
@@ -28,7 +28,7 @@ $(document).ready(function() {
         var data = $(this).attr("data");
 
         $.ajax({
-            url: "vehicle" + "/" + data + "/edit",
+            url: "/admin/vehicle" + "/" + data + "/edit",
             type: "get",
             dataType: "json",
             success: function(response) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
         var id = $(this).attr("#edit_vehicle_id");
         let data = $(this).serializeArray();
         $.ajax({
-            url: "vehicle/update",
+            url: "/admin/vehicle/update",
             data: data,
             type: "post",
             dataType: "json",
@@ -77,7 +77,7 @@ $(document).ready(function() {
             .then((willDelete) => {
                 if (willDelete) {
                     $.ajax({
-                        url: "vehicle/" + data,
+                        url: "/admin/vehicle/" + data,
                         data: data,
                         type: "delete",
                         dataType: "json",
@@ -92,30 +92,43 @@ $(document).ready(function() {
 $("#datalist").on("click" , "#vehicle_status",function(){
     var data = $(this).attr("data");
     $.ajax({
-        url: "vehicle/show/" + data,
+        url: "/admin/vehicle/show/" + data,
         type: "get",
         dataType:"json",
-        success: function(){
+        success: function(response){
             loaddata();
-            if(response.status==200){
+            if(response.status===201){
                 toastr.success("Vehicle Status Change into Inactive" , "Success!");
             }
-            else{
-               toastr.success("Vehicle Status Change into Active" , "Success!"); 
+            if(response.status===200){
+               toastr.success("Vehicle Status Change into Active" , "Success!");
             }
         }
 
     });
 });
 
+$("#datalist").on("click",".page-link",function(e){
+    e.preventDefault();
+    var pagelink = $(this).attr('href');
+    console.log(pagelink)
+    loaddata(pagelink);
+});
 
+$("#search").keyup(function () {
     loaddata();
 });
 
-function loaddata() {
+loaddata();
+});
+
+function loaddata(pagelink="/admin/vehicle/create"){
+    var search = $("#search").val();
+    console.log(search);
 
     $.ajax({
-        url: 'vehicle/create',
+        url: pagelink,
+        data:{search : search},
         type: "get",
         dataType: "html",
         success: function(data) {

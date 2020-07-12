@@ -1,4 +1,4 @@
-<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+<table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100 dataTable">
     <thead>
         <tr>
             <th class="text-center">SL</th>
@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody id="loaddata">
-        @php $sl=1; @endphp @foreach($data as $value)
+            @foreach($vehicle_data as $value)
         <tr>
             <td class="text-center">{{$sl++}}</td>
             <td class="text-center">{{$value->vehicle_type}}</td>
@@ -37,4 +37,4 @@
     </tbody>
 
 </table>
-{{$data->links()}}
+{{$vehicle_data->links()}}

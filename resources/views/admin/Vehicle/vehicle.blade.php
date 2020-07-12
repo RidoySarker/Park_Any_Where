@@ -1,5 +1,5 @@
 @extends('admin.layouts.backend_main')
-@section('title') Vehicle | Park Any where @endsection 
+@section('title') Vehicle | Park Any where @endsection
 @section('main_content')
 
 <div class="main-content">
@@ -27,6 +27,7 @@
                             <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Vehicle</button>
                             <br/>
                             <h4 class="card-title mb-3">Vehicle List</h4>
+                            <label>Search:<input type="search" id="search" name="search" class="form-control form-control-sm" placeholder="" aria-controls="selection-datatable"></label>
 
                             <div id="datalist"></div>
                         </div>
@@ -55,29 +56,33 @@
                         <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
                          <span id="vehicle_type_error"></span>
                     </div>
-                   
+
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCity" class="col-form-label">Charge</label>
                             <div class="input-group">
                                 <input id="vehicle_charge" name="vehicle_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" >
                                 <div class="input-group-append">
-                                    
+
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
                             <span id="vehicle_charge_error"></span>
                         </div>
-                        
+
                         <div class="form-group col-md-4">
                             <label for="inputState" class="col-form-label">Period</label>
                             <select id="vehicle_period" name="vehicle_period" class="form-control" >
                                 <option selected disabled hidden>Choose</option>
                                 <option value="1">1 Hour</option>
+                                <option value="2">2 Hour</option>
+                                <option value="3">3 Hour</option>
+                                <option value="4">4 Hour</option>
+                                <option value="5">5 Hour</option>
                             </select>
                             <span id="vehicle_period_error"></span>
                         </div>
-                        
+
                         <div class="form-group col-md-4">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="vehicle_status" name="vehicle_status" class="form-control">
@@ -86,7 +91,7 @@
                             </select>
                             <span id="vehicle_status_error"></span>
                         </div>
-                        
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 submit">Submit</button>
@@ -118,29 +123,33 @@
                         <input type="text" class="form-control" id="edit_vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
                          <span id="vehicle_type_error"></span>
                     </div>
-                   
+
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="inputCity" class="col-form-label">Charge</label>
                             <div class="input-group">
                                 <input id="edit_vehicle_charge" name="vehicle_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" >
                                 <div class="input-group-append">
-                                    
+
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
                             <span id="vehicle_charge_error"></span>
                         </div>
-                        
+
                         <div class="form-group col-md-4">
                             <label for="inputState" class="col-form-label">Period</label>
                             <select id="edit_vehicle_period" name="vehicle_period" class="form-control" >
                                 <option selected disabled hidden>Choose</option>
                                 <option value="1">1 Hour</option>
+                                <option value="2">2 Hour</option>
+                                <option value="3">3 Hour</option>
+                                <option value="4">4 Hour</option>
+                                <option value="5">5 Hour</option>
                             </select>
                             <span id="vehicle_period_error"></span>
                         </div>
-                        
+
                         <div class="form-group col-md-4">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="edit_vehicle_status" name="vehicle_status" class="form-control">
@@ -162,5 +171,5 @@
     </div>
 </div>
 @endsection @section('script')
-<script type="text/javascript" src="ajax/vehicle.js"></script>
+<script type="text/javascript" src="{{asset('ajax/vehicle.js')}}"></script>
 @endsection
