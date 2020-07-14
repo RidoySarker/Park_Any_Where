@@ -8,18 +8,26 @@ $(document).ready(function() {
             data: data,
             type: "post",
             dataType: "json",
-            success: function(data) {
+            success: function(response) {
+                console.log(response);
                 toastr.success("Vehicle added successfully", "Success!");
                 $("#addModal").modal('hide');
                 loaddata();
-                $("#vehicle_update").trigger("reset");
+                $("#vehicle_save").trigger("reset");
 
-            },error:function(errors) {
-                console.log(errors)
-           let error = JSON.parse(errors.responseText).errors;
-           $.each(error,function(i,message){
-                $("#"+i+"_error").html('<span class="help-block" style="color:red;">'+message+'</span>');
-             })
+            },error:function(errors){
+                var error =JSON.parse(errors.responseText).errors;
+                $("#vehicle_save").find('.form-group').each(function(){
+                    var $that =$(this);
+                    $(this).find('.help-block').remove();
+                    var inputName=$(this).find('[name]').first().attr('name');
+                    if(error[inputName])
+                    {
+                        $.each(error[inputName],function(i,message){
+                            $that.append('<span class="help-block" style="color:red;">'+message+'</span>');
+                        })
+                    }
+                });
             }
         });
     });
@@ -55,27 +63,35 @@ $(document).ready(function() {
                 $("#edit").modal('hide');
                 $("#vehicle_update").trigger("reset");
                 loaddata();
-            },error:function(errors) {
-                console.log(errors)
-           let error = JSON.parse(errors.responseText).errors;
-           $.each(error,function(i,message){
-                $("#"+i+"_error").html('<span class="help-block" style="color:red;">'+message+'</span>');
-             })
+            },error:function(errors){
+                var error =JSON.parse(errors.responseText).errors;
+                $("#vehicle_update").find('.form-group').each(function(){
+                    var $that =$(this);
+                    $(this).find('.help-block').remove();
+                    var inputName=$(this).find('[name]').first().attr('name');
+                    if(error[inputName])
+                    {
+                        $.each(error[inputName],function(i,message){
+                            $that.append('<span class="help-block" style="color:red;">'+message+'</span>');
+                        })
+                    }
+                });
             }
         });
     });
 
     $("#datalist").on("click", ".delete", function() {
         var data = $(this).attr("data");
-        swal({
-                title: "Are you sure?",
-                text: "Once deleted, you will not be able to recover this file!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-            .then((willDelete) => {
-                if (willDelete) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.value) {
                     $.ajax({
                         url: "/admin/vehicle/" + data,
                         data: data,
@@ -97,10 +113,10 @@ $("#datalist").on("click" , "#vehicle_status",function(){
         dataType:"json",
         success: function(response){
             loaddata();
-            if(response.status===201){
+            if(response.vehicle_status==0){
                 toastr.success("Vehicle Status Change into Inactive" , "Success!");
             }
-            if(response.status===200){
+            else{
                toastr.success("Vehicle Status Change into Active" , "Success!");
             }
         }

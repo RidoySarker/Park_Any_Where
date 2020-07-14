@@ -54,7 +54,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
-                         <span id="vehicle_type_error"></span>
                     </div>
 
                     <div class="form-row">
@@ -67,7 +66,6 @@
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
-                            <span id="vehicle_charge_error"></span>
                         </div>
 
                         <div class="form-group col-md-4">
@@ -80,16 +78,15 @@
                                 <option value="4">4 Hour</option>
                                 <option value="5">5 Hour</option>
                             </select>
-                            <span id="vehicle_period_error"></span>
                         </div>
 
                         <div class="form-group col-md-4">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="vehicle_status" name="vehicle_status" class="form-control">
+                                <option selected disabled hidden>Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
-                            <span id="vehicle_status_error"></span>
                         </div>
 
                     </div>
@@ -121,7 +118,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="edit_vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
-                         <span id="vehicle_type_error"></span>
                     </div>
 
                     <div class="form-row">
@@ -134,7 +130,6 @@
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
-                            <span id="vehicle_charge_error"></span>
                         </div>
 
                         <div class="form-group col-md-4">
@@ -147,7 +142,6 @@
                                 <option value="4">4 Hour</option>
                                 <option value="5">5 Hour</option>
                             </select>
-                            <span id="vehicle_period_error"></span>
                         </div>
 
                         <div class="form-group col-md-4">
@@ -156,7 +150,6 @@
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
-                            <span id="vehicle_status_error"></span>
                         </div>
                     </div>
                     <div class="modal-footer">

@@ -46,7 +46,7 @@ class VehicleController extends Controller
 
         $vehicle_model = new Vehicle;
         $request_data = $request->all();
-        $validate = Validator::make($request_data , $vehicle_model->validation());
+        $validate = Validator::make($request_data , $vehicle_model->validation(),$vehicle_model->message());
         if($validate->fails()){
             $status = 400;
             $response = [
@@ -107,7 +107,7 @@ class VehicleController extends Controller
     {
         $vehicle_model = Vehicle::findOrFail($request->vehicle_id);
         $request_data = $request->all();
-        $validate = Validator::make($request_data , $vehicle_model->validation());
+        $validate = Validator::make($request_data , $vehicle_model->validation(),$vehicle_model->message());
         if($validate->fails()){
             $status = 400;
             $response = [

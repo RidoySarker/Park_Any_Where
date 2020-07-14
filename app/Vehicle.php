@@ -21,12 +21,22 @@ class Vehicle extends Model
     	];
     }
 
+    public function message(){
+
+        return [
+            'vehicle_type.required' => 'Vehicle Type Required',
+            'vehicle_charge.required' => 'Enter Vehicle Charge',
+            'vehicle_period.required' => 'Select Vehicle Period',
+            'vehicle_status.required' => 'Select Status',
+        ];
+    }
+
 
 
     public static function boot()
     {
         parent::boot();
-        
+
         static::saving(function ($model) {
             $model->created_by = Auth::user()->id;
         });
