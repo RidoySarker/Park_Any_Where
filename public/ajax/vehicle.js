@@ -42,6 +42,7 @@ $(document).ready(function() {
             success: function(response) {
                 $("#edit_vehicle_type").val(response.vehicle_type);
                 $("#edit_vehicle_charge").val(response.vehicle_charge);
+                $("#edit_vehicle_time").val(response.vehicle_time);
                 $("#edit_vehicle_period").val(response.vehicle_period);
                 $("#edit_vehicle_status").val(response.vehicle_status);
                 $("#edit_vehicle_id").val(response.vehicle_id);
@@ -59,7 +60,7 @@ $(document).ready(function() {
             type: "post",
             dataType: "json",
             success: function(response) {
-                toastr.success("Vehicle updated successfully", "Success!");
+                toastr.success("Vehicle Updated successfully", "Success!");
                 $("#edit").modal('hide');
                 $("#vehicle_update").trigger("reset");
                 loaddata();
@@ -98,7 +99,7 @@ $(document).ready(function() {
                         type: "delete",
                         dataType: "json",
                         success: function(response) {
-                            toastr.success("Vehicle deleted successfully", "Success!");
+                            toastr.success("Vehicle Deleted Successfully", "Success!");
                              loaddata();
                         }
                     });

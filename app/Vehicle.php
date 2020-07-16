@@ -8,7 +8,7 @@ class Vehicle extends Model
 {
     protected $table ="vehicles";
     protected $primaryKey='vehicle_id';
-    protected $fillable=['vehicle_type','vehicle_charge','vehicle_period','vehicle_status','created_by','updated_by'];
+    protected $fillable=['vehicle_type','vehicle_charge','vehicle_time','vehicle_period','vehicle_status','created_by','updated_by'];
 
 
     public function validation(){
@@ -16,6 +16,7 @@ class Vehicle extends Model
     	return [
             'vehicle_type' => 'required',
             'vehicle_charge' => 'required',
+            'vehicle_time' => 'required',
             'vehicle_period' => 'required',
             'vehicle_status' => 'required',
     	];
