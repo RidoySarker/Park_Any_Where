@@ -55,9 +55,32 @@
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
                     </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="col-form-label">Time</label>
+                            <div class="input-group">
+                                <input id="vehicle_time" name="vehicle_time" type="number" class="form-control" placeholder="Time" aria-label="Amount (to the nearest dollar)" >
+
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputState" class="col-form-label">Period</label>
+                            <select id="vehicle_period" name="vehicle_period" class="form-control" >
+                                <option selected disabled hidden>Choose</option>
+                                <option value="minute">Minute (s)</option>
+                                <option value="hour">Hour (s)</option>
+                                <option value="day">Day (s)</option>
+                                <option value="week">Week (s)</option>
+                                <option value="month">Month (s)</option>
+                                <option value="year">Year (s)</option>
+                            </select>
+                        </div>
+
+                    </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputCity" class="col-form-label">Charge</label>
                             <div class="input-group">
                                 <input id="vehicle_charge" name="vehicle_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" >
@@ -68,19 +91,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="inputState" class="col-form-label">Period</label>
-                            <select id="vehicle_period" name="vehicle_period" class="form-control" >
-                                <option selected disabled hidden>Choose</option>
-                                <option value="1">1 Hour</option>
-                                <option value="2">2 Hour</option>
-                                <option value="3">3 Hour</option>
-                                <option value="4">4 Hour</option>
-                                <option value="5">5 Hour</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="vehicle_status" name="vehicle_status" class="form-control">
                                 <option selected disabled hidden>Select</option>
@@ -119,9 +130,31 @@
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="edit_vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
                     </div>
-
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
+                            <label for="inputCity" class="col-form-label">Time</label>
+                            <div class="input-group">
+                                <input id="edit_vehicle_time" name="vehicle_time" type="number" class="form-control" placeholder="Time" aria-label="Amount (to the nearest dollar)" >
+
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="inputState" class="col-form-label">Period</label>
+                            <select id="edit_vehicle_period" name="vehicle_period" class="form-control" >
+                                <option selected disabled hidden>Choose</option>
+                                <option value="minute">Minute (s)</option>
+                                <option value="hour">Hour (s)</option>
+                                <option value="day">Day (s)</option>
+                                <option value="week">Week (s)</option>
+                                <option value="month">Month (s)</option>
+                                <option value="year">Year (s)</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="inputCity" class="col-form-label">Charge</label>
                             <div class="input-group">
                                 <input id="edit_vehicle_charge" name="vehicle_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" >
@@ -132,25 +165,15 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-md-4">
-                            <label for="inputState" class="col-form-label">Period</label>
-                            <select id="edit_vehicle_period" name="vehicle_period" class="form-control" >
-                                <option selected disabled hidden>Choose</option>
-                                <option value="1">1 Hour</option>
-                                <option value="2">2 Hour</option>
-                                <option value="3">3 Hour</option>
-                                <option value="4">4 Hour</option>
-                                <option value="5">5 Hour</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="edit_vehicle_status" name="vehicle_status" class="form-control">
+                                <option selected disabled hidden>Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 update">Update</button>

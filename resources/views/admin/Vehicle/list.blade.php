@@ -4,7 +4,7 @@
             <th class="text-center">SL</th>
             <th class="text-center">Vehicle Type</th>
             <th class="text-center">Charge</th>
-            <th class="text-center">Period</th>
+            <th class="text-center">Time</th>
             <th class="text-center">Status</th>
             <th class="text-center">Action</th>
         </tr>
@@ -15,7 +15,7 @@
             <td class="text-center">{{$sl++}}</td>
             <td class="text-center">{{$value->vehicle_type}}</td>
             <td class="text-center">{{$value->vehicle_charge}} ৳ </td>
-            <td class="text-center">{{$value->vehicle_period}} Hour</td>
+            <td class="text-center">{{$value->vehicle_time}} {{$value->vehicle_period}}</td>
             <td class="text-center">
                 @if($value->vehicle_status==1)
                     <span class="text-success">Active</span>

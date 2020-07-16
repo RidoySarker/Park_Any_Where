@@ -14,7 +14,6 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        Vehicle::get();
         return view('admin.Vehicle.vehicle');
     }
 

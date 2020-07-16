@@ -17,7 +17,8 @@ class CreateVehiclesTable extends Migration
             $table->bigIncrements('vehicle_id');
             $table->string('vehicle_type');
             $table->Integer('vehicle_charge');
-            $table->Integer('vehicle_period');
+            $table->Integer('vehicle_time');
+            $table->string('vehicle_period');
             $table->boolean('vehicle_status')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
