@@ -16,16 +16,16 @@
                 </div>
                 <div class="navbar-links">
                     <ul>
-                        <li><a href="{{route('home')}}" target="_blank">Home</a></li>
+                        <li><a href="{{route('home')}}">Home</a></li>
                         <li><a href="#" target="_blank">About</a></li>
                         <li><a href="#" target="_blank">Features</a></li>
-                        <li><a href="{{route('home')}}" class="btn-request" target="_blank">Park AnyWhere</a></li>
+                        <li><a href="{{route('home')}}" class="btn-request">Park AnyWhere</a></li>
                     </ul>
                 </div>
             </div>
             <div class="central-body">
                 <img class="image-404" src="{{asset('frontend_assets/errors/404/img/404.svg')}}" width="300px">
-                <a href="{{route('home')}}" class="btn-go-home" target="_blank">GO BACK HOME</a>
+                <a href="{{route('home')}}" class="btn-go-home">GO BACK HOME</a>
             </div>
             <div class="objects">
                 <img class="object_rocket" src="{{asset('frontend_assets/errors/404/img/rocket.svg')}}" width="40px">
