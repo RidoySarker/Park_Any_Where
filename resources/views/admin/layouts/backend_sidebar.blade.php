@@ -13,7 +13,7 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="{{ (request()->is('admin')) ? 'active' : '' }}"><a href="{{url('admin')}}"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>
                             <li class="{{ (request()->is('admin/vehicle')) ? 'active' : '' }}"><a href="{{url('/admin/vehicle')}}"><i class='bx bx-car'></i><span>Vehicle</span></a></li>
-                            <li><a href=""><i class='bx bx-car'></i><span>Packages</span></a></li>
+                            <li><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li>
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Project</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
@@ -28,8 +28,8 @@
                                     <li><a href="mail-view.html">Mail View</a></li>
                                 </ul>
                             </li>
-                                </ul>
-                            </li>
+                        </ul>
+                        </li>
                         </ul>
                     </nav>
                 </div>
