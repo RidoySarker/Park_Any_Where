@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -163,7 +163,7 @@
                 </div>
             </div>
             <div class="download">
-                <h5>OR DOWNLOAD FROM:</h5>
+                <h4>OR DOWNLOAD FROM:</h5>
                 <a href=""><img src="{{asset('frontend_assets/images/appstore.png')}}" alt="App Store"></a>
                 <a href=""><img src="{{asset('frontend_assets/images/googleplay.png')}}" alt="Google Play"></a>
             </div>
@@ -183,8 +183,39 @@
                 </div>
             </div>
         </div>
+        {{-- Parking_Lot Section Stop --}}
+
+        {{-- Testimonial Section Start  --}}
+        <section class="testimonials">
+            <h1>What users are saying</h1>
+            <p class="text-center">Don’t just take our word for it – check out some of the latest <br> customer reviews for our Bangladeshi parking spaces</p>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <div class="profile">
+                        <img class="user" src="{{asset('frontend_assets/images/user3.jpg')}}" alt="User Image">
+                        <blockquote class="blockquotetesti">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, minima pariatur porro quaerat earum eius ex reiciendis ratione laborum repellat enim quisquam aut quidem ullam incidunt harum mollitia fugit officiis!</blockquote>
+                        <h3>JAHID Bhuiyan <span class="designation">CarPark on BoardStreet</span></h3>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="profile">
+                        <img class="user" src="{{asset('frontend_assets/images/user1.jpg')}}" alt="User Image">
+                        <blockquote class="blockquotetesti">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, minima pariatur porro quaerat earum eius ex reiciendis ratione laborum repellat enim quisquam aut quidem ullam incidunt harum mollitia fugit officiis!</blockquote>
+                        <h3>Hridoy Sarkar <span class="designation">CEO At ParkManage</span></h3>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <div class="profile">
+                        <img class="user" src="{{asset('frontend_assets/images/user2.jpg')}}" alt="User Image">
+                        <blockquote class="blockquotetesti">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, minima pariatur porro quaerat earum eius ex reiciendis ratione laborum repellat enim quisquam aut quidem ullam incidunt harum mollitia fugit officiis!</blockquote>
+                        <h3>Nipen Mozumder <span class="designation">CEO At Driveway</span></h3>
+
+                    </div>
+                </div>
+            </div>
     </div>
-    {{-- Parking_Lot Section Stop --}}
+    </section>
+    {{-- Testimonial Section Stop  --}}
 
 
 
