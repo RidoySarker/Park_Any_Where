@@ -171,6 +171,22 @@
     </div>
     {{-- Download Section stop --}}
 
+    {{-- Parking_Lot Section Start --}}
+    <div class="container-fluid">
+        <div class="row parklotimg">
+            <div class="col-md-6 parklot">
+                <h2>Rent out your parking space</h2>
+                <p>Make easy tax free money by renting out your parking <br> space. It‘s free to list and only takes a <br> few minutes to get up and running.</p>
+                <button class="btn btn-success btn-lg">Learn how to earn today</button>
+                <div class="parkoverlay">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- Parking_Lot Section Stop --}}
+
+
 
 
 

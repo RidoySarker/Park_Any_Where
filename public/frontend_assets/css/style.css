@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Monda&family=Slabo+27px&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Monda&family=Slabo+27px&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+
 
 * {
     margin: 0;
@@ -38,14 +40,14 @@
 /* navbar_Section */
 
 /* Hero Section*/
-.monthly{
+.monthly {
     color: seashell;
 }
-.findtextone{
-    font-family: 'Philosopher', sans-serif;
+.findtextone {
+    font-family: "Philosopher", sans-serif;
 }
-.findtexttwo{
-    font-family: 'Philosopher', sans-serif;
+.findtexttwo {
+    font-family: "Philosopher", sans-serif;
 }
 
 /* navbar_Section */
@@ -110,30 +112,29 @@
 }
 .controls h2 {
     margin: 15px 0;
-    font-family: 'Philosopher', sans-serif;
+    font-family: "Philosopher", sans-serif;
     color: white;
     text-align: justify;
 }
 .controls p {
     margin: 15px 0;
     color: rgb(235, 229, 229) !important;
-    font-family: 'Philosopher', sans-serif;
+    font-family: "Philosopher", sans-serif;
     text-align: justify;
 }
 .controls h5 {
     margin: 15px 0;
     color: rgb(235, 229, 229) !important;
-    font-family: 'Philosopher', sans-serif;
+    font-family: "Philosopher", sans-serif;
     text-align: justify;
 }
 .inputbar {
     margin: 15px 0;
     color: rgb(235, 229, 229) !important;
-    
 }
-.download{
+.download {
     text-align: center;
-    font-family: 'Philosopher', sans-serif;
+    font-family: "Philosopher", sans-serif;
 }
 .download h5 {
     margin: 15px 0;
@@ -148,14 +149,14 @@
 /* download_section */
 
 /* info_section start  */
-.info_section{
+.info_section {
     background-color: #fff;
     margin: 50px;
 }
-.infoh2{
+.infoh2 {
     text-align: center;
-    color: #50A73A;
-    font-family: 'Monda', sans-serif;
+    color: #50a73a;
+    font-family: "Monda", sans-serif;
     margin-top: 90px;
 }
 .info_section img {
@@ -164,16 +165,69 @@
     margin-top: 20px;
     margin-bottom: 50px;
 }
-.info_section h3{
-    color: #50A73A;
+.info_section h3 {
+    color: #50a73a;
     margin-top: 10px;
     margin-bottom: 31px;
     text-align: center;
-    font-family: 'Monda', sans-serif;
+    font-family: "Monda", sans-serif;
 }
-.info_section p{
+.info_section p {
     text-align: center;
     line-height: 28px;
     margin-bottom: 71px;
 }
 /* info_section stop  */
+
+/* Parking_Lot Section Start */
+.parklot {
+    background: #fff;
+    opacity: 0.9;
+}
+.parklotimg {
+    background-image: url("../images/parkinglot.jpg");
+    background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -ms-background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    width: 100%;
+    height: 770px;
+}
+.parklot h2 {
+    margin-left: 25px;
+    color: #50a73a;
+    font-family: "Monda", sans-serif;
+    margin-top: 300px;
+}
+.parklot p {
+    margin-top: 35px;
+    margin-bottom: 0px;
+    line-height: 1.5;
+    font-size: 17px;
+    text-align: center;
+    margin-left: -140px;
+    font-family: 'Roboto', sans-serif;
+
+}
+.parklot button {
+    text-align: center;
+    margin-left: 110px;
+    margin-top: 36px;
+    font-size: 18px;
+    border-radius: 53px;
+}
+.parkoverlay{
+    width: 0;
+    height: 0;
+    border-top: 341px solid #fff;
+    border-right: 355px solid transparent;
+    border-bottom: 583px solid #fff;
+    border-left: 500px solid transparent;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+/* Parking_Lot Section Stop*/
