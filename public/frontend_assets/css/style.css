@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Philosopher:wght@700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Monda&family=Slabo+27px&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 * {
     margin: 0;
@@ -116,6 +115,15 @@
     color: white;
     text-align: justify;
 }
+.controls h2::after {
+    content: "";
+    background: #fff;
+    height: 3px;
+    display: block;
+    width: 185px;
+    margin: 10px auto 5px;
+}
+
 .controls p {
     margin: 15px 0;
     color: rgb(235, 229, 229) !important;
@@ -127,6 +135,22 @@
     color: rgb(235, 229, 229) !important;
     font-family: "Philosopher", sans-serif;
     text-align: justify;
+}
+.controls h4 {
+    margin: 15px 0;
+    color: rgb(235, 229, 229) !important;
+    font-family: "Philosopher", sans-serif;
+    text-align: center;
+    font-size: 22px !important;
+}
+.controls h4::after {
+    content: "";
+    background: #fff;
+    height: 3px;
+    display: block;
+    width: 55px;
+    margin: 5px auto 5px;
+    margin-left: 203px;
 }
 .inputbar {
     margin: 15px 0;
@@ -209,8 +233,7 @@
     font-size: 17px;
     text-align: center;
     margin-left: -140px;
-    font-family: 'Roboto', sans-serif;
-
+    font-family: "Roboto", sans-serif;
 }
 .parklot button {
     text-align: center;
@@ -219,7 +242,7 @@
     font-size: 18px;
     border-radius: 53px;
 }
-.parkoverlay{
+.parkoverlay {
     width: 0;
     height: 0;
     border-top: 341px solid #fff;
@@ -231,3 +254,89 @@
     top: 0;
 }
 /* Parking_Lot Section Stop*/
+
+/* Testimonial Section Start */
+.testimonials {
+    margin: 50px auto;
+}
+.testimonials p{
+    font-family: "Roboto", sans-serif;
+}
+.testimonials h1 {
+    text-align: center;
+    margin-top: 141px;
+    font-weight: bold;
+    color: #ff9800;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-family: "Monda", sans-serif;
+}
+.testimonials h1::after {
+    content: "";
+    background: #ff9800;
+    height: 3px;
+    display: block;
+    width: 170px;
+    margin: 20px auto 5px;
+}
+.testimonials .row {
+    margin-top: 30px;
+}
+.col-md-4 {
+    margin: 40px auto !important;
+}
+.profile {
+    padding: 70px 10px 10px;
+    background-color: #efefef;
+}
+.profile h3 {
+    margin-top: 15px;
+    font-size: 20px;
+    color: #ff9800;
+    font-family: "Monda", sans-serif;
+}
+.profile img {
+    top: -60px;
+    position: absolute;
+    left: calc(50% - 60px);
+    border: 10px solid white;
+}
+.profile:hover {
+    box-shadow: 0 0 15px 5px rgba(0,0,0,0.2);
+    cursor: pointer;
+    transition: 0.5s;
+}
+.user {
+    /* width: 120px;
+    height: 120px; */
+    border-radius: 50%;
+}
+.designation{
+    font-size: 13px;
+    color: #333;
+    font-family: "Monda", sans-serif;
+}
+.blockquotetesti {
+    font-size: 16px;
+    line-height: 30px;
+    font-family: "Roboto", sans-serif;
+}
+.blockquotetesti::before {
+    content: "\201C";
+    position: relative;
+    font-size: 50px;
+    color: #ff9800;
+    line-height: 20px;
+    bottom: -15px;
+    right: 5px;
+}
+.blockquotetesti::after {
+    content: '\201D';
+    position: relative;
+    font-size: 50px;
+    color: #ff9800;
+    line-height: 10px;
+    bottom: -15px;
+    left: 5px;
+}
+/* Testimonial Section Stop */
