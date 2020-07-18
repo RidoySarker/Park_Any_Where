@@ -15,10 +15,11 @@
     <title>Park AnyWhere</title>
 </head>
 <body>
+
     {{-- Navbar Start --}}
     <div class="container-fluid backimg">
         <nav class="navbar navbar-expand-sm bg-light navbar-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('home')}}">
                 <img src="{{asset('frontend_assets/images/logo1.png')}}" alt="Logo" style="width:220px;">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +28,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto text-right">
+                    <li class="nav-item">
+                        <a class="nav-link text-muted" href="{{route('home')}}">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link text-muted" href="#">About</a>
                     </li>
@@ -269,7 +273,7 @@
             <div class="footer-bottom">
                 <div class="row">
                     <div class="col-md-6">
-                        <p class="footerone">&copy; ParkAnyWhere.Com | Designed By JAHID Bhuiyan <span>ParkAnyWhere Inc.</span></p>
+                        <p class="footerone">&copy; ParkAnyWhere.Com | Designed By <span class="text-muted"><a href="https://github.com/MRJAHID" target="_blank">JAHID Bhuiyan</a></span> <span>ParkAnyWhere Inc.</span></p>
                     </div>
                     <div class="col-md-6">
                         <a href="">
@@ -282,7 +286,9 @@
     </div>
     {{-- Footer Section Stop  --}}
 
-
+    {{-- /* Scroll Top */ --}}
+    <button id="topBtn"><i class="fas fa-arrow-up"></i></button>
+    {{-- /* Scroll Top */ --}}
 
 
 
@@ -292,6 +298,7 @@
     <script src="{{asset('frontend_assets/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('frontend_assets/booking_section/vendor/jquery-ui/jquery-ui.min.js')}}"></script>
     <script src="{{asset('frontend_assets/booking_section/js/main.js')}}"></script>
+    <script src="{{asset('frontend_assets/js/scripts.js')}}"></script>
     <!--===============================================================================================-->
 </body>
 </html>
