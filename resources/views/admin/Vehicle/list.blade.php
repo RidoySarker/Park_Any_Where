@@ -22,6 +22,7 @@
                     @else
                     <span class="text-danger">Inactive</span>
                 @endif
+            </td>
             <td class="text-center">
                 @if ($value->vehicle_status == 1)
                     <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="vehicle_status" data="{{$value->vehicle_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>

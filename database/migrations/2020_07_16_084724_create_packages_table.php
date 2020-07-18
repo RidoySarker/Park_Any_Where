@@ -17,11 +17,11 @@ class CreatePackagesTable extends Migration
             $table->bigIncrements('package_id');
             $table->string('package_name');
             $table->unsignedBigInteger('vehicle_type');
-            $table->foreign('vehicle_type')->references('vehicle_id')->on('vehicles');
+            $table->foreign('vehicle_type')->references('vehicle_id')->on('vehicles')->onDelete('cascade');
             $table->Integer('package_time');
             $table->string('package_period');
             $table->Integer('package_charge');
-            $table->string('package_note')->nullable();
+            $table->text('package_note')->nullable();
             $table->boolean('package_status')->default(1);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
