@@ -5,7 +5,6 @@
             <th class="text-center">Package Name</th>
             <th class="text-center">Vehicle Type</th>
             <th class="text-center">Time</th>
-            <th class="text-center">Period</th>
             <th class="text-center">Charge</th>
             <th class="text-center">Note</th>
             <th class="text-center">Status</th>
@@ -18,17 +17,18 @@
             <td class="text-center">{{$sl++}}</td>
             <td class="text-center">{{$value->package_name}}</td>
             <td class="text-center">{{$value->vehicleType->vehicle_type}}</td>
-            <td class="text-center">{{$value->package_time}}</td>
-            <td class="text-center">{{$value->package_period}}</td>
+            <td class="text-center">{{$value->package_time}} {{$value->package_period}}</td>
             <td class="text-center">{{$value->package_charge}}</td>
-            <td class="text-center">{{$value->package_note}}</td>
-            <td class="text-center">{{$value->package_status}}</td>
+            <td class="text-center">
+                    {{ substr($value->package_note, 0, 10).'...' }}
+            </td>
             <td class="text-center">
                 @if($value->package_status==1)
-                <span class="text-success">Active</span>
+                    <span class="text-success">Active</span>
                 @else
-                <span class="text-danger">Inactive</span>
+                    <span class="text-danger">Inactive</span>
                 @endif
+            </td>
             <td class="text-center">
                 @if ($value->package_status == 1)
                 <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="package_status" data="{{$value->package_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>

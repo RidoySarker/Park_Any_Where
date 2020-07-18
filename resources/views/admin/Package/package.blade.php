@@ -91,8 +91,7 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail111">Note</label>
-                        <textarea class="form-control" aria-label="With textarea" id="package_note" name="package_note" placeholder="Note">
-                        </textarea>
+                        <textarea  class="form-control"  id="package_note" name="package_note" placeholder="Type Package Note"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputState" class="col-form-label">Status</label>
@@ -136,7 +135,7 @@
                         <select class="form-control" id="edit_vehicle_type" name="vehicle_type"">
                             <option >Select Vehicle Type</option>
                             @foreach($data as $value)
-                            <option  value = " {{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
+                            <option  value ="{{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
                             @endforeach
                         </select>
                     </div>

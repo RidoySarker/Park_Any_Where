@@ -47,8 +47,10 @@ $(document).ready(function () {
             type: "get",
             dataType: "json",
             success: function (response) {
+                console.log(response);
                 $("#edit_package_name").val(response.package_name);
                 $("#edit_vehicle_type").val(response.vehicle_type);
+
                 $("#edit_package_time").val(response.package_time);
                 $("#edit_package_period").val(response.package_period);
                 $("#edit_package_charge").val(response.package_charge);
