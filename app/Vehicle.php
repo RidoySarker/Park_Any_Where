@@ -11,27 +11,11 @@ class Vehicle extends Model
     protected $fillable=['vehicle_type','vehicle_charge','vehicle_time','vehicle_period','vehicle_status','created_by','updated_by'];
 
 
-    public function validation(){
-
-    	return [
-            'vehicle_type' => 'required',
-            'vehicle_charge' => 'required',
-            'vehicle_time' => 'required',
-            'vehicle_period' => 'required',
-            'vehicle_status' => 'required',
-    	];
+    
+    public function scopeSearch($query, $search){
+        return $query->where('vehicle_type', 'LIKE', '%' . $search . '%')
+                    ->orwhere('vehicle_charge', 'like' ,"%$search%");
     }
-
-    public function message(){
-
-        return [
-            'vehicle_type.required' => 'Vehicle Type Required',
-            'vehicle_charge.required' => 'Enter Vehicle Charge',
-            'vehicle_period.required' => 'Select Vehicle Period',
-            'vehicle_status.required' => 'Select Status',
-        ];
-    }
-
 
 
     public static function boot()

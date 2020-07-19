@@ -22,10 +22,6 @@ Route::get('/admin', 'AdminController@index');
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('/vehicle', 'VehicleController');
-        Route::get('/vehicle/create', 'VehicleController@create');
-        Route::post('/vehicle/store', 'VehicleController@store');
-        Route::post('/vehicle/update', 'VehicleController@update');
-        Route::get('/vehicle/show/{id}', 'VehicleController@show');
 
         Route::resource('/profile', 'ProfileController');
         Route::post('profile/store', 'ProfileController@store');
@@ -36,5 +32,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/package/store', 'PackagesController@store');
         Route::post('/package/update', 'PackagesController@update');
         Route::get('/package/show/{id}', 'PackagesController@show');
+
+        Route::resource('/parkingzone', 'ParkingZoneController');
     });
 });

@@ -3,10 +3,13 @@ $(document).ready(function() {
     $(document).on("submit", "#vehicle_save", function (e) {
         e.preventDefault();
         let data = $(this).serializeArray();
+           $.each(data,function(i,message){
+            $("#" + message.name+"_error").html(message="");
+           })
         $.ajax({
-            url: "/admin/vehicle/store",
+            url: "/admin/vehicle/",
             data: data,
-            type: "post",
+            type: "POST",
             dataType: "json",
             success: function(response) {
                 console.log(response);
@@ -15,19 +18,10 @@ $(document).ready(function() {
                 loaddata();
                 $("#vehicle_save").trigger("reset");
 
-            },error:function(errors){
-                var error =JSON.parse(errors.responseText).errors;
-                $("#vehicle_save").find('.form-group').each(function(){
-                    var $that =$(this);
-                    $(this).find('.help-block').remove();
-                    var inputName=$(this).find('[name]').first().attr('name');
-                    if(error[inputName])
-                    {
-                        $.each(error[inputName],function(i,message){
-                            $that.append('<span class="help-block" style="color:red;">'+message+'</span>');
-                        })
-                    }
-                });
+            },error:function(error){
+                $.each(error.responseJSON.errors, function (i, message) {
+                    $("#" + i+"_error").html(message[0]);
+                })
             }
         });
     });
@@ -52,31 +46,25 @@ $(document).ready(function() {
 
     $(document).on("submit", "#vehicle_update", function (e) {
         e.preventDefault();
-        var id = $(this).attr("#edit_vehicle_id");
+        var id = $("#edit_vehicle_id").val();
         let data = $(this).serializeArray();
+           $.each(data,function(i,message){
+            $("#" + message.name+"_edit").html(message="");
+           })
         $.ajax({
-            url: "/admin/vehicle/update",
+            url: "/admin/vehicle/"+id,
             data: data,
-            type: "post",
+            type: "PUT",
             dataType: "json",
             success: function(response) {
                 toastr.success("Vehicle Updated successfully", "Success!");
                 $("#edit").modal('hide');
                 $("#vehicle_update").trigger("reset");
                 loaddata();
-            },error:function(errors){
-                var error =JSON.parse(errors.responseText).errors;
-                $("#vehicle_update").find('.form-group').each(function(){
-                    var $that =$(this);
-                    $(this).find('.help-block').remove();
-                    var inputName=$(this).find('[name]').first().attr('name');
-                    if(error[inputName])
-                    {
-                        $.each(error[inputName],function(i,message){
-                            $that.append('<span class="help-block" style="color:red;">'+message+'</span>');
-                        })
-                    }
-                });
+            },error:function(error){
+                $.each(error.responseJSON.errors, function (i, message) {
+                    $("#" + i+"_edit").html(message[0]);
+                })
             }
         });
     });
@@ -109,7 +97,7 @@ $(document).ready(function() {
 $("#datalist").on("click" , "#vehicle_status",function(){
     var data = $(this).attr("data");
     $.ajax({
-        url: "/admin/vehicle/show/" + data,
+        url: "/admin/vehicle/" + data,
         type: "get",
         dataType:"json",
         success: function(response){

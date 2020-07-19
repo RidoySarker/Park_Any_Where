@@ -18,6 +18,23 @@
     <script src="{{asset('backend_assets/js/default-assets/button.html5.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/button.flash.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/button.print.min.js')}}"></script>
+
+
+
+    <script src="{{asset('backend_assets/js/default-assets/jquery.datatables.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/datatables.bootstrap4.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/datatable-responsive.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/responsive.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/datatable-button.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/button.bootstrap4.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/button.html5.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/button.flash.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/button.print.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/datatables.keytable.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/datatables.select.min.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/demo.datatable-init.js')}}"></script>
+
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">

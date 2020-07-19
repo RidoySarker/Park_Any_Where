@@ -54,7 +54,9 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
+                        <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
                     </div>
+                    
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity" class="col-form-label">Time</label>
@@ -62,6 +64,7 @@
                                 <input id="vehicle_time" name="vehicle_time" type="number" class="form-control" placeholder="Time" aria-label="Amount (to the nearest dollar)" >
 
                             </div>
+                            <span class="help-block" id="vehicle_time_error" style="color:red;"></span>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -75,8 +78,9 @@
                                 <option value="month">Month (s)</option>
                                 <option value="year">Year (s)</option>
                             </select>
+                            <span class="help-block" id="vehicle_period_error" style="color:red;"></span>
                         </div>
-
+                         
                     </div>
 
                     <div class="form-row">
@@ -89,8 +93,9 @@
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
+                            <span class="help-block" id="vehicle_charge_error" style="color:red;"></span>
                         </div>
-
+                        
                         <div class="form-group col-md-6">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="vehicle_status" name="vehicle_status" class="form-control">
@@ -98,7 +103,9 @@
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
+                             <span class="help-block" id="vehicle_status_error" style="color:red;"></span>
                         </div>
+                        
 
                     </div>
                     <div class="modal-footer">
@@ -129,7 +136,9 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <input type="text" class="form-control" id="edit_vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
+                        <span class="help-block" id="vehicle_type_edit" style="color:red;"></span>
                     </div>
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity" class="col-form-label">Time</label>
@@ -137,6 +146,7 @@
                                 <input id="edit_vehicle_time" name="vehicle_time" type="number" class="form-control" placeholder="Time" aria-label="Amount (to the nearest dollar)" >
 
                             </div>
+                            <span class="help-block" id="vehicle_time_edit" style="color:red;"></span>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -150,6 +160,7 @@
                                 <option value="month">Month (s)</option>
                                 <option value="year">Year (s)</option>
                             </select>
+                            <span class="help-block" id="vehicle_period_edit" style="color:red;"></span>
                         </div>
 
                     </div>
@@ -163,6 +174,7 @@
                                 </div>
                                 <span class="input-group-text">৳</span>
                             </div>
+                            <span class="help-block" id="vehicle_charge_edit" style="color:red;"></span>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -172,6 +184,7 @@
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
+                            <span class="help-block" id="vehicle_status_edit" style="color:red;"></span>
                         </div>
 
                     </div>

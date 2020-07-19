@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Vehicle;
 use Validator;
+use App\Http\Requests\VehicleRequest;
 class VehicleController extends Controller
 {
     /**
@@ -27,10 +28,7 @@ class VehicleController extends Controller
         $page = $request->input('page', 1);
         $data['sl'] = (($page - 1) * 10) + 1;
         $data['search'] = $search = $request->search;
-        $data['vehicle_data'] = Vehicle::when($search, function ($query) use ($search){
-                $query->where('vehicle_type', 'like' ,"%$search%")
-                      ->orwhere('vehicle_charge', 'like' ,"%$search%");
-        })->paginate(10);
+        $data['vehicle_data'] = Vehicle::Search($request->search)->paginate(10);
         return view('admin.Vehicle.list',$data);
     }
 
@@ -40,27 +38,16 @@ class VehicleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(VehicleRequest $request)
     {
 
         $vehicle_model = new Vehicle;
-        $request_data = $request->all();
-        $validate = Validator::make($request_data , $vehicle_model->validation(),$vehicle_model->message());
-        if($validate->fails()){
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        }else{
-            $vehicle_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $vehicle_model
-            ];
-        }
-        return response()->json($response , $status);
+        $vehicle_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $vehicle_model
+        ];
+        return response()->json($response , 200);
     }
 
     /**
@@ -102,26 +89,15 @@ class VehicleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(VehicleRequest $request, $id)
     {
-        $vehicle_model = Vehicle::findOrFail($request->vehicle_id);
-        $request_data = $request->all();
-        $validate = Validator::make($request_data , $vehicle_model->validation(),$vehicle_model->message());
-        if($validate->fails()){
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        }else{
-            $vehicle_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $vehicle_model
-            ];
-        }
-        return response()->json($response , $status);
+        $vehicle_model = Vehicle::findOrFail($id);
+        $vehicle_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $vehicle_model
+        ];
+        return response()->json($response , 200);
     }
 
     /**
