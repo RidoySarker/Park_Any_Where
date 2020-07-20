@@ -33,6 +33,7 @@
     <script src="{{asset('backend_assets/js/default-assets/datatables.keytable.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/datatables.select.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/demo.datatable-init.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/jquey.tagsinput.min.js')}}"></script>
 
     
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
@@ -62,5 +63,22 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
+    </script>
+
+        <script>
+        $(function() {
+            'use strict';
+
+            $('#tags').tagsInput({
+                'width': '100%',
+                'height': '40%',
+                'interactive': true,
+                'defaultText': 'Space',
+                'removeWithBackspace': true,
+                'minChars': 0,
+                'maxChars': 20,
+                'placeholderColor': '#555'
+            });
         });
     </script>
