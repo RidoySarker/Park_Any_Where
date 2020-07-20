@@ -36,6 +36,12 @@ class Packages extends Model
         ];
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('package_status', 1);
+    }
+    
+
     public static function boot()
     {
         parent::boot();

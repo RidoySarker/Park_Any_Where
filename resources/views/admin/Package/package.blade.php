@@ -1,5 +1,5 @@
 @extends('admin.layouts.backend_main')
-@section('title') Vehicle | Park Any where @endsection
+@section('title') Package | Park Any where @endsection
 @section('main_content')
 <div class="main-content">
     <div class="data-table-area">

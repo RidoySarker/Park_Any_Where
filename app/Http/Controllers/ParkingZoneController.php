@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\ParkingZone;
+use App\Vehicle;
+use App\Packages;
 use Illuminate\Http\Request;
 
 class ParkingZoneController extends Controller
@@ -24,7 +26,21 @@ class ParkingZoneController extends Controller
      */
     public function create()
     {
-        //
+        $data['vehicle_data'] = Vehicle::Active()->get();
+        $data['package_data'] = Packages::Active()->get();
+        return view('admin.ParkingZone.create_parkingzone',$data);
+    }
+
+    public function vehicle_data($id)
+    {
+        $vehicle_data = Vehicle::findOrFail($id);
+        return response()->json($vehicle_data , 201);
+    }
+
+    public function package_data($id)
+    {
+        $package_data = Packages::findOrFail($id);
+        return response()->json($package_data , 201);
     }
 
     /**
@@ -35,7 +51,7 @@ class ParkingZoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**

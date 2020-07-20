@@ -17,6 +17,11 @@ class Vehicle extends Model
                     ->orwhere('vehicle_charge', 'like' ,"%$search%");
     }
 
+    public function scopeActive($query)
+    {
+        return $query->where('vehicle_status', 1);
+    }
+
 
     public static function boot()
     {
