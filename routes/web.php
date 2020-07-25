@@ -20,7 +20,7 @@ Auth::routes();
 Route::get('/admin', 'AdminController@index');
 
 Route::prefix('admin')->group(function () {
-    Route::middleware('auth')->group(function () {
+        Route::middleware('auth')->group(function () {
         Route::resource('/vehicle', 'VehicleController');
 
         Route::resource('/profile', 'ProfileController');
@@ -36,5 +36,5 @@ Route::prefix('admin')->group(function () {
         Route::resource('/parkingzone', 'ParkingZoneController');
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
         Route::get('/parkingzone/package_data/{id}', 'ParkingZoneController@package_data');
-    });
+   });
 });
