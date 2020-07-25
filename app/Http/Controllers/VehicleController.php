@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 use App\Vehicle;
 use Validator;
 use App\Http\Requests\VehicleRequest;
+
 use Illuminate\Http\Response;
+
+
+
 class VehicleController extends Controller
 {
     /**

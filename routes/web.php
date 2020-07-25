@@ -28,10 +28,10 @@ Route::prefix('admin')->group(function () {
         Route::get('profile/pass', 'ProfileController@show');
 
         Route::resource('/package', 'PackagesController');
-        Route::get('/package/create', 'PackagesController@create');
-        Route::post('/package/store', 'PackagesController@store');
-        Route::post('/package/update', 'PackagesController@update');
-        Route::get('/package/show/{id}', 'PackagesController@show');
+        // Route::get('/package/create', 'PackagesController@create');
+        // Route::post('/package/store', 'PackagesController@store');
+        // Route::post('/package/update', 'PackagesController@update');
+         Route::get('/package/show/{id}', 'PackagesController@show');
 
         Route::resource('/parkingzone', 'ParkingZoneController');
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
