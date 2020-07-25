@@ -6,6 +6,7 @@ use App\Packages;
 use App\Vehicle;
 use Validator;
 use Illuminate\Http\Request;
+use Illuminate\Http\Request\PackageRequest;
 
 class PackagesController extends Controller
 {
@@ -30,15 +31,7 @@ class PackagesController extends Controller
         $page = $request->input('page', 1);
         $data['sl'] = (($page - 1) * 10) + 1;
         $data['search'] = $search = $request->search;
-        $data['package_data'] = Packages::when($search, function ($query) use ($search) {
-            $query->where('package_name', 'like', "%$search%")
-                ->orwhere('vehicle_type', 'like', "%$search%")
-                ->orwhere('package_time', 'like', "%$search%")
-                ->orwhere('package_period', 'like', "%$search%")
-                ->orwhere('package_charge', 'like', "%$search%")
-                ->orwhere('package_note', 'like', "%$search%")
-                ->orwhere('package_status', 'like', "%$search%");
-        })->with('vehicleType')->paginate(10);
+        $data['package_data'] = Packages::Search($request->search)->with('vehicleType')->paginate(10);
         return view('admin.Package.list', $data);
     }
 
@@ -50,26 +43,13 @@ class PackagesController extends Controller
      */
     public function store(Request $request)
     {
-
         $packages_model = new Packages;
-        $request_data = $request->all();
-        $validate = Validator::make($request_data, $packages_model->validation(), $packages_model->message());
-        if ($validate->fails()) {
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        } else {
-
-            $packages_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $packages_model
-            ];
-        }
-        return response()->json($response, $status);
+        $packages_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $packages_model
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -115,23 +95,12 @@ class PackagesController extends Controller
     {
 
         $packages_model = Packages::findOrFail($request->package_id);
-        $request_data = $request->all();
-        $validate = Validator::make($request_data, $packages_model->validation(), $packages_model->message());
-        if ($validate->fails()) {
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        } else {
-            $packages_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $packages_model
-            ];
-        }
-        return response()->json($response, $status);
+        $packages_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $packages_model
+        ];
+        return response()->json($response, 200);
     }
 
     /**

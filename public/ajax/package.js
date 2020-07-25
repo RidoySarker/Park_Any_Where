@@ -2,6 +2,9 @@ $(document).ready(function () {
     $(document).on("submit", "#package_save", function (e) {
         e.preventDefault();
         let data = $(this).serializeArray();
+        $.each(data, function (i, message) {
+            $("#" + message.name + "_error").html(message = "");
+        })
         $.ajax({
             url: "/admin/package/store",
             data: data,
@@ -14,28 +17,11 @@ $(document).ready(function () {
                 dataloader();
                 $("#package_save").trigger("reset");
             },
-            error: function (errors) {
-                var error = JSON.parse(errors.responseText).errors;
-                $("#package_save")
-                    .find(".form-group")
-                    .each(function () {
-                        var $that = $(this);
-                        $(this).find(".help-block").remove();
-                        var inputName = $(this)
-                            .find("[name]")
-                            .first()
-                            .attr("name");
-                        if (error[inputName]) {
-                            $.each(error[inputName], function (i, message) {
-                                $that.append(
-                                    '<span class="help-block" style="color:red;">' +
-                                        message +
-                                        "</span>"
-                                );
-                            });
-                        }
-                    });
-            },
+            error: function (error) {
+                $.each(error.responseJSON.errors, function (i, message) {
+                    $("#" + i + "_error").html(message[0]);
+                })
+            }
         });
     });
 
@@ -68,7 +54,7 @@ $(document).ready(function () {
         $.ajax({
             url: "/admin/package/update",
             data: data,
-            type: "post",
+            type: "PUT",
             dataType: "json",
             success: function (response) {
                 toastr.success("Package updated successfully", "Success!");
@@ -76,27 +62,10 @@ $(document).ready(function () {
                 $("#package_update").trigger("reset");
                 dataloader();
             },
-            error: function (errors) {
-                var error = JSON.parse(errors.responseText).errors;
-                $("#package_update")
-                    .find(".form-group")
-                    .each(function () {
-                        var $that = $(this);
-                        $(this).find(".help-block").remove();
-                        var inputName = $(this)
-                            .find("[name]")
-                            .first()
-                            .attr("name");
-                        if (error[inputName]) {
-                            $.each(error[inputName], function (i, message) {
-                                $that.append(
-                                    '<span class="help-block" style="color:red;">' +
-                                        message +
-                                        "</span>"
-                                );
-                            });
-                        }
-                    });
+            error: function (error) {
+                $.each(error.responseJSON.errors, function (i, message) {
+                    $("#" + i + "_error").html(message[0]);
+                })
             },
         });
     });
