@@ -1,11 +1,29 @@
 
 $(document).ready(function () {
+            
+            var Parking = $("#parking_type").val();
+            console.log(Parking);
 
-             $('#package_name').hide();
-             $('#vehicle_type').hide();
-             $("#parking_charge").hide();
-             $('#parking_time').hide();
-             $('#parking_period').hide();
+
+            if (Parking == 1) {
+                 $("#package_name").show();
+                 $('#vehicle_type').hide();
+                 $("#parking_charge").show();
+                 $('#parking_time').show();
+                 $('#parking_period').show();
+
+            }
+
+            if (Parking == 2) {
+                 $("#package_name").hide();
+                 $('#vehicle_type').show();
+                 $("#parking_charge").show();
+                 $('#parking_time').show();
+                 $('#parking_period').show();
+
+            }
+
+
 
         $(document).on("change", "#parking_type", function () {
             var Parking = $(this).val();
@@ -21,9 +39,9 @@ $(document).ready(function () {
             if (Parking == 2) {
                  $("#vehicle_type").show();
                  $('#package_name').hide();
-                 $("#parking_charge").hide();
-                 $('#parking_time').hide();
-                 $('#parking_period').hide();
+                 $("#parking_charge").show();
+                 $('#parking_time').show();
+                 $('#parking_period').show();
             }
         })
 
@@ -113,57 +131,10 @@ $(document).ready(function () {
         });
     });
 
-
-
-    $(document).on("click" , "#parking_status",function(){
-        var data = $(this).attr("data");
-        $.ajax({
-            url: "/admin/parkingzone/" + data,
-            type: "get",
-            dataType:"json",
-            success: function(response){
-                if(response.parking_status==0){
-                    toastr.success("Parking Status Change into Inactive" , "Success!");
-                }
-                else{
-                   toastr.success("Parking Status Change into Active" , "Success!");
-                }
-                location.reload();
-            }
-
-        });
     });
 
-
-    $(document).on("click", ".delete", function() {
-        var data = $(this).attr("data");
-        console.log(data);
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.value) {
-                    $.ajax({
-                        url: "/admin/parkingzone/" + data,
-                        data: data,
-                        type: "delete",
-                        dataType: "json",
-                        success: function(response) {
-                            toastr.success("Parking Deleted Successfully", "Success!");
-
-                            
-                        }
-                    });
-                }
-            });
-    });
-
-
+    $(document).ready(function(){
+      $('#autoGenerateSerial').trigger('click');
     });
 
 
@@ -177,7 +148,6 @@ $(document).ready(function () {
             for(var i = 1; i <= parking_limit; i++)
             {
                 serial = serial+i+',';
-                console.log(serial)
                 serialText = serialText+"<span class=\"tag label label-info\">"+i+"<span> <i class=\"fa fa-car\" aria-hidden=\"true\"></i></span></span> "; 
             }
         } else {
@@ -195,8 +165,11 @@ $(document).ready(function () {
 
  
     var map, marker, infowindow;
-    var latitude  = parseFloat("");
-    var longitude = parseFloat("");
+    var latitude  = parseFloat("23.749937868096605");
+    var longitude = parseFloat("90.39224624633789");
+    var marTit = $("#parking_name").val();
+    var marLat = parseFloat("23.369994274210896");
+    var marLng = parseFloat("91.24460958070375");
 
     function initMap() 
     {
@@ -220,23 +193,19 @@ $(document).ready(function () {
                     lng: position.coords.longitude
                 });
             }, function() {
-                document.getElementById('error').innerHTML = 'Browser doesn\'t support geolocation';
-                toastr.error("Browser doesn't support geolocation" , "Error!"); 
-                document.getElementById('error').classList.remove("sr-only");
-                $(".submit").attr("disabled", 'disabled');
+                document.getElementById('error').innerHTML = 'browser doesn\'t support geolocation'; 
+                document.getElementById('error').classList.remove("sr-only"); 
             });
         }    
         
         marker = new google.maps.Marker({
-            position: {lat: latitude, lng: longitude},
+            position: {lat: marLat, lng: marLng},
             map: map,
             draggable: false
         });
-        marker.setPosition({lat: latitude, lng: longitude});
-
-        var parking_name = document.getElementById('parking_name').value;
+        marker.setPosition({lat: marLat, lng: marLng});
         infowindow = new google.maps.InfoWindow({
-            content: '<strong style="color:green;font-weight:bolder">'+(parking_name?parking_name:"Parking Zone Name")+'</strong>'
+            content: '<strong style="color:green;font-weight:bolder">'+(marTit?marTit:"My Location")+'</strong>'
         }); 
         infowindow.open(map, marker);
 
@@ -278,7 +247,7 @@ $(document).ready(function () {
         } 
         var parking_name = document.getElementById('parking_name').value;
         infowindow = new google.maps.InfoWindow({
-            content: '<strong style="color:green;font-weight:bolder">'+(parking_name?parking_name:"Parking Zone Name")+'</strong>'
+            content: '<strong style="color:green;font-weight:bolder">'+(parking_name?parking_name:"My Location")+'</strong>'
         }); 
         infowindow.open(map, marker);
 

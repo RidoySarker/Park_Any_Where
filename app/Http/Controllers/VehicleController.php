@@ -7,6 +7,10 @@ use App\Vehicle;
 use Validator;
 use App\Http\Requests\VehicleRequest;
 
+use Illuminate\Http\Response;
+
+
+
 class VehicleController extends Controller
 {
     /**
@@ -45,10 +49,10 @@ class VehicleController extends Controller
         $vehicle_model = new Vehicle;
         $vehicle_model->fill($request->all())->save();
         $response = [
-            "status" => 200,
+            "status" => Response::HTTP_CREATED,
             "data" => $vehicle_model
         ];
-        return response()->json($response , 200);
+        return response()->json($response , Response::HTTP_CREATED);
     }
 
     /**
@@ -62,10 +66,10 @@ class VehicleController extends Controller
         $vehicle_model = Vehicle::findOrFail($id);
         if($vehicle_model->vehicle_status == 1):
             $vehicle_model->update(["vehicle_status" => 0]);
-            $status = 201;
+            $status = Response::HTTP_ACCEPTED;
         else:
             $vehicle_model->update(["vehicle_status" => 1]);
-            $status = 200;
+            $status = Response::HTTP_OK;
         endif;
         return response()->json($vehicle_model , $status);
 
@@ -80,7 +84,7 @@ class VehicleController extends Controller
     public function edit($id)
     {
         $vehicle_edit = Vehicle::findOrFail($id);
-        return response()->json($vehicle_edit , 201);
+        return response()->json($vehicle_edit , Response::HTTP_OK);
     }
 
     /**
