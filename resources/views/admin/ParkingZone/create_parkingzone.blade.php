@@ -128,7 +128,7 @@
                                                 <div class="form-group col-md-6" id="parking_charge">
                                                     <label for="inputCity" class="col-form-label">Charge</label>
                                                     <div class="input-group">
-                                                        <input id="data_parking_charge"  name="parking_charge" type="number" class="form-control" placeholder="Charge" readonly>
+                                                        <input id="data_parking_charge"  type="number" class="form-control" placeholder="Charge" readonly>
 
                                                     </div>
                                                     <span class="help-block" id="parking_charge_error" style="color:red;"></span>
@@ -137,7 +137,7 @@
                                                 <div class="form-group col-md-3" id="parking_time">
                                                     <label for="inputCity" class="col-form-label">Time</label>
                                                     <div class="input-group">
-                                                        <input id="data_parking_time"  name="parking_time" type="number" class="form-control" placeholder="Time" readonly="" >
+                                                        <input id="data_parking_time"   type="number" class="form-control" placeholder="Time" readonly="" >
 
                                                     </div>
                                                     <span class="help-block" id="parking_time_error" style="color:red;"></span>
@@ -145,7 +145,7 @@
 
                                                 <div class="form-group col-md-3" id="parking_period">
                                                     <label for="inputState" class="col-form-label">Period</label>
-                                                    <select id="data_parking_period" name="parking_period" class="form-control" readonly >
+                                                    <select id="data_parking_period" class="form-control" disabled >
                                                         <option selected disabled hidden>Choose</option>
                                                         <option value="minute">Minute (s)</option>
                                                         <option value="hour">Hour (s)</option>
@@ -162,7 +162,7 @@
 
                                             <div class="form-group">
                                                 <label for="exampleInputEmail111">Parking Limit</label>
-                                                <input type="number" class="form-control" name="parking_limit" id="parking_limit" placeholder="Parking Limit">
+                                                <input type="number" min="1" class="form-control" name="parking_limit" id="parking_limit" placeholder="Parking Limit">
                                             <span class="help-block" id="parking_limit_error" style="color:red;"></span>
                                             </div>
 
@@ -178,8 +178,9 @@
 
                                             <div class="form-group">
                                                
-                                                <input readonly="" id="tags" name="parking_space" class="space"  value="" />
+                                                <input id="tags" name="parking_space" class="space"  value="" />
                                             </div>
+                                            <span class="help-block" id="parking_space_error" style="color:red;"></span>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail111">Address</label>
                                                 <textarea  class="form-control"  id="parking_address" name="parking_address" placeholder="Type Parking Address"></textarea>
@@ -230,5 +231,6 @@
 
 @section('script')
 <script type="text/javascript" src="{{asset('ajax/parkingzone.js')}}"></script>
+
 @endsection
 

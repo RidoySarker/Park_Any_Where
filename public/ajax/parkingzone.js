@@ -155,6 +155,7 @@ $(document).ready(function () {
                         dataType: "json",
                         success: function(response) {
                             toastr.success("Parking Deleted Successfully", "Success!");
+                            location.reload();
 
                             
                         }
