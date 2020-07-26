@@ -65,8 +65,22 @@
                                                         @endif
 
                                                     </td>
-                                                    <td>{{$value->parking_charge}}</td>
-                                                    <td>{{$value->parking_time}} {{$value->parking_period}}</td>
+                                                    <td>
+                                                        @if($value->vehicleType)
+                                                        {{$value->vehicleType->vehicle_charge}}
+                                                        @elseif($value->PackageVehicle)
+                                                        {{$value->PackageVehicle->package_charge}}
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($value->vehicleType)
+                                                        {{$value->vehicleType->vehicle_time}}
+                                                        {{$value->vehicleType->vehicle_period}}
+                                                        @elseif($value->PackageVehicle)
+                                                        {{$value->PackageVehicle->package_time}}
+                                                         {{$value->PackageVehicle->package_period}}
+                                                        @endif
+                                                    </td>
                                                     <td class="text-center">
                                                         @if ($value->parking_status == 1)
                                                             <button type="submit" class="btn btn-rounded btn-outline-success mb-2 mr-2" id="parking_status" data="{{$value->parking_zone_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>

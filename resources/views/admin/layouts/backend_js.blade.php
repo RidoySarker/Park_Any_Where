@@ -66,19 +66,12 @@
         });
     </script>
 
-        <script>
-        $(function() {
-            'use strict';
+    <script>
 
             $('#tags').tagsInput({
                 'width': '100%',
                 'height': '40%',
-                'interactive': true,
-                'defaultText': 'Space',
-                'removeWithBackspace': true,
-                'minChars': 0,
-                'maxChars': 20,
-                'placeholderColor': '#555'
+                'defaultText': 'Space'
             });
-        });
+
     </script>

@@ -108,15 +108,16 @@ $(document).ready(function () {
 
     $(document).on("submit", "#ParkingZone" , function (e) {
         e.preventDefault();
+        var id = $("#id").val();
         let data = $(this).serializeArray();
         console.log(data);
            $.each(data,function(i,message){
             $("#" + message.name+"_error").html(message="");
            })
         $.ajax({
-            url: "/admin/parkingzone/",
+            url: "/admin/parkingzone/"+id,
             data: data,
-            type: "POST",
+            type: "PUT",
             dataType: "json",
             success: function(response) {
                 console.log(response);
@@ -134,21 +135,23 @@ $(document).ready(function () {
     });
 
     $(document).ready(function(){
-      $('#autoGenerateSerial').trigger('click');
+      $('#autoGenerateSerial').click();
     });
 
 
 
-    var checkbox = document.getElementById('autoGenerateSerial');
-    checkbox.addEventListener( 'click', function() {
+    var parking_limit_data = document.getElementById('autoGenerateSerial');
+    parking_limit_data.addEventListener( 'click', function() {
         var serial = '';
         var serialText = '';
-        var parking_limit = document.getElementById("parking_limit").value;
+        var parking_limit = $("#parking_limit").val();
         if(parking_limit > 0) {
             for(var i = 1; i <= parking_limit; i++)
             {
                 serial = serial+i+',';
-                serialText = serialText+"<span class=\"tag label label-info\">"+i+"<span> <i class=\"fa fa-car\" aria-hidden=\"true\"></i></span></span> "; 
+                serialText = serialText+"<span class=\"tag\">"+i+" <i class=\"fa fa-car\"></i></span> "; 
+                console.log(serial);
+                console.log(serialText);
             }
         } else {
             $(".tagsinput").html('');
@@ -165,11 +168,11 @@ $(document).ready(function () {
 
  
     var map, marker, infowindow;
-    var latitude  = parseFloat("23.749937868096605");
-    var longitude = parseFloat("90.39224624633789");
+    var latitude  = parseFloat($("#latitude").val());
+    var longitude = parseFloat($("#longitude").val());
     var marTit = $("#parking_name").val();
-    var marLat = parseFloat("23.369994274210896");
-    var marLng = parseFloat("91.24460958070375");
+    var marLat = parseFloat($("#latitude").val());
+    var marLng = parseFloat($("#longitude").val());
 
     function initMap() 
     {
