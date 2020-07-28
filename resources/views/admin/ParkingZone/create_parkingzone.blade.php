@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Form row -->
                     <div class="row">
                         <div class="col-xl-6 box-margin height-card">
@@ -118,7 +118,7 @@
                                                         <option value="year"> Year(s) </option>
                                                     </select>
                                                 </div>
-                                                 
+
                                             </div> --}}
                                             <!-- Package Data -->
 
@@ -156,7 +156,7 @@
                                                     </select>
                                                     <span class="help-block" id="parking_period_error" style="color:red;"></span>
                                                 </div>
-                                                                         
+
                                             </div>
                                             <!-- Vehicle Type Data -->
 
@@ -168,16 +168,16 @@
 
 
 
-                                            <label for="space">Space * 
+                                            <label for="space">Space *
                                             <small class="text-success">(Click to generate space)</small>
                                             <button type="button" id="autoGenerateSerial" class="btn btn-xs bg-cyan  waves-effect">
                                                 <i class="fa fa-refresh"></i>
-                                            </button> 
+                                            </button>
 
                                             </label>
 
                                             <div class="form-group">
-                                               
+
                                                 <input id="tags" name="parking_space" class="space"  value="" />
                                             </div>
                                             <span class="help-block" id="parking_space_error" style="color:red;"></span>
@@ -185,7 +185,7 @@
                                                 <label for="exampleInputEmail111">Address</label>
                                                 <textarea  class="form-control"  id="parking_address" name="parking_address" placeholder="Type Parking Address"></textarea>
                                             </div>
-                                       
+
                                             <div class="form-group">
                                                 <label for="exampleInputEmail111">Note</label>
                                                 <textarea  class="form-control"  id="parking_note" name="parking_note" placeholder="Type Package Note"></textarea>
@@ -212,10 +212,10 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Google Map</h4>
                                     <h4 id="error" class="text-danger">Location tracked automatically.</h4>
-                                    
+
                                         <div id="map" style="width:100%;height:500px"></div>
 
-                                    
+
 
                                 </div> <!-- end card-body -->
                             </div> <!-- end card-->
@@ -231,6 +231,6 @@
 
 @section('script')
 <script type="text/javascript" src="{{asset('ajax/parkingzone.js')}}"></script>
-
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&maptype=roadmap&libraries=places&callback=initMap"></script>
 @endsection
 
