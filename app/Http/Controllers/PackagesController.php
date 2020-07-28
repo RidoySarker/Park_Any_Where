@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Packages;
 use App\Vehicle;
-use Validator;
 use Illuminate\Http\Request;
-use Illuminate\Http\Request\PackageRequest;
+use App\Http\Requests\PackageRequest;
+
 
 class PackagesController extends Controller
 {
@@ -30,7 +30,7 @@ class PackagesController extends Controller
     {
         $page = $request->input('page', 1);
         $data['sl'] = (($page - 1) * 10) + 1;
-        $data['search'] = $search = $request->search;
+        $data['search'] = $request->search;
         $data['package_data'] = Packages::Search($request->search)->with('vehicleType')->paginate(10);
         return view('admin.Package.list', $data);
     }
@@ -41,7 +41,7 @@ class PackagesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PackageRequest $request)
     {
         $packages_model = new Packages;
         $packages_model->fill($request->all())->save();
@@ -91,10 +91,10 @@ class PackagesController extends Controller
      * @param  \App\Packages  $packages
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(PackageRequest $request, $id)
     {
 
-        $packages_model = Packages::findOrFail($request->package_id);
+        $packages_model = Packages::findOrFail($id);
         $packages_model->fill($request->all())->save();
         $response = [
             "status" => 200,

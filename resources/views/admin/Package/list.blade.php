@@ -11,7 +11,7 @@
             <th class="text-center">Action</th>
         </tr>
     </thead>
-    <tbody id="dataloader">
+    <tbody id="loaddata">
         @foreach($package_data as $value)
         <tr>
             <td class="text-center">{{$sl++}}</td>
