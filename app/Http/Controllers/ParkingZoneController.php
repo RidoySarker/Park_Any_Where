@@ -117,10 +117,10 @@ class ParkingZoneController extends Controller
         $parking_model = ParkingZone::findOrFail($id);
         if($parking_model->parking_status == 1):
             $parking_model->update(["parking_status" => 0]);
-            $status = Response::HTTP_ACCEPTED;
+            $status = 200;
         else:
             $parking_model->update(["parking_status" => 1]);
-            $status = Response::HTTP_OK;
+            $status = 201;
         endif;
         return response()->json($parking_model , $status);
 

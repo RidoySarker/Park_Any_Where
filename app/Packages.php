@@ -19,13 +19,7 @@ class Packages extends Model
     }
     
     public function scopeSearch($query, $search){
-        return $query->where('package_name', 'like', "%$search%")
-                ->orwhere('vehicle_type', 'like', "%$search%")
-                ->orwhere('package_time', 'like', "%$search%")
-                ->orwhere('package_period', 'like', "%$search%")
-                ->orwhere('package_charge', 'like', "%$search%")
-                ->orwhere('package_note', 'like', "%$search%")
-                ->orwhere('package_status', 'like', "%$search%");
+        return $query->where('package_name', 'like', "%$search%");
     }
 
     public static function boot()

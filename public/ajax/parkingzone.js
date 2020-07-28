@@ -47,7 +47,6 @@ $(document).ready(function () {
         $('#package_name').on('change',function(e) {
          
          var id = e.target.value;
-         console.log(id);
 
          $.ajax({
                
@@ -68,7 +67,6 @@ $(document).ready(function () {
         $('#vehicle_type').on('change',function(e) {
          
          var id = e.target.value;
-         console.log(id);
 
          $.ajax({
                
@@ -103,6 +101,7 @@ $(document).ready(function () {
             success: function(response) {
                 console.log(response);
                 toastr.success("Vehicle added successfully", "Success!");
+                $("#ParkingZone").trigger("reset");
 
             },error:function(error){
                 toastr.warning("Validation Required", "Warning!");
@@ -124,6 +123,7 @@ $(document).ready(function () {
             success: function(response){
                 if(response.parking_status==0){
                     toastr.success("Parking Status Change into Inactive" , "Success!");
+                    location.reload();
                 }
                 else{
                    toastr.success("Parking Status Change into Active" , "Success!");
@@ -178,7 +178,6 @@ $(document).ready(function () {
             for(var i = 1; i <= parking_limit; i++)
             {
                 serial = serial+i+',';
-                console.log(serial)
                 serialText = serialText+"<span class=\"tag label label-info\">"+i+"<span> <i class=\"fa fa-car\" aria-hidden=\"true\"></i></span></span> "; 
             }
         } else {

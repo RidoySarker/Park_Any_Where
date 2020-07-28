@@ -115,4 +115,5 @@
 @section('script')
 
 <script type="text/javascript" src="{{asset('ajax/parkingzone.js')}}"></script>
+
 @endsection
