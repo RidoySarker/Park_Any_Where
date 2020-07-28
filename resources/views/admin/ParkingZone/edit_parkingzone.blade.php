@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-xl-6 box-margin height-card">
                             <div class="card card-body">
-                                <h4 class="card-title">New Parking Zone</h4>
+                                <h4 class="card-title">Edit Parking Zone</h4>
                                 <div class="row">
                                     <div class="col-sm-12 col-xs-12">
                                         <form id="ParkingZone" action="{{route('parkingzone.store')}}" method="PUT" enctype="multipart/form-data">

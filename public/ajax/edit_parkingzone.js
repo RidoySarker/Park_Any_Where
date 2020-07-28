@@ -110,7 +110,6 @@ $(document).ready(function () {
         e.preventDefault();
         var id = $("#id").val();
         let data = $(this).serializeArray();
-        console.log(data);
            $.each(data,function(i,message){
             $("#" + message.name+"_error").html(message="");
            })
@@ -150,8 +149,7 @@ $(document).ready(function () {
             {
                 serial = serial+i+',';
                 serialText = serialText+"<span class=\"tag\">"+i+" <i class=\"fa fa-car\"></i></span> "; 
-                console.log(serial);
-                console.log(serialText);
+
             }
         } else {
             $(".tagsinput").html('');

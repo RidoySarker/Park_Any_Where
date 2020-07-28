@@ -57,8 +57,8 @@
 
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
-                        <select class="form-control" id="vehicle_type" name="vehicle_type"">
-                            <option >Select Vehicle Type</option>
+                        <select class="form-control" id="vehicle_type" name="vehicle_type">
+                            <option value="" selected hidden>Select Vehicle Type</option>
                             @foreach($data as $value)
                             <option value = "{{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
                             @endforeach
@@ -146,7 +146,6 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
                         <select class="form-control" id="edit_vehicle_type" name="vehicle_type">
-                            <option >Select Vehicle Type</option>
                             @foreach($data as $value)
                             <option  value ="{{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
                             @endforeach
