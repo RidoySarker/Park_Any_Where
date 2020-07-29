@@ -30,6 +30,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/package', 'PackagesController');
 
         Route::resource('/parkingzone', 'ParkingZoneController');
+
+        Route::resource('/payment_method', 'PaymentMethodController');
+        
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
         Route::get('/parkingzone/package_data/{id}', 'ParkingZoneController@package_data');
     });

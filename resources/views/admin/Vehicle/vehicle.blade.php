@@ -113,9 +113,7 @@
                         <button type="button" class="btn btn-rounded btn-secondary mb-2 mr-2" data-dismiss="modal">Close</button>
                     </div>
                 </form>
-
             </div>
-
         </div>
     </div>
 </div>
@@ -199,6 +197,8 @@
         </div>
     </div>
 </div>
-@endsection @section('script')
+@endsection 
+
+@section('script')
 <script type="text/javascript" src="{{asset('ajax/vehicle.js')}}"></script>
 @endsection
