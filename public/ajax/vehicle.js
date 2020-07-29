@@ -58,7 +58,6 @@ $(document).ready(function () {
             success: function (response) {
                 toastr.success("Vehicle Updated successfully", "Success!");
                 $("#edit").modal("hide");
-                $("#vehicle_update").trigger("reset");
                 loaddata();
             },
             error: function (error) {
