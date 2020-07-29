@@ -11,29 +11,15 @@ class Packages extends Model
     protected $primaryKey = "package_id";
     protected $fillable = ['package_name', 'vehicle_type', 'package_time', 'package_period', 'package_charge', 'package_note', 'package_status'];
 
-    public function validation()
+
+
+    public function scopeActive($query)
     {
-        return [
-            'package_name' => 'required',
-            'vehicle_type' => 'required',
-            'package_time' => 'required',
-            'package_period' => 'required',
-            'package_charge' => 'required',
-            'package_status' => 'required',
-        ];
+        return $query->where('package_status', 1);
     }
-
-    public function message()
-    {
-        return [
-            'package_name.required' => 'Package Name Required',
-            'vehicle_type.required' => 'Vehicle Type Required',
-            'package_time.required' => 'Package Time Required',
-            'package_period.required' => 'Package Period Required',
-            'package_charge.required' => 'Package Charge Required',
-            'package_status.required' => 'Package Status Required',
-
-        ];
+    
+    public function scopeSearch($query, $search){
+        return $query->where('package_name', 'like', "%$search%");
     }
 
     public static function boot()

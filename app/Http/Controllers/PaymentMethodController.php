@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\paymentMethod;
 use Illuminate\Http\Request;
 use Validator;
+use App\Http\Requests\paymentMethodRequest;
+use Illuminate\Http\Response;
 
 class PaymentMethodController extends Controller
 {
@@ -25,9 +27,13 @@ class PaymentMethodController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $page = $request->input('page', 1);
+        $data['sl'] = (($page - 1) * 10) + 1;
+        $data['search'] = $search = $request->search;
+        $data['paymentmethods'] = paymentMethod::Search($request->search)->paginate(10);
+        return view('admin.settings.payment.list',$data);
     }
 
     /**
@@ -36,28 +42,15 @@ class PaymentMethodController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(paymentMethodRequest $request)
     {
-
-        $packages_model = new paymentMethod;
-        $request_data = $request->all();
-        $validate = Validator::make($request_data, $packages_model->validation(), $packages_model->message());
-        if ($validate->fails()) {
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        } else {
-
-            $packages_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $packages_model
-            ];
-        }
-        return response()->json($response, $status);
+        $pmethod_model = new paymentMethod;
+        $pmethod_model->fill($request->all())->save();
+        $response = [
+            "status" => Response::HTTP_CREATED,
+            "data" => $pmethod_model
+        ];
+        return response()->json($response , Response::HTTP_CREATED);
     }
 
     /**
@@ -66,9 +59,17 @@ class PaymentMethodController extends Controller
      * @param  \App\paymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function show(paymentMethod $paymentMethod)
+    public function show($id)
     {
-        //
+        $pmethod_model = paymentMethod::findOrFail($id);
+        if($pmethod_model->payment_method_status == 1):
+            $pmethod_model->update(["payment_method_status" => 0]);
+            $status = Response::HTTP_ACCEPTED;
+        else:
+            $pmethod_model->update(["payment_method_status" => 1]);
+            $status = Response::HTTP_OK;
+        endif;
+        return response()->json($pmethod_model , $status);
     }
 
     /**
@@ -80,7 +81,7 @@ class PaymentMethodController extends Controller
     public function edit($id)
     {
         $paymentMethod_edit = paymentMethod::findOrFail($id);
-        return response()->json($paymentMethod_edit, 201);
+        return response()->json($paymentMethod_edit , Response::HTTP_OK);
     }
 
     /**
@@ -90,26 +91,15 @@ class PaymentMethodController extends Controller
      * @param  \App\paymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(paymentMethodRequest $request, $id)
     {
-        $packages_model = paymentMethod::findOrFail($request->edit_payment_method_id);
-        $request_data = $request->all();
-        $validate = Validator::make($request_data, $packages_model->validation(), $packages_model->message());
-        if ($validate->fails()) {
-            $status = 400;
-            $response = [
-                "status" => $status,
-                "errors" => $validate->errors()
-            ];
-        } else {
-            $packages_model->fill($request_data)->save();
-            $status = 200;
-            $response = [
-                "status" => $status,
-                "data" => $packages_model
-            ];
-        }
-        return response()->json($response, $status);
+        $pmethod_model = paymentMethod::findOrFail($id);
+        $pmethod_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $pmethod_model
+        ];
+        return response()->json($response , 200);
     }
 
     /**
@@ -118,8 +108,9 @@ class PaymentMethodController extends Controller
      * @param  \App\paymentMethod  $paymentMethod
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        //
+        $paymentMethod = paymentMethod::findOrFail($id)->delete();
+        return response()->json($paymentMethod, 200);
     }
 }

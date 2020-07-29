@@ -16,9 +16,12 @@
                             <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bxs-layer-plus' ></i></i><span>Packages</span></a></li>
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-paper-plane'></i> <span>Project</span> <i class="fa fa-angle-right"></i></a>
+                            <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li>
+                            <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }} treeview">
+                                <a  href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Parking Zone</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
-                                    <li><a href="project-list.html">Project List</a></li>
-                                    <li><a href="project-details.html">Project Details</a></li>
+                                    <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }}"><a href="{{url('/admin/parkingzone')}}">Parking Zone List</a></li>
+                                    <li class="{{ (request()->is('admin/parkingzone/create')) ? 'active' : '' }}"><a href="{{url('/admin/parkingzone/create')}}">Add Parking Zone</a></li>
                                 </ul>
                             </li>
                             <li class="treeview">

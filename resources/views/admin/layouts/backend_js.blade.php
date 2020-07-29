@@ -33,10 +33,10 @@
     <script src="{{asset('backend_assets/js/default-assets/datatables.keytable.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/datatables.select.min.js')}}"></script>
     <script src="{{asset('backend_assets/js/default-assets/demo.datatable-init.js')}}"></script>
+    <script src="{{asset('backend_assets/js/default-assets/jquey.tagsinput.min.js')}}"></script>
 
-    
-    <script src="{{asset('backend_assets/js/sweetalert.min.js')}}"></script>
-    <script src="{{asset('backend_assets/js/toastr.min.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script type="text/javascript">
         toastr.options = {
             "closeButton": true,
@@ -63,4 +63,14 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+    </script>
+
+    <script>
+
+            $('#tags').tagsInput({
+                'width': '100%',
+                'height': '40%',
+                'defaultText': 'Space'
+            });
+
     </script>

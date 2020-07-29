@@ -24,10 +24,10 @@
                 @endif
             </td>
             <td class="text-center">
-                @if ($value->payment_method_status == 1)
-                    <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="vehicle_status" data="{{$value->payment_method_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                @if ($paymentmethod->payment_method_status == 1)
+                    <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="payment_method_status" data="{{$paymentmethod->payment_method_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
                 @else
-                    <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="vehicle_status" data="{{$value->payment_method_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="payment_method_status" data="{{$paymentmethod->payment_method_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
                 @endif
 
                 <button type="button" class="edit btn btn-rounded btn-outline-info mb-2 mr-2" data="{{ $paymentmethod->payment_method_id }}" data-toggle="modal" data-target="#edit">Edit</button>

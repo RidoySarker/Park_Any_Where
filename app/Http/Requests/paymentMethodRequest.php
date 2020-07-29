@@ -13,7 +13,7 @@ class paymentMethodRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,17 @@ class paymentMethodRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'payment_method_name' => 'required',
+            'payment_method_description' => 'required',
+            'payment_method_status' => 'required',
+        ];
+    }
+    public function message()
+    {
+        return [
+            'payment_method_name.required' => 'Name Required',
+            'payment_method_description.required' => 'Description Required',
+            'payment_method_status.required' => 'Status Required',
         ];
     }
 }

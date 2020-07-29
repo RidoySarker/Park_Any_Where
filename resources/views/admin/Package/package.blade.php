@@ -1,5 +1,5 @@
 @extends('admin.layouts.backend_main')
-@section('title') Vehicle | Park Any where @endsection
+@section('title') Package | Park Any where @endsection
 @section('main_content')
 <div class="main-content">
     <div class="data-table-area">
@@ -35,7 +35,6 @@
             </div>
         </div>
     </div>
-
 </div>
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -52,23 +51,27 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Package Name</label>
                         <input type="text" class="form-control" id="package_name" name="package_name" placeholder="Enter Package Name">
+                        <span class="help-block" id="package_name_error" style="color:red;"></span>
                     </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
-                        <select class="form-control" id="vehicle_type" name="vehicle_type"">
-                            <option >Select Vehicle Type</option>
+                        <select class="form-control" id="vehicle_type" name="vehicle_type">
+                            <option value="" selected hidden>Select Vehicle Type</option>
                             @foreach($data as $value)
-                            <option value = " {{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
-
+                            <option value = "{{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
                             @endforeach
                         </select>
+                        <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
                     </div>
+
 
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail111">Time</label>
-                            <input type="text" class="form-control" id="package_time" name="package_time" placeholder="Enter Time ">
+                            <input type="text" class="form-control" id="package_time" name="package_time" type="number" placeholder="Enter Time ">
+                            <span class="help-block" id="package_time_error" style="color:red;"></span>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -82,17 +85,22 @@
                                 <option value="month"> Month(s) </option>
                                 <option value="year"> Year(s) </option>
                             </select>
+                            <span class="help-block" id="package_period_error" style="color:red;"></span>
                         </div>
+
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail111">Charge</label>
                         <input type="text" class="form-control" id="package_charge" name="package_charge" placeholder="Enter Charge ">
+                        <span class="help-block" id="package_charge_error" style="color:red;"></span>
                     </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputEmail111">Note</label>
                         <textarea  class="form-control"  id="package_note" name="package_note" placeholder="Type Package Note"></textarea>
                     </div>
+
                     <div class="form-group">
                         <label for="inputState" class="col-form-label">Status</label>
                         <select id="package_status" name="package_status" class="form-control">
@@ -100,7 +108,10 @@
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>
+                        <span class="help-block" id="package_status_error" style="color:red;"></span>
                     </div>
+
+
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 submit">Submit</button>
                         <button type="button" class="btn btn-rounded btn-secondary mb-2 mr-2" data-dismiss="modal">Close</button>
@@ -128,22 +139,26 @@
                     <div class="form-group">
                         <label for="exampleInputEmail111">Package Name</label>
                         <input type="text" class="form-control" id="edit_package_name" name="package_name" placeholder="Enter Package Name">
+                        <span class="help-block" id="package_name_edit" style="color:red;"></span>
                     </div>
+
 
                     <div class="form-group">
                         <label for="exampleInputEmail111">Vehicle Type</label>
-                        <select class="form-control" id="edit_vehicle_type" name="vehicle_type"">
-                            <option >Select Vehicle Type</option>
+                        <select class="form-control" id="edit_vehicle_type" name="vehicle_type">
                             @foreach($data as $value)
                             <option  value ="{{$value->vehicle_id}}">{{$value->vehicle_type}}</option>
                             @endforeach
                         </select>
+                        <span class="help-block" id="vehicle_type_edit" style="color:red;"></span>
                     </div>
+
 
                     <div class=" form-row">
                         <div class="form-group col-md-6">
                             <label for="exampleInputEmail111">Time</label>
-                            <input type="text" class="form-control" id="edit_package_time" name="package_time" placeholder="Enter Time ">
+                            <input type="text" class="form-control" id="edit_package_time" name="package_time" type="number" placeholder="Enter Time">
+                            <span class="help-block" id="package_time_edit" style="color:red;"></span>
                         </div>
 
                         <div class="form-group col-md-6">
@@ -158,10 +173,12 @@
                                 <option value="year"> Year(s) </option>
                             </select>
                         </div>
+                        <span class="help-block" id="package_period_edit" style="color:red;"></span>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputEmail111">Charge</label>
                         <input type="text" class="form-control" id="edit_package_charge" name="package_charge" placeholder="Enter Charge ">
+                        <span class="help-block" id="package_charge_edit" style="color:red;"></span>
                     </div>
 
                     <div class="form-group">
@@ -176,12 +193,15 @@
                             <option value="1">Active</option>
                             <option value="0">Inactive</option>
                         </select>
+                        <span class="help-block" id="package_status_edit" style="color:red;"></span>
                     </div>
+
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 update">Update</button>
                         <button type="button" class="btn btn-rounded btn-secondary mb-2 mr-2" data-dismiss="modal">Close</button>
                     </div>
+
                 </form>
 
             </div>

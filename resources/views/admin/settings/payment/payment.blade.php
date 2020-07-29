@@ -56,6 +56,7 @@
                     <div class="form-group">
                         <label for="payment_method_name">Payment Method Name</label>
                         <input type="text" class="form-control" id="payment_method_name" name="payment_method_name" placeholder="Enter Payment Method Name">
+                        <span class="help-block" id="payment_method_name_error" style="color:red;"></span>
                     </div>
 
                     <div class="form-group">
@@ -63,6 +64,7 @@
                             <label for="payment_method_description" class="col-form-label">Description</label>
                             <div class="input-group">
                                 <input id="payment_method_description" name="payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
+                                <span class="help-block" id="payment_method_description_error" style="color:red;"></span>
                             </div>
                         </div>
                     </div>
@@ -75,6 +77,7 @@
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
+                            <span class="help-block" id="payment_method_status_error" style="color:red;"></span>
                         </div>
                     </div>
 
@@ -106,7 +109,7 @@
 
                     <div class="form-group">
                         <label for="edit_payment_method_name">Payment Method Name</label>
-                        <input type="text" class="form-control" id="edit_payment_method_name" name="payment_method_name" placeholder="Enter Payment Method Name">
+                        <input type="text" class="form-control" id="payment_method_name_edit" name="payment_method_name" placeholder="Enter Payment Method Name">
                         <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
                     </div>
 
@@ -114,7 +117,7 @@
                         <div class="form-group">
                             <label for="edit_payment_method_description" class="col-form-label">Description</label>
                             <div class="input-group">
-                                <input id="edit_payment_method_description" name="edit_payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
+                                <input id="payment_method_description_edit" name="payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
                                 <span class="help-block" id="vehicle_time_error" style="color:red;"></span>
                             </div>
                         </div>
@@ -122,8 +125,8 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-8">
-                            <label for="edit_payment_method_status" class="col-form-label">Status</label>
-                            <select id="edit_payment_method_status" name="edit_payment_method_status" class="form-control">
+                            <label for="payment_method_status_edit" class="col-form-label">Status</label>
+                            <select id="edit_payment_method_status" name="payment_method_status" class="form-control">
                                 <option selected disabled hidden>Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
