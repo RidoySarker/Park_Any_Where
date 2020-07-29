@@ -11,8 +11,13 @@ $(document).ready(function () {
     $("#topBtn").click(function () {
         $("html ,body").animate({ scrollTop: 0 }, 800);
     });
+    
 });
 // /* Scroll Top */
 
-
-
+// PreLoader Start
+var preloader = document.getElementById("loading");
+function PreLoaderFunction(){
+    preloader.style.display = 'none';
+};
+// PreLoader End

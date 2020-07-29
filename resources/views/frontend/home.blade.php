@@ -16,7 +16,11 @@
     <title>Park AnyWhere</title>
 </head>
 
-<body>
+<body onload="PreLoaderFunction()">
+        <!-- Preloader -->
+        <div id="loading"></div>
+        <!-- Preloader -->
+
 
     {{-- Navbar Start --}}
     <div class="container-fluid backimg">
