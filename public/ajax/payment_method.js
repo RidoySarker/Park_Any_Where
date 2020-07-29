@@ -37,6 +37,7 @@ $(document).ready(function () {
             type: "get",
             dataType: "json",
             success: function (response) {
+                console.log(response);
                 $("#edit_payment_method_name").val(response.payment_method_name);
                 $("#edit_payment_method_description").val(response.payment_method_description);
                 $("#edit_payment_method_status").val(response.payment_method_status);
@@ -62,7 +63,6 @@ $(document).ready(function () {
             success: function (response) {
                 toastr.success("Payment Method Updated successfully", "Success!");
                 $("#edit").modal("hide");
-                $("#payment_method_update").trigger("reset");
                 loaddata();
             },
             error: function (error) {

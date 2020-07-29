@@ -13,9 +13,6 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="{{ (request()->is('admin')) ? 'active' : '' }}"><a href="{{url('admin')}}"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>
                             <li class="{{ (request()->is('admin/vehicle')) ? 'active' : '' }}"><a href="{{url('/admin/vehicle')}}"><i class='bx bx-car'></i><span>Vehicle</span></a></li>
-                            <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bxs-layer-plus' ></i></i><span>Packages</span></a></li>
-                            <li class="treeview">
-                                <a href="javascript:void(0)"><i class='bx bx-paper-plane'></i> <span>Project</span> <i class="fa fa-angle-right"></i></a>
                             <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li>
                             <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }} treeview">
                                 <a  href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Parking Zone</span> <i class="fa fa-angle-right"></i></a>
@@ -28,7 +25,7 @@
                                 <a href="javascript:void(0)"><i class='bx bx-slider-alt'></i> <span>Settings</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{url('/admin/payment_method')}}"><i class='bx bxs-wallet'></i> Payment</a></li>
-                                    <li><a href="mail-view.html"><i class='bx bx-mail-send' ></i> Mail View</a></li>
+                                    <li><a href="mail-view.html"><i class='bx bx-mail-send' ></i> App Settings</a></li>
                                 </ul>
                             </li>
                         </ul>

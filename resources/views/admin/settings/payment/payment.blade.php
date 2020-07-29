@@ -64,13 +64,12 @@
                             <label for="payment_method_description" class="col-form-label">Description</label>
                             <div class="input-group">
                                 <input id="payment_method_description" name="payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
-                                <span class="help-block" id="payment_method_description_error" style="color:red;"></span>
                             </div>
+                                <span class="help-block" id="payment_method_description_error" style="color:red;"></span>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-md-8">
+                        <div class="form-group">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="payment_method_status" name="payment_method_status" class="form-control">
                                 <option selected disabled hidden>Select</option>
@@ -79,7 +78,6 @@
                             </select>
                             <span class="help-block" id="payment_method_status_error" style="color:red;"></span>
                         </div>
-                    </div>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 submit">Submit</button>
@@ -109,31 +107,27 @@
 
                     <div class="form-group">
                         <label for="edit_payment_method_name">Payment Method Name</label>
-                        <input type="text" class="form-control" id="payment_method_name_edit" name="payment_method_name" placeholder="Enter Payment Method Name">
-                        <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
+                        <input type="text" class="form-control" id="edit_payment_method_name" name="payment_method_name" placeholder="Enter Payment Method Name">
                     </div>
-
+                        <span class="help-block" id="payment_method_name_edit" style="color:red;"></span>
                     <div class="form-group">
                         <div class="form-group">
                             <label for="edit_payment_method_description" class="col-form-label">Description</label>
                             <div class="input-group">
-                                <input id="payment_method_description_edit" name="payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
-                                <span class="help-block" id="vehicle_time_error" style="color:red;"></span>
+                                <input id="edit_payment_method_description" name="payment_method_description" type="text" class="form-control" placeholder="Method Type Description">
                             </div>
+                                <span class="help-block" id="payment_method_description_edit" style="color:red;"></span>
                         </div>
                     </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-md-8">
+                        <div class="form-group">
                             <label for="payment_method_status_edit" class="col-form-label">Status</label>
                             <select id="edit_payment_method_status" name="payment_method_status" class="form-control">
                                 <option selected disabled hidden>Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
-                            <span class="help-block" id="vehicle_status_error" style="color:red;"></span>
                         </div>
-                    </div>
+                            <span class="help-block" id="payment_method_edit" style="color:red;"></span>
 
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 update">Update</button>

@@ -62,7 +62,6 @@ $(document).ready(function () {
                 console.log(response);
                 toastr.success("Package Updated successfully", "Success!");
                 $("#edit").modal("hide");
-                $("#package_update").trigger("reset");
                 loaddata();
             },
             error: function (error) {
