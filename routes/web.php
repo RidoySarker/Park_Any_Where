@@ -34,5 +34,8 @@ Route::prefix('admin')->group(function () {
         Route::get('/package/show/{id}', 'PackagesController@show');
 
         Route::resource('/parkingzone', 'ParkingZoneController');
+
+        Route::resource('/payment_method', 'PaymentMethodController');
+        Route::post('/payment_method/store', 'PaymentMethodController@store');
     });
 });
