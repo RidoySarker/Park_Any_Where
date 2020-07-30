@@ -104,7 +104,30 @@ $(document).ready(function () {
         });
     });
     // Delete Method End//
-
+    //Location Zone Status
+    $("#datalist").on("click", "#location_zone_status", function () {
+        var data = $(this).attr("data");
+        $.ajax({
+            url: "/admin/locationzone/" + data,
+            type: "get",
+            dataType: "json",
+            success: function (response) {
+                loaddata();
+                if (response.location_zone_status == 0) {
+                    toastr.success(
+                        "Location Zone Status Change into Inactive",
+                        "Success!"
+                    );
+                } else {
+                    toastr.success(
+                        "Location Zone Change into Active",
+                        "Success!"
+                    );
+                }
+            },
+        });
+    });
+    //Location Zone Status
     // loader needed //
     $("#datalist").on("click", ".page-link", function (e) {
         e.preventDefault();
@@ -126,7 +149,7 @@ function loaddata(pagelink = "/admin/locationzone/create") {
 
     $.ajax({
         url: pagelink,
-        data: { search: search },
+        data: {search: search},
         type: "get",
         dataType: "html",
         success: function (data) {
@@ -134,4 +157,5 @@ function loaddata(pagelink = "/admin/locationzone/create") {
         },
     });
 }
+
 // loader needed //
