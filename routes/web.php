@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
@@ -39,3 +37,5 @@ Route::prefix('admin')->group(function () {
         Route::get('/parkingzone/package_data/{id}', 'ParkingZoneController@package_data');
     });
 });
+
+Route::get('/verifyemail/{token}', 'HomeController@verifyemail')->name('verifyemail');

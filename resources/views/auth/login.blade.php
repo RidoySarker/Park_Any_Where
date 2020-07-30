@@ -21,6 +21,23 @@
 <body>
     <div class="container-login100" style="background-image: url('{{asset("backend_assets/login/images/bg-01.jpg")}}');">
         <div class="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
+
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if(session()->has('message'))
+            <div class="alert alert-{{ session('type') }}">
+                {{ session('message') }}
+            </div>
+        @endif
+
             <form class="login100-form validate-form" method="POST" action="{{ route('login') }}">
                 @csrf
                 <span class="login100-form-title p-b-37">
