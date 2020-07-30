@@ -17,9 +17,7 @@ class PaymentMethodController extends Controller
      */
     public function index()
     {
-        // $paymentmethods = paymentMethod::all();
         return view('admin.settings.payment.payment');
-        // ->with('paymentmethods', $paymentmethods);
     }
 
     /**

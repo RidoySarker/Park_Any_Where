@@ -24,7 +24,8 @@
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-slider-alt'></i> <span>Settings</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{url('/admin/payment_method')}}"><i class='bx bxs-wallet'></i> Payment</a></li>
+                                    <li><a href="{{url('/admin/payment_method')}}"><i class='bx bxs-wallet'></i> Payment Method</a></li>
+                                    <li><a href="{{url('/admin/locationzone')}}"><i class='bx bxs-location-plus'></i> Location Zone</a></li>
                                     <li><a href="mail-view.html"><i class='bx bx-mail-send' ></i> App Settings</a></li>
                                 </ul>
                             </li>
