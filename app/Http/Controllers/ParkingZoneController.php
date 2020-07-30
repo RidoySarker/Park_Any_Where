@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-Use Auth;
+
+use Auth;
 use App\ParkingZone;
 use App\ParkingSpace;
 use App\Vehicle;
@@ -12,6 +13,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Arr;
 use Validator;
 use DB;
+use App\LocationZone;
+
 class ParkingZoneController extends Controller
 {
     /**
@@ -21,9 +24,9 @@ class ParkingZoneController extends Controller
      */
     public function index()
     {
-        $data['parkingzone_data'] = ParkingZone::with('vehicleType','PackageVehicle.vehicleType')->get();
+        $data['parkingzone_data'] = ParkingZone::with('vehicleType', 'PackageVehicle.vehicleType')->get();
 
-        return view('admin.ParkingZone.parkingzone_list',$data);
+        return view('admin.ParkingZone.parkingzone_list', $data);
     }
 
     /**
@@ -33,6 +36,7 @@ class ParkingZoneController extends Controller
      */
     public function create()
     {
+        $data['location_zone'] = LocationZone::Active()->get();
         $data['vehicle_data'] = Vehicle::Active()->get();
         $data['package_data'] = Packages::Active()->get();
         return view('admin.ParkingZone.create_parkingzone', $data);
@@ -62,41 +66,40 @@ class ParkingZoneController extends Controller
         $request_data = $request->all();
         $validate = $parking_model->validation();
         if ($request->parking_type == 1) {
-            $validate = Arr::add($validate, "package_name","required");
+            $validate = Arr::add($validate, "package_name", "required");
 
         } else if ($request->parking_type == 2) {
-            $validate = Arr::add($validate, "vehicle_type","required");
-        }
-        else{
+            $validate = Arr::add($validate, "vehicle_type", "required");
+        } else {
             $validate = $validate;
         }
-        $validateData = Validator::make($request_data,$validate);
+        $validateData = Validator::make($request_data, $validate);
         if ($validateData->fails()) {
             $status = 422;
             $response = [
                 "status" => $status,
                 "errors" => $validateData->errors()
             ];
-        }else {
+        } else {
 
-        DB::beginTransaction();
-        $parking_model->fill($request_data)->save();
+            DB::beginTransaction();
+            $parking_model->fill($request_data)->save();
 
-        $parking_space_data = explode(',', $request->parking_space);
-        $data = array_pop($parking_space_data);
-        $parking_space = [];
-        foreach ($parking_space_data as $key => $parking_space_value) {
-            $parking_space[] = [
-                'parking_name' => $parking_model->parking_zone_id,
-                'parking_space' => $parking_space_value,
-                'created_by' => Auth::user()->id,
-                'updated_by' => Auth::user()->id,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-        }
-        ParkingSpace::insert($parking_space);
-        DB::commit();
+            $parking_space_data = explode(',', $request->parking_space);
+            $data = array_pop($parking_space_data);
+            $parking_space = [];
+            foreach ($parking_space_data as $key => $parking_space_value) {
+                $parking_space[] = [
+                    'parking_name' => $parking_model->parking_zone_id,
+                    'parking_space' => $parking_space_value,
+                    'created_by' => Auth::user()->id,
+                    'updated_by' => Auth::user()->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            ParkingSpace::insert($parking_space);
+            DB::commit();
             $status = 201;
             $response = [
                 "status" => $status,
@@ -115,14 +118,14 @@ class ParkingZoneController extends Controller
     public function show($id)
     {
         $parking_model = ParkingZone::findOrFail($id);
-        if($parking_model->parking_status == 1):
+        if ($parking_model->parking_status == 1):
             $parking_model->update(["parking_status" => 0]);
             $status = 200;
         else:
             $parking_model->update(["parking_status" => 1]);
             $status = 201;
         endif;
-        return response()->json($parking_model , $status);
+        return response()->json($parking_model, $status);
 
     }
 
@@ -134,7 +137,8 @@ class ParkingZoneController extends Controller
      */
     public function edit($id)
     {
-        $data['edit_data'] = ParkingZone::where('parking_zone_id',$id)->with('ParkingSpace','vehicleType','PackageVehicle.vehicleType')->first();
+        $data['edit_data'] = ParkingZone::where('parking_zone_id', $id)->with('vehicleType', 'PackageVehicle.vehicleType')->first();
+        $data['location_zone'] = LocationZone::Active()->get();
         $data['vehicle_data'] = Vehicle::Active()->get();
         $data['package_data'] = Packages::Active()->get();
         return view('admin.ParkingZone.edit_parkingzone', $data);
@@ -153,45 +157,44 @@ class ParkingZoneController extends Controller
         $request_data = $request->all();
         $validate = $parking_model->validation();
         if ($request->parking_type == 1) {
-            $validate = Arr::add($validate, "package_name","required");
+            $validate = Arr::add($validate, "package_name", "required");
 
         } else if ($request->parking_type == 2) {
-            $validate = Arr::add($validate, "vehicle_type","required");
-        }
-        else{
+            $validate = Arr::add($validate, "vehicle_type", "required");
+        } else {
             $validate = $validate;
         }
-        $validateData = Validator::make($request_data,$validate);
+        $validateData = Validator::make($request_data, $validate);
         if ($validateData->fails()) {
             $status = 422;
             $response = [
                 "status" => $status,
                 "errors" => $validateData->errors()
             ];
-        }else {
+        } else {
 
-        DB::beginTransaction();
-        $parking_model->fill($request_data)->save();
-          $data = $parking_model->where('parking_limit', $request->parking_limit)->first();
+            DB::beginTransaction();
+            $parking_model->fill($request_data)->save();
+            $data = $parking_model->where('parking_limit', $request->parking_limit)->first();
 
-        ParkingSpace::where('parking_name' , $request->parking_zone_id)->delete();
-        $parking_space_data = explode(',', $request->parking_space);
+            ParkingSpace::where('parking_name', $request->parking_zone_id)->delete();
+            $parking_space_data = explode(',', $request->parking_space);
 
-        $data = array_pop($parking_space_data);
+            $data = array_pop($parking_space_data);
 
-        $parking_space = [];
-        foreach ($parking_space_data as $key => $parking_space_value) {
-            $parking_space[] = [
-                'parking_name' => $parking_model->parking_zone_id,
-                'parking_space' => $parking_space_value,
-                'created_by' => Auth::user()->id,
-                'updated_by' => Auth::user()->id,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ];
-        }
-        ParkingSpace::insert($parking_space);
-        DB::commit();
+            $parking_space = [];
+            foreach ($parking_space_data as $key => $parking_space_value) {
+                $parking_space[] = [
+                    'parking_name' => $parking_model->parking_zone_id,
+                    'parking_space' => $parking_space_value,
+                    'created_by' => Auth::user()->id,
+                    'updated_by' => Auth::user()->id,
+                    'created_at' => date('Y-m-d H:i:s'),
+                    'updated_at' => date('Y-m-d H:i:s'),
+                ];
+            }
+            ParkingSpace::insert($parking_space);
+            DB::commit();
             $status = 201;
             $response = [
                 "status" => $status,
@@ -209,7 +212,7 @@ class ParkingZoneController extends Controller
      */
     public function destroy($id)
     {
-      $parkingzone = ParkingZone::findOrFail($id)->delete();
-      return response()->json($parkingzone, 200);
+        $parkingzone = ParkingZone::findOrFail($id)->delete();
+        return response()->json($parkingzone, 200);
     }
 }

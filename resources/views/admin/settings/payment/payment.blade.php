@@ -1,5 +1,5 @@
 @extends('admin.layouts.backend_main')
-@section('title', 'Payment Method | ParkAnyWhere') 
+@section('title', 'Payment Method | ParkAnyWhere')
 @section('css')
 @endsection
 @section('main_content')
@@ -26,7 +26,7 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Payment_Method</button>
+                            <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Payment Method</button>
                             <br />
                             <h4 class="card-title mb-3">Payment Method List</h4>
                             <label>Search:<input type="search" id="search" name="search" class="form-control form-control-sm" placeholder="" aria-controls="selection-datatable"></label>

@@ -16,6 +16,8 @@ class CreateParkingZonesTable extends Migration
         Schema::create('parking_zones', function (Blueprint $table) {
             $table->bigIncrements('parking_zone_id');
             $table->string('parking_name');
+            $table->unsignedBigInteger('location_zone_name');
+            $table->foreign('location_zone_name')->references('location_zone_id')->on('location_zones')->onDelete('cascade');
             $table->string('latitude');
             $table->string('longitude');
             $table->Integer('parking_type')->comment('1 = Package, 2 = Vehicle');

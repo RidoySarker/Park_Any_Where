@@ -58,9 +58,18 @@ class LocationZoneController extends Controller
      * @param  \App\LocationZone  $locationZone
      * @return \Illuminate\Http\Response
      */
-    public function show(LocationZone $locationZone)
+    public function show($id)
     {
-        //
+        $lzone_model = LocationZone::findOrFail($id);
+        if($lzone_model->location_zone_status == 1):
+            $lzone_model->update(["location_zone_status" => 0]);
+            $status = Response::HTTP_ACCEPTED;
+        else:
+            $lzone_model->update(["location_zone_status" => 1]);
+            $status = Response::HTTP_OK;
+        endif;
+        return response()->json($lzone_model , $status);
+
     }
 
     /**
