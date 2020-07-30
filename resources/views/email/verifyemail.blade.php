@@ -109,7 +109,9 @@
             <td bgcolor="#FFA73B" align="center">
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
-                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> </td>
+                        <td align="center" valign="top" style="padding: 40px 10px 40px 10px;"> 
+                            <img src=" {{asset('backend_assets/img/core-img/logo3transparent.png')}}" style="display: block; border: 0px;" />
+                        </td>
                     </tr>
                 </table>
             </td>
@@ -168,7 +170,7 @@
                     </tr>
                     <tr>
                         <td bgcolor="#ffffff" align="left" style="padding: 0px 30px 40px 30px; border-radius: 0px 0px 4px 4px; color: #666666; font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 400; line-height: 25px;">
-                            <p style="margin: 0;">Cheers,<br>ParkAnyWhere Team</p>
+                            <p style="margin: 0;">Thanks,<br>ParkAnyWhere Team</p>
                         </td>
                     </tr>
                 </table>

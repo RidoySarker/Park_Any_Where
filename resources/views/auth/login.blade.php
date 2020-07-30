@@ -87,6 +87,12 @@
                 </div>
 
                 <div class="text-center">
+                    <a href="{{url('register')}}" class="txt1 hov1">
+                        Forget Password?
+                    </a>
+                </div>
+                <br/>
+                <div class="text-center">
                     <a href="{{url('register')}}" class="txt2 hov1">
                         Sign Up
                     </a>
