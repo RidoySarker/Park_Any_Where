@@ -132,7 +132,8 @@ iframe {
 
 .txt2 {
   font-family: SourceSansPro-Regular;
-  font-size: 16px;
+  font-size: 19px;
+  font-weight: bold;
   line-height: 1.4;
   color: #4b2354;
 }

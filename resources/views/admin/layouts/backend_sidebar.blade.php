@@ -1,7 +1,7 @@
         <div class="ecaps-sidemenu-area">
             <!-- Desktop Logo -->
             <div class="ecaps-logo">
-                <a href="{{url('admin')}}"><img class="desktop-logo" src="{{asset('backend_assets/img/core-img/logo.png')}}" alt="Desktop Logo"> <img class="small-logo" src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
+                <a href="{{url('admin')}}"><img style="max-height: 42px;" class="desktop-logo" src="{{asset('backend_assets/img/core-img/logo2.png')}}" alt="Desktop Logo"> <img class="small-logo" src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
             </div>
 
             <!-- Side Nav -->
