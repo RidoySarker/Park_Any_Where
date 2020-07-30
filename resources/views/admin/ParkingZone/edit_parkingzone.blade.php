@@ -325,8 +325,6 @@
         @endsection
 
         @section('script')
-            <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&maptype=roadmap&libraries=places&callback=initMap"></script>
             <script type="text/javascript" src="{{asset('ajax/edit_parkingzone.js')}}"></script>
 
 @endsection
