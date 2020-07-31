@@ -28,10 +28,10 @@
                     <a class="nav-link text-muted" href="#">Help</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="{{route('login')}}">Login</a>
+                    <a class="nav-link text-muted" href="{{url('login')}}">Login</a>
                 </li>
                 <li style="margin:7px;" class="nav-item">
-                <a href="{{route('register')}}" class="btn-signup">SignUp</a>
+                <a href="{{url('register')}}" class="btn-signup">SignUp</a>
                 </li>
             </ul>
         </div>

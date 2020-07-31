@@ -52,7 +52,7 @@ class LoginController extends Controller
 
                 return redirect()->route('login');
             }
-            return redirect()->to('index');
+            return redirect()->to('/admin');
         }
 
         session()->flash('message', 'Wrong Email Or Password.');
