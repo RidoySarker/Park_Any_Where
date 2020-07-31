@@ -5,8 +5,8 @@
 @endsection
 @section('content')
         {{-- Main Wrapper Start Hero Section--}}
-        <div class="main">
-            <div class="container">
+        <div class="main backimg">
+            <div class="container bookbox">
                 <ul class="nav nav-tabs nav-justified">
                     <li class="nav-item">
                         <a class="nav-link active" data-toggle="tab" href="#hourly">HOURLY/DAILY</a>
@@ -64,7 +64,6 @@
                 </div>
             </div>
         </div>
-    </div>
     {{-- Main Wrapper Start Hero Section--}}
 
     {{-- info_section start --}}

@@ -4,7 +4,6 @@
     <!-- Preloader -->
     
 {{-- Navbar Start --}}
-<div class="container-fluid backimg">
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('frontend_assets/images/logo5.png') }}" alt="Logo" style="width:220px;">
