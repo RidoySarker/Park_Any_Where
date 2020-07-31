@@ -16,6 +16,21 @@
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @if(session()->has('message'))
+                                <div class="alert alert-{{ session('type') }}">
+                                    {{ session('message') }}
+                                </div>
+                            @endif
                         <h2 class="form-title">Sign up</h2>
                         <form method="POST" action="{{ route('register') }}" class="register-form" id="register-form">
                             @csrf

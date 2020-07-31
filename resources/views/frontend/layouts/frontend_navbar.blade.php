@@ -4,7 +4,6 @@
     <!-- Preloader -->
     
 {{-- Navbar Start --}}
-<div class="container-fluid backimg">
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('frontend_assets/images/logo5.png') }}" alt="Logo" style="width:220px;">
@@ -29,10 +28,10 @@
                     <a class="nav-link text-muted" href="#">Help</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="#">Login</a>
+                    <a class="nav-link text-muted" href="{{url('login')}}">Login</a>
                 </li>
                 <li style="margin:7px;" class="nav-item">
-                    <a href="#" class="btn-signup">SignUp</a>
+                <a href="{{url('register')}}" class="btn-signup">SignUp</a>
                 </li>
             </ul>
         </div>

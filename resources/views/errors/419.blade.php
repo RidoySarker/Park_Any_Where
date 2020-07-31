@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('frontend_assets/errors/500/css/style.css')}}"/>
-    <title>403 | Park AnyWhere</title>
+    <title>419 | Park AnyWhere</title>
 </head>
 <body>
     <div class="maincontainer">
@@ -36,7 +36,7 @@
         <img class="foregroundimg" src="{{asset('frontend_assets/errors/500/img/HauntedHouseForeground.png')}}" alt="haunted house">
         
       </div>
-      <h1 class="errorcode">ERROR 403</h1>
-      <div class="errortext">Forbidden Error. Turn back now!</div>       
+      <h1 class="errorcode">ERROR 419</h1>
+      <div class="errortext">Page Expired. Try Again Please!</div>      
 </body>
 </html>

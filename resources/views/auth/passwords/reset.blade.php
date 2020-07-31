@@ -1,6 +1,8 @@
-@extends('layouts.app')
-
-@section('content')
+@extends('admin.layouts.backend_main')
+@section('title')
+    Reset Password | ParkAnyWhere
+@endsection
+@section('main_content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
