@@ -32,7 +32,9 @@ Route::prefix('admin')->group(function () {
         Route::resource('/payment_method', 'PaymentMethodController');
 
         Route::resource('/locationzone', 'LocationZoneController');
-        
+
+        Route::resource('/appsettings', 'AppSettingsController');
+
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
         Route::get('/parkingzone/package_data/{id}', 'ParkingZoneController@package_data');
     });
