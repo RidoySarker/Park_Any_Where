@@ -23,9 +23,12 @@ class AppSettingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $page = $request->input('page', 1);
+        $data['sl'] = (($page - 1) * 10) + 1;
+        $data['appsettings_data'] = AppSettings::paginate(10);
+        return view('admin.settings.AppSettings.list', $data);
     }
 
     /**
@@ -36,7 +39,13 @@ class AppSettingsController extends Controller
      */
     public function store(AppSettingsRequest $request)
     {
-        //
+        $appSettings_model = new AppSettings;
+        $appSettings_model->fill($request->all())->save();
+        $response = [
+            "status" => 200,
+            "data" => $appSettings_model
+        ];
+        return response()->json($response, 200);
     }
 
     /**
@@ -56,9 +65,10 @@ class AppSettingsController extends Controller
      * @param  \App\AppSettings  $appSettings
      * @return \Illuminate\Http\Response
      */
-    public function edit(AppSettings $appSettings)
+    public function edit($id)
     {
-        //
+        $appSettings_edit = AppSettings::findOrFail($id);
+        return response()->json($appSettings_edit, 201);
     }
 
     /**
@@ -68,9 +78,8 @@ class AppSettingsController extends Controller
      * @param  \App\AppSettings  $appSettings
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AppSettings $appSettings)
+    public function update(AppSettings $request,  $id)
     {
-        //
     }
 
     /**
@@ -79,8 +88,9 @@ class AppSettingsController extends Controller
      * @param  \App\AppSettings  $appSettings
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AppSettings $appSettings)
+    public function destroy($id)
     {
-        //
+        $appSettings = AppSettings::findOrFail($id)->delete();
+        return response()->json($appSettings, 200);
     }
 }

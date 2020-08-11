@@ -11,6 +11,7 @@ class AppSettings extends Model
     protected $primaryKey = "appsettings_id";
     protected $fillable = ['application_logo', 'application_name', 'application_email', 'application_phone', 'application_address'];
 
+
     public static function boot()
     {
         parent::boot();
