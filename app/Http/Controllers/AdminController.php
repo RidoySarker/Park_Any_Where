@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+Use Auth;
+
+use Redirect;
+
 class AdminController extends Controller
 {
     /**
@@ -11,14 +15,23 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['adminLogin']);
+    // }
     
     public function index()
     {
+        if (!Auth::check()) :
+            return Redirect::to('/admin/login');
+        endif;
         return view('admin.dashboard');
+    }
+
+    public function adminLogin()
+    {
+
+        return view('auth.Admin.admin_login');
     }
 
     /**

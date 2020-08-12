@@ -20,6 +20,14 @@ class User extends Authenticatable
         'name', 'email', 'password', 'email_verified', 'email_verified_at', 'email_verification_token',
     ];
 
+    public function loginValidation()
+    {
+        return [
+            "email" => "required|email" ,
+            "password" => "required" ,
+        ];
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
