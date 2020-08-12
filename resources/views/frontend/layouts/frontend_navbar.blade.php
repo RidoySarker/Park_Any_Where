@@ -22,17 +22,32 @@
                     <a class="nav-link text-muted" href="#">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="#">Rent out your driveway</a>
+                    <a class="nav-link text-muted" href="/rent_register">Rent out your driveway</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-muted" href="#">Help</a>
                 </li>
+
+                @guest
+                
                 <li class="nav-item">
                     <a class="nav-link text-muted" href="{{url('login')}}">Login</a>
                 </li>
+
                 <li style="margin:7px;" class="nav-item">
                 <a href="{{url('register')}}" class="btn-signup">SignUp</a>
                 </li>
+                @endguest
+
+                @auth
+                <li style="margin:7px;" class="nav-item">
+
+                <form action="{{route('logout')}}" method="post" >
+                    @csrf
+                <button type="submit" class=" btn btn-info">Sign-out</button>
+                </form>
+                </li>
+                @endauth
             </ul>
         </div>
     </nav>

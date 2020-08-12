@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/admin', 'AdminController@index');
 
+Route::get('/admin/login', 'AdminController@adminLogin');
+
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
         Route::resource('/vehicle', 'VehicleController');
@@ -39,3 +41,7 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::get('/verifyemail/{token}', 'HomeController@verifyemail')->name('verifyemail');
+
+Route::resource('/customer_register', 'CustomerController');
+Route::post("/customer_login", "CustomerController@login");
+Route::get("/rent_register", "CustomerController@rent_register");

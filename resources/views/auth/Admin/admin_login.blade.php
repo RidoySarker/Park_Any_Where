@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register | Park Any where</title>
+    <title>Admin login | Park Any where</title>
     <!--===============================================================================================-->
     <link rel="stylesheet"
           href="{{asset('backend_assets/reg/fonts/material-icon/css/material-design-iconic-font.min.css')}}"/>
@@ -17,27 +17,14 @@
         <div class="container">
             <div class="signup-content">
                 <div class="signup-form">
-                    <h2 class="form-title">Sign up</h2>
-                    <form method="POST" class="register-form" id="register-form">
+                    <h2 class="form-title">login</h2>
+                    <form method="POST" class="register-form" id="AdminLogin">
                         @csrf
-                        <div class="form-group">
-                            <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name"
-                                   autocomplete="name" autofocus/>
-                            <span class="help-block" id="name_error" style="color:red;"></span>
-
-                        </div>
+                        <span class="help-block" id="login_error" style="color:red;"></span>
                         <div class="form-group">
                             <label for="name"><i class="zmdi zmdi-phone material-icons-name"></i></label>
-                            <input type="text" class="form-control" name="number" id="number"
+                            <input type="text" class="form-control" name="email" id="email"
                                    placeholder="Enter your Phone Number" autocomplete="name" autofocus/>
-                            <span class="help-block" id="number_error" style="color:red;"></span>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="email"><i class="zmdi zmdi-email"></i></label>
-                            <input type="email" id="email" class="form-control" name="email"
-                                   placeholder="Enter your email" autocomplete="email"/>
                             <span class="help-block" id="email_error" style="color:red;"></span>
 
                         </div>
@@ -46,21 +33,11 @@
                             <input type="password" name="password" id="password" class="form-control"
                                    placeholder="Enter your password" autocomplete="new-password"/>
                             <span class="help-block" id="password_error" style="color:red;"></span>
-                            <span id="passwordMessage"></span>
 
                         </div>
-                        <div class="form-group">
-                            <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
-                            <input type="password" id="con_pass" name="password_confirmation"
-                                   placeholder="Confirm your password" autocomplete="new-password"/>
-                            <span id="pass"></span>
+                        <div class="form-group form-button">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Login"/>
                         </div>
-                        <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term"/>
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree all
-                                statements in <a href="#" class="term-service">Terms of service</a></label>
-                        </div>
-                        <button type="submit" class="form-submit submit">Register</button>
                     </form>
                 </div>
                 <div class="signup-image">
@@ -76,7 +53,39 @@
 <!--===============================================================================================-->
 <script src="{{asset('backend_assets/reg/vendor/jquery/jquery.min.js')}}"></script>
 <script src="{{asset('backend_assets/reg/js/main.js')}}"></script>
-<script type="text/javascript" src="{{asset('ajax/customer.js')}}"></script>
+<script type="text/javascript">
+    $(document).on("submit", "#AdminLogin", function (e) {
+        e.preventDefault();
+        let data = $(this).serializeArray();
+        console.log(data);
+        $.each(data, function (i, message) {
+            $("#" + message.name + "_error").html(message = "");
+        })
+        $.ajax({
+            url: "/customer_login",
+            data: data,
+            type: "POST",
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                window.location.href = "/admin"
+
+            }, error: function (error) {
+
+                if (error.responseJSON.errors) {
+                    $.each(error.responseJSON.errors, function (i, message) {
+                        $("#" + i + "_error").html(message[0]);
+                    })
+
+                } else {
+                    $("#login_error").html("Credentials Doesn't Match Our Records");
+                }
+
+            }
+        });
+    });
+
+</script>
 <!--===============================================================================================-->
 </body>
 </html>
