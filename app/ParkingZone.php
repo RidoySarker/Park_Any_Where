@@ -8,7 +8,7 @@ class ParkingZone extends Model
 {
     protected $table = "parking_zones";
     protected $primaryKey='parking_zone_id';
-    protected $fillable=['parking_name','location_zone_name','latitude','longitude','parking_type','package_name','vehicle_type','parking_limit','parking_address','parking_note','parking_status','created_by','updated_by'];
+    protected $fillable=['parking_name','location_zone_name','latitude','longitude','parking_limit','parking_address','parking_note','parking_status','created_by','updated_by'];
 
 
     public function validation()
@@ -27,7 +27,10 @@ class ParkingZone extends Model
     }
 
 
-
+    public function scopeActive($query)
+    {
+        return $query->where('parking_status', 1);
+    }
 
     public static function boot()
     {
@@ -42,25 +45,9 @@ class ParkingZone extends Model
         });
     }
 
-    public function vehicleType()
-    {
-        return $this->belongsTo("App\Vehicle", "vehicle_type");
-    }
-
     public function LocationZone()
     {
         return $this->belongsTo("App\LocationZone", "location_zone_name");
     }
-
-    public function ParkingSpace()
-    {
-        return $this->hasMany("App\ParkingSpace", "parking_name");
-    }
-
-    public function PackageVehicle()
-    {
-        return $this->belongsTo("App\Packages", "package_name");
-    }
-
 
 }

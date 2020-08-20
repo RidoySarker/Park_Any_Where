@@ -24,8 +24,7 @@ class ParkingZoneController extends Controller
      */
     public function index()
     {
-        $data['parkingzone_data'] = ParkingZone::with('vehicleType', 'PackageVehicle.vehicleType')->get();
-
+        $data['parkingzone_data'] = ParkingZone::orderBy('parking_zone_id', 'desc')->get();
         return view('admin.ParkingZone.parkingzone_list', $data);
     }
 
@@ -37,8 +36,6 @@ class ParkingZoneController extends Controller
     public function create()
     {
         $data['location_zone'] = LocationZone::Active()->get();
-        $data['vehicle_data'] = Vehicle::Active()->get();
-        $data['package_data'] = Packages::Active()->get();
         return view('admin.ParkingZone.create_parkingzone', $data);
     }
 
@@ -60,28 +57,10 @@ class ParkingZoneController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ParkingZoneRequest $request)
     {
         $parking_model = new ParkingZone;
         $request_data = $request->all();
-        $validate = $parking_model->validation();
-        if ($request->parking_type == 1) {
-            $validate = Arr::add($validate, "package_name", "required");
-
-        } else if ($request->parking_type == 2) {
-            $validate = Arr::add($validate, "vehicle_type", "required");
-        } else {
-            $validate = $validate;
-        }
-        $validateData = Validator::make($request_data, $validate);
-        if ($validateData->fails()) {
-            $status = 422;
-            $response = [
-                "status" => $status,
-                "errors" => $validateData->errors()
-            ];
-        } else {
-
             DB::beginTransaction();
             $parking_model->fill($request_data)->save();
 
@@ -104,7 +83,7 @@ class ParkingZoneController extends Controller
             $response = [
                 "status" => $status,
             ];
-        }
+        
 
         return response()->json($response, $status);
     }
@@ -137,10 +116,8 @@ class ParkingZoneController extends Controller
      */
     public function edit($id)
     {
-        $data['edit_data'] = ParkingZone::where('parking_zone_id', $id)->with('vehicleType', 'PackageVehicle.vehicleType')->first();
+        $data['edit_data'] = ParkingZone::where('parking_zone_id', $id)->first();
         $data['location_zone'] = LocationZone::Active()->get();
-        $data['vehicle_data'] = Vehicle::Active()->get();
-        $data['package_data'] = Packages::Active()->get();
         return view('admin.ParkingZone.edit_parkingzone', $data);
     }
 
@@ -151,28 +128,10 @@ class ParkingZoneController extends Controller
      * @param \App\ParkingZone $parkingZone
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ParkingZoneRequest $request, $id)
     {
         $parking_model = ParkingZone::findOrFail($id);
         $request_data = $request->all();
-        $validate = $parking_model->validation();
-        if ($request->parking_type == 1) {
-            $validate = Arr::add($validate, "package_name", "required");
-
-        } else if ($request->parking_type == 2) {
-            $validate = Arr::add($validate, "vehicle_type", "required");
-        } else {
-            $validate = $validate;
-        }
-        $validateData = Validator::make($request_data, $validate);
-        if ($validateData->fails()) {
-            $status = 422;
-            $response = [
-                "status" => $status,
-                "errors" => $validateData->errors()
-            ];
-        } else {
-
             DB::beginTransaction();
             $parking_model->fill($request_data)->save();
             $data = $parking_model->where('parking_limit', $request->parking_limit)->first();
@@ -199,7 +158,7 @@ class ParkingZoneController extends Controller
             $response = [
                 "status" => $status,
             ];
-        }
+        
 
         return response()->json($response, $status);
     }

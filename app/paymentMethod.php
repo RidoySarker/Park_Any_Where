@@ -13,7 +13,7 @@ class paymentMethod extends Model
 
     public function scopeSearch($query, $search){
         return $query->where('payment_method_name', 'LIKE', '%' . $search . '%')
-                    ->orwhere('payment_method_description', 'like' ,"%$search%");
+                    ->orwhere('payment_method_description', 'like' ,'%' .$search. '%');
     }
 
     public function scopeActive($query)

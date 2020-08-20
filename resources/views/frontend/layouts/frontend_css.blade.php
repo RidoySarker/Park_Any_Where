@@ -15,4 +15,7 @@
     @stack('css')
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/font-awesome.css') }}">
     <!--===============================================================================================-->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+<link href="{{ asset('frontend_assets/css/jquery.datetimepicker.min.css') }}" rel="stylesheet"/>
+
 </head>

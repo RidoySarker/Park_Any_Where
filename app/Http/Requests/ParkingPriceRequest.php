@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ParkingZoneRequest extends FormRequest
+class ParkingPriceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,7 @@ class ParkingZoneRequest extends FormRequest
     public function rules()
     {
         return [
-            'parking_name' => 'required',
-            'latitude' => 'required',
-            'longitude' => 'required',
-            'parking_limit' => 'required',
-            'parking_address' => 'required',
-            'parking_status' => 'required',
+            'parking_name' => 'required'
         ];
     }
 }
