@@ -15,7 +15,7 @@
                             <li class="{{ (request()->is('admin/vehicle')) ? 'active' : '' }}"><a href="{{url('/admin/vehicle')}}"><i class='bx bx-car'></i><span>Vehicle</span></a></li>
                             <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li>
                             <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }} treeview">
-                                <a  href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Parking Zone</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Parking Zone</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
                                     <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }}"><a href="{{url('/admin/parkingzone')}}">Parking Zone List</a></li>
                                     <li class="{{ (request()->is('admin/parkingzone/create')) ? 'active' : '' }}"><a href="{{url('/admin/parkingzone/create')}}">Add Parking Zone</a></li>
@@ -26,7 +26,7 @@
                                 <ul class="treeview-menu">
                                     <li><a href="{{url('/admin/payment_method')}}"><i class='bx bxs-wallet'></i> Payment Method</a></li>
                                     <li><a href="{{url('/admin/locationzone')}}"><i class='bx bxs-location-plus'></i> Location Zone</a></li>
-                                    <li><a href="mail-view.html"><i class='bx bx-mail-send' ></i> App Settings</a></li>
+                                    <li><a href="{{url('/admin/appsettings')}}"><i class='bx bx-slider-alt'></i> App Settings</a></li>
                                 </ul>
                             </li>
                         </ul>
