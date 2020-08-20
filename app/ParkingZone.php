@@ -50,4 +50,9 @@ class ParkingZone extends Model
         return $this->belongsTo("App\LocationZone", "location_zone_name");
     }
 
+    public function ParkingSpace()
+    {
+        return $this->hasMany("App\ParkingSpace", "parking_name");
+    }
+
 }
