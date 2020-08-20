@@ -19,7 +19,7 @@ class Packages extends Model
     }
     
     public function scopeSearch($query, $search){
-        return $query->where('package_name', 'like', "%$search%");
+        return $query->where('package_name', 'like' ,'%' .$search. '%');
     }
 
     public static function boot()

@@ -20,11 +20,6 @@ class CreateParkingZonesTable extends Migration
             $table->foreign('location_zone_name')->references('location_zone_id')->on('location_zones')->onDelete('cascade');
             $table->string('latitude');
             $table->string('longitude');
-            $table->Integer('parking_type')->comment('1 = Package, 2 = Vehicle');
-            $table->unsignedBigInteger('package_name')->nullable();
-            $table->foreign('package_name')->references('package_id')->on('packages')->onDelete('cascade');
-            $table->unsignedBigInteger('vehicle_type')->nullable();
-            $table->foreign('vehicle_type')->references('vehicle_id')->on('vehicles')->onDelete('cascade');
             $table->Integer('parking_limit');
             $table->text('parking_address');
             $table->text('parking_note')->nullable();

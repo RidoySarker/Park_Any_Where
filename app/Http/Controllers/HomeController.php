@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Carbon\Carbon;
-
+use App\ParkingZone;
+use App\ParkingSpace;
+use App\PriceVechileInfo;
+use App\ParkingPrice;
+use App\paymentMethod;
 class HomeController extends Controller
 {
     /**
@@ -15,7 +19,34 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('frontend.home');
+        $data['parkingzone'] = ParkingZone::active()->get();
+        // dd($data);
+        $data['parkingzone_data'] = ParkingZone::active()->select('parking_name as title','latitude as lat','longitude as lng')->with('ParkingSpace')->get();
+        return view('frontend.home',$data);
+    }
+
+
+    public function pricelist($id)
+    {
+        $price_data = PriceVechileInfo::where('parking_name' ,$id)->with('vehicletype')->get();
+
+        return response()->json($price_data, 200);
+    }
+
+    public function periodprice($id)
+    {
+        $periodprice = PriceVechileInfo::where('price_vechile_info_id' ,$id)->first();
+        return response()->json($periodprice, 200);
+    }
+
+    public function booking($id)
+    {
+
+    }
+
+    public function bookingstore(Request $request) 
+    {
+        dd($request->all());
     }
     
     public function verifyemail($token = null)
@@ -66,5 +97,13 @@ class HomeController extends Controller
     
             return redirect()->route('login');
         
+    }
+
+
+    public function park($id) 
+    {
+        dd($id);
+
+        return ;
     }
 }

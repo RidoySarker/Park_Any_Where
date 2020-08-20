@@ -21,6 +21,7 @@
                                     <li class="{{ (request()->is('admin/parkingzone/create')) ? 'active' : '' }}"><a href="{{url('/admin/parkingzone/create')}}">Add Parking Zone</a></li>
                                 </ul>
                             </li>
+                            <li class="{{ (request()->is('admin/parkingprice')) ? 'active' : '' }}"><a href="{{url('/admin/parkingprice')}}"><i class='bx bx-car'></i><span>Parking Price</span></a></li>
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-slider-alt'></i> <span>Settings</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">

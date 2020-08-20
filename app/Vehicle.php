@@ -14,7 +14,7 @@ class Vehicle extends Model
     
     public function scopeSearch($query, $search){
         return $query->where('vehicle_type', 'LIKE', '%' . $search . '%')
-                    ->orwhere('vehicle_charge', 'like' ,"%$search%");
+                    ->orwhere('vehicle_charge', 'like' ,'%'.$search. '%');
     }
 
     public function scopeActive($query)

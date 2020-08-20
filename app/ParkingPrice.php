@@ -4,20 +4,24 @@ namespace App;
 use Auth;
 use Illuminate\Database\Eloquent\Model;
 
-class LocationZone extends Model
+class ParkingPrice extends Model
 {
-    protected $table ="location_zones";
-    protected $primaryKey='location_zone_id';
-    protected $fillable=['location_zone_name','location_zone_description','location_zone_status','created_by','updated_by'];
+    protected $table ="parking_prices";
+    protected $primaryKey='parking_price_id';
+    protected $fillable=['parking_name', 'price_status', 'created_by' ,'updated_by'];
 
     public function scopeSearch($query, $search){
-        return $query->where('location_zone_name', 'LIKE', '%' . $search . '%')
-                    ->orwhere('location_zone_description', 'like' ,'%'.$search. '%');
+        return $query->where('parking_name', 'LIKE', '%' . $search . '%');
     }
 
     public function scopeActive($query)
     {
         return $query->where('location_zone_status', 1);
+    }
+
+    public function parkingzone()
+    {
+        return $this->belongsTo("App\ParkingZone", "parking_name");
     }
 
     public static function boot()

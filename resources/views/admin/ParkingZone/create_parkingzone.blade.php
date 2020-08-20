@@ -76,117 +76,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="exampleInputEmail111">Parking Type</label>
-                                        <select class="form-control" name="parking_type" id="parking_type">
-                                            <option value="" hidden selected>Select Parking Type</option>
-                                            <option value="1">Package</option>
-                                            <option value="2">Vehicle</option>
-                                        </select>
-                                    </div>
-                                    <span class="help-block" id="parking_type_error" style="color:red;"></span>
-
-                                    <div class="form-group" id="package_name">
-                                        <label for="exampleInputEmail111">Package Name</label>
-                                        <select class="form-control" name="package_name">
-                                            <option value="" hidden selected>Select Package</option>
-                                            @foreach($package_data as $package_value)
-                                                <option
-                                                    value="{{$package_value->package_id}}">{{$package_value->package_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <span class="help-block" id="package_name_error" style="color:red;"></span>
-
-                                    <div class="form-group" id="vehicle_type">
-                                        <label for="exampleInputEmail111">Vehicle Type</label>
-                                        <select class="form-control" name="vehicle_type">
-                                            <option value="" hidden selected>Select Vehicle</option>
-                                            @foreach($vehicle_data as $vehicle_value)
-                                                <option
-                                                    value="{{$vehicle_value->vehicle_id}}">{{$vehicle_value->vehicle_type}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
-
-                                    <!-- Package Data -->
-                                {{--                                             <div class="form-row">
-                                                                                <div class="form-group col-md-6" id="package_charge">
-                                                                                    <label for="inputCity" class="col-form-label">Charge</label>
-                                                                                    <div class="input-group">
-                                                                                        <input id="data_package_charge"  name="package_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" readonly>
-
-                                                                                    </div>
-                                                                                    <span class="help-block" id="vehicle_time_error" style="color:red;"></span>
-                                                                                </div>
-
-                                                                                <div class="form-group col-md-3" id="package_time">
-                                                                                    <label for="inputCity" class="col-form-label">Time</label>
-                                                                                    <div class="input-group">
-                                                                                        <input id="data_package_time"  name="package_time" type="number" class="form-control" placeholder="Time" readonly>
-
-                                                                                    </div>
-                                                                                    <span class="help-block" id="vehicle_time_error" style="color:red;"></span>
-                                                                                </div>
-
-                                                                                <div class="form-group col-md-3" id="package_period">
-                                                                                    <label for="inputState" class="col-form-label">Period</label>
-                                                                                    <select id="data_package_period" name="package_period" class="form-control" >
-                                                                                        <option value="minute"> Minute(s) </option>
-                                                                                        <option value="hour"> Hour(s) </option>
-                                                                                        <option value="day"> Day(s) </option>
-                                                                                        <option value="week"> Week(s) </option>
-                                                                                        <option value="month"> Month(s) </option>
-                                                                                        <option value="year"> Year(s) </option>
-                                                                                    </select>
-                                                                                </div>
-
-                                                                            </div> --}}
-                                <!-- Package Data -->
-
-
-                                    <!-- Vehicle Type Data -->
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6" id="parking_charge">
-                                            <label for="inputCity" class="col-form-label">Charge</label>
-                                            <div class="input-group">
-                                                <input id="data_parking_charge" type="number" class="form-control"
-                                                       placeholder="Charge" readonly>
-
-                                            </div>
-                                            <span class="help-block" id="parking_charge_error"
-                                                  style="color:red;"></span>
-                                        </div>
-
-                                        <div class="form-group col-md-3" id="parking_time">
-                                            <label for="inputCity" class="col-form-label">Time</label>
-                                            <div class="input-group">
-                                                <input id="data_parking_time" type="number" class="form-control"
-                                                       placeholder="Time" readonly="">
-
-                                            </div>
-                                            <span class="help-block" id="parking_time_error" style="color:red;"></span>
-                                        </div>
-
-                                        <div class="form-group col-md-3" id="parking_period">
-                                            <label for="inputState" class="col-form-label">Period</label>
-                                            <select id="data_parking_period" class="form-control" disabled>
-                                                <option selected disabled hidden>Choose</option>
-                                                <option value="minute">Minute (s)</option>
-                                                <option value="hour">Hour (s)</option>
-                                                <option value="day">Day (s)</option>
-                                                <option value="week">Week (s)</option>
-                                                <option value="month">Month (s)</option>
-                                                <option value="year">Year (s)</option>
-                                            </select>
-                                            <span class="help-block" id="parking_period_error"
-                                                  style="color:red;"></span>
-                                        </div>
-
-                                    </div>
-                                    <!-- Vehicle Type Data -->
-
-                                    <div class="form-group">
                                         <label for="exampleInputEmail111">Parking Limit</label>
                                         <input type="number" min="1" class="form-control" name="parking_limit"
                                                id="parking_limit" placeholder="Parking Limit">
@@ -212,6 +101,7 @@
                                         <label for="exampleInputEmail111">Address</label>
                                         <textarea class="form-control" id="parking_address" name="parking_address"
                                                   placeholder="Type Parking Address"></textarea>
+                                        <span class="help-block" id="parking_address_error" style="color:red;"></span>
                                     </div>
 
                                     <div class="form-group">
@@ -259,6 +149,6 @@
 
         @section('script')
             <script type="text/javascript" src="{{asset('ajax/parkingzone.js')}}"></script>
-
+            
 @endsection
 

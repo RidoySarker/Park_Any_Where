@@ -32,11 +32,11 @@
                                     <tr>
                                         <th>Sl</th>
                                         <th>Parking Name</th>
-                                        <th>Parking Type</th>
-                                        <th>Vehicle</th>
-                                        <th>Charge</th>
-                                        <th>Time</th>
-                                        <th>Action</th>
+                                        <th>Latitude</th>
+                                        <th>Longitude</th>
+                                        <th>Limit</th>
+                                        <th>Status</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                     </thead>
 
@@ -46,38 +46,14 @@
                                         <tr>
                                             <td>{{$key+1}}</td>
                                             <td>{{$value->parking_name}}</td>
-                                            <td>
-                                                @if($value->parking_type==1)
-
-                                                    Package
-
-                                                @else
-                                                    Vehicle
-                                                @endif
-
-                                            </td>
-                                            <td>
-                                                @if($value->vehicleType)
-                                                    {{$value->vehicleType->vehicle_type}}
-                                                @elseif($value->PackageVehicle->vehicleType)
-                                                    {{$value->PackageVehicle->vehicleType->vehicle_type}}
-                                                @endif
-
-                                            </td>
-                                            <td>
-                                                @if($value->vehicleType)
-                                                    {{$value->vehicleType->vehicle_charge}}
-                                                @elseif($value->PackageVehicle)
-                                                    {{$value->PackageVehicle->package_charge}}
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if($value->vehicleType)
-                                                    {{$value->vehicleType->vehicle_time}}
-                                                    {{$value->vehicleType->vehicle_period}}
-                                                @elseif($value->PackageVehicle)
-                                                    {{$value->PackageVehicle->package_time}}
-                                                    {{$value->PackageVehicle->package_period}}
+                                            <td>{{$value->latitude}}</td>
+                                            <td>{{$value->longitude}}</td>
+                                            <td>{{$value->parking_limit}}</td>
+                                            <td >
+                                                @if($value->parking_status==1)
+                                                    <span class="text-success">Active</span>
+                                                    @else
+                                                    <span class="text-danger">Inactive</span>
                                                 @endif
                                             </td>
                                             <td class="text-center">

@@ -12,6 +12,12 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/pricelist/{id}', 'HomeController@pricelist');
+Route::get('/periodprice/{id}', 'HomeController@periodprice');
+Route::get('/vehicleperiod/{id}', 'BookingController@vehicleperiod');
+Route::get('/vehicleprice/{id}/{booking_id}', 'BookingController@vehicleprice');
+
+Route::resource('/booking', 'BookingController');
 
 Auth::routes();
 
@@ -30,6 +36,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('/package', 'PackagesController');
 
         Route::resource('/parkingzone', 'ParkingZoneController');
+
+        Route::resource('/parkingprice', 'ParkingPriceController');
 
         Route::resource('/payment_method', 'PaymentMethodController');
 
