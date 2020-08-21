@@ -110,7 +110,7 @@ class LocationZoneController extends Controller
      */
     public function destroy($id)
     {
-        $locationzone = LocationZone::findOrFail($id)->delete();
-        return response()->json($locationzone, 200);
+        LocationZone::findOrFail($id)->delete();
+        return response()->json(null, 200);
     }
 }

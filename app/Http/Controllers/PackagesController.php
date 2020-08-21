@@ -111,7 +111,7 @@ class PackagesController extends Controller
      */
     public function destroy($id)
     {
-        $package = Packages::findOrFail($id)->delete();
-        return response()->json($package, 200);
+        Packages::findOrFail($id)->delete();
+        return response()->json(null, 200);
     }
 }

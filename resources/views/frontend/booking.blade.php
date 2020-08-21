@@ -21,7 +21,7 @@
                                     <div class="col-sm-12 col-xs-12">
                                         <form id="booking" action="{{url('/booking')}}" method="POST">
                                             @csrf
-                                            <input name="booking_id" type="hidden" value="{{$vechicle_data->parking_name}}">
+                                            
                                         <div class="row">
                                             
                                             <div class="col-xs-6 col-md-4">

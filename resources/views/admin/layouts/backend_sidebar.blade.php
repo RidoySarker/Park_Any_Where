@@ -13,7 +13,7 @@
                         <ul class="sidebar-menu" data-widget="tree">
                             <li class="{{ (request()->is('admin')) ? 'active' : '' }}"><a href="{{url('admin')}}"><i class='bx bx-home-heart'></i><span>Dashboard</span></a></li>
                             <li class="{{ (request()->is('admin/vehicle')) ? 'active' : '' }}"><a href="{{url('/admin/vehicle')}}"><i class='bx bx-car'></i><span>Vehicle</span></a></li>
-                            <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li>
+{{--                             <li class="{{ (request()->is('admin/package')) ? 'active' : '' }}"><a href="{{url('/admin/package')}}"><i class='bx bx-car'></i><span>Packages</span></a></li> --}}
                             <li class="{{ (request()->is('admin/parkingzone')) ? 'active' : '' }} treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Parking Zone</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
@@ -22,11 +22,12 @@
                                 </ul>
                             </li>
                             <li class="{{ (request()->is('admin/parkingprice')) ? 'active' : '' }}"><a href="{{url('/admin/parkingprice')}}"><i class='bx bx-car'></i><span>Parking Price</span></a></li>
+                            <li class="{{ (request()->is('admin/locationzone')) ? 'active' : '' }}"><a href="{{url('/admin/locationzone')}}"><i class='bx bxs-location-plus'></i> Zone Location</a></li>
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-slider-alt'></i> <span>Settings</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{url('/admin/payment_method')}}"><i class='bx bxs-wallet'></i> Payment Method</a></li>
-                                    <li><a href="{{url('/admin/locationzone')}}"><i class='bx bxs-location-plus'></i> Location Zone</a></li>
+
                                     <li><a href="{{url('/admin/appsettings')}}"><i class='bx bx-slider-alt'></i> App Settings</a></li>
                                 </ul>
                             </li>

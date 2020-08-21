@@ -57,7 +57,7 @@ $(document).ready(function () {
         var data = $(this).attr("data");
 
         $.ajax({
-            url: "/admin/vehicle" + "/" + data + "/edit",
+            url: "/admin/parkingprice" + "/" + data + "/edit",
             type: "get",
             dataType: "json",
             success: function (response) {
@@ -71,7 +71,7 @@ $(document).ready(function () {
         });
     });
 
-    $(document).on("submit", "#vehicle_update", function (e) {
+    $(document).on("submit", "#parking_price_update", function (e) {
         e.preventDefault();
         var id = $("#edit_vehicle_id").val();
         let data = $(this).serializeArray();

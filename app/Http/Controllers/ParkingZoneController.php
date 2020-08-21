@@ -171,7 +171,7 @@ class ParkingZoneController extends Controller
      */
     public function destroy($id)
     {
-        $parkingzone = ParkingZone::findOrFail($id)->delete();
-        return response()->json($parkingzone, 200);
+        ParkingZone::findOrFail($id)->delete();
+        return response()->json(null, 200);
     }
 }

@@ -141,7 +141,7 @@
 </div>
 
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Edit Vehicle</h5>
@@ -150,66 +150,89 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form id="vehicle_update" method="PUT">
+                <form id="parking_price_update" method="post">
                     @csrf
-                    <input type="hidden" id="edit_vehicle_id" name="vehicle_id">
                     <div class="form-group">
-                        <label for="exampleInputEmail111">Vehicle Type</label>
-                        <input type="text" class="form-control" id="edit_vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
-                        <span class="help-block" id="vehicle_type_edit" style="color:red;"></span>
+                        <label for="exampleInputEmail111">Parking Zone</label>
+                        <select class="form-control" id="edit_parking_name" name="parking_name">
+                            <option selected disabled hidden>Select Parking Zone</option>
+                            @foreach($parking_zone as $parking_data)
+                            <option value="{{$parking_data->parking_zone_id}}">{{$parking_data->parking_name}}</option>
+                            @endforeach
+                        </select>
+                        <span class="help-block" id="parking_name_error" style="color:red;"></span>
                     </div>
-
+                    
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity" class="col-form-label">Time</label>
-                            <div class="input-group">
-                                <input id="data_vehicle_time" name="vehicle_time[]" type="number" class="form-control" placeholder="Time"  >
-
-                            </div>
-                            <span class="help-block" id="vehicle_time_edit" style="color:red;"></span>
-                        </div>
-
-                        <div class="form-group col-md-6">
-                            <label for="inputState" class="col-form-label">Period</label>
-                            <select id="edit_vehicle_period" name="vehicle_period" class="form-control" >
-                                <option selected disabled hidden>Choose</option>
-                                <option value="minute">Minute (s)</option>
-                                <option value="hour">Hour (s)</option>
-                                <option value="day">Day (s)</option>
-                                <option value="week">Week (s)</option>
-                                <option value="month">Month (s)</option>
-                                <option value="year">Year (s)</option>
-                            </select>
-                            <span class="help-block" id="vehicle_period_edit" style="color:red;"></span>
-                        </div>
-
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity" class="col-form-label">Charge</label>
-                            <div class="input-group">
-                                <input id="edit_vehicle_charge" name="vehicle_charge" type="number" class="form-control" placeholder="Charge" aria-label="Amount (to the nearest dollar)" >
-                                <div class="input-group-append">
-
+                        <div class="form-group col-md-12">
+                        
+                        <div class="form-group" id="price">
+                            <div class="row VehicleInfo">
+                                <div class="col-sm-3">
+                                    <label for="price">Vehicle Info </label>
+                                    <div class="form-group">
+                                        <div class="form-line  ">
+                                        <select class="form-control" id="edit_vehicle_type" name="vehicle_type[]">
+                                            <option selected disabled hidden>Select Vehicle</option>
+                                            @foreach($vehicle as $vehicle_data)
+                                            <option value="{{$vehicle_data->vehicle_id}}">{{$vehicle_data->vehicle_type}}</option>
+                                            @endforeach
+                                        </select>
+                                        </div>
+                                    </div>
                                 </div>
-                                <span class="input-group-text">৳</span>
-                            </div>
-                            <span class="help-block" id="vehicle_charge_edit" style="color:red;"></span>
-                        </div>
 
+                                <div class="col-sm-2">
+                                    <label for="price">Vehicle Time </label>
+                                    <div class="form-line  ">
+                                        <input name="vehicle_time[]" type="number" id="edit_vehicle_time" class="form-control" placeholder="Time" min="1" value="" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <label for="price">Vehicle Period </label>
+                                    <div class="form-line  ">
+                                    <select id="edit_vehicle_period" name="vehicle_period[]" class="form-control" >
+                                        <option selected disabled hidden>Select Period</option>
+                                        <option value="minute">Minute (s)</option>
+                                        <option value="hour">Hour (s)</option>
+                                        <option value="day">Day (s)</option>
+                                        <option value="week">Week (s)</option>
+                                        <option value="month">Month (s)</option>
+                                        <option value="year">Year (s)</option>
+                                    </select>
+                                    </div>
+                                                                    </div> 
+                                <div class="col-sm-2">
+                                    <label for="price">Vehicle Charge </label>
+                                    <div class="form-line  ">
+                                        <input name="vehicle_charge[]" type="text" id="edit_vehicle_charge" class="form-control" placeholder="Price" value="" >
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="margin-top: 29px;">
+                                    <button type="button" class="btn btn-success waves-effect btn-xs addItem"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                    <button type="button" class="btn btn-danger waves-effect btn-xs removeItem"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                         
+                    </div>
+
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputState" class="col-form-label">Status</label>
-                            <select id="edit_vehicle_status" name="vehicle_status" class="form-control">
+                            <select id="edit_price_status" name="price_status" class="form-control">
                                 <option selected disabled hidden>Select</option>
                                 <option value="1">Active</option>
                                 <option value="0">Inactive</option>
                             </select>
-                            <span class="help-block" id="vehicle_status_edit" style="color:red;"></span>
+                             <span class="help-block" id="price_status_error" style="color:red;"></span>
                         </div>
+                        
 
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 update">Update</button>
+                        <button type="submit" class="btn btn-rounded btn-success mb-2 mr-2 submit">Update</button>
                         <button type="button" class="btn btn-rounded btn-secondary mb-2 mr-2" data-dismiss="modal">Close</button>
                     </div>
                 </form>

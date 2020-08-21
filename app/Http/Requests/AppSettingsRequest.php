@@ -26,18 +26,22 @@ class AppSettingsRequest extends FormRequest
         return [
 
             'application_name' => 'required',
-            'application_email' => 'required',
-            'application_phone' => 'required',
+            'application_email' => 'required|email',
+            'application_phone' => 'required|min:11',
             'application_address' => 'required',
+            'about' => 'required',
+            'vat' => 'required',
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
             'application_name.required' => 'Application Name Required',
             'application_email.required' => 'Application Email Required',
             'application_phone.required' => 'Application Phone Required',
             'application_address.required' => 'Application Address Required',
+            'about.required' => 'Application About Required',
+            'vat.required' => 'Application Vat Required',
         ];
     }
 }

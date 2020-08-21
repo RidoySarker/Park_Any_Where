@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\AppSettings;
 use Illuminate\Http\Request;
 use App\Http\Requests\AppSettingsRequest;
-
+use Redirect;
+use Arr;
+use File;
 class AppSettingsController extends Controller
 {
     /**
@@ -15,7 +17,8 @@ class AppSettingsController extends Controller
      */
     public function index()
     {
-        return view('admin.settings.AppSettings.AppSettings');
+        $app_data =  AppSettings::first();
+        return view('admin.settings.AppSettings.AppSettings',['app_data' => $app_data]);
     }
 
     /**
@@ -25,10 +28,6 @@ class AppSettingsController extends Controller
      */
     public function create(Request $request)
     {
-        $page = $request->input('page', 1);
-        $data['sl'] = (($page - 1) * 10) + 1;
-        $data['appsettings_data'] = AppSettings::paginate(10);
-        return view('admin.settings.AppSettings.list', $data);
     }
 
     /**
@@ -39,13 +38,7 @@ class AppSettingsController extends Controller
      */
     public function store(AppSettingsRequest $request)
     {
-        $appSettings_model = new AppSettings;
-        $appSettings_model->fill($request->all())->save();
-        $response = [
-            "status" => 200,
-            "data" => $appSettings_model
-        ];
-        return response()->json($response, 200);
+
     }
 
     /**
@@ -67,8 +60,6 @@ class AppSettingsController extends Controller
      */
     public function edit($id)
     {
-        $appSettings_edit = AppSettings::findOrFail($id);
-        return response()->json($appSettings_edit, 201);
     }
 
     /**
@@ -78,8 +69,23 @@ class AppSettingsController extends Controller
      * @param  \App\AppSettings  $appSettings
      * @return \Illuminate\Http\Response
      */
-    public function update(AppSettings $request,  $id)
+    public function update(AppSettingsRequest $request,  $id)
     {
+        $appSettings_model = AppSettings::findOrFail($id);
+        $requested_data = $request->all();
+        if($request->hasFile('application_logo')) {
+            if (File::exists($appSettings_model->application_logo)) {
+                File::delete($appSettings_model->application_logo);
+             }
+            $image_type = $request->file('application_logo')->getClientOriginalExtension();
+            $path = "images/app_setting";
+            $name = 'app_'.time().".".$image_type;
+            $image = $request->file('application_logo')->move($path,$name);
+            $requested_data = Arr::set($requested_data, 'application_logo', $image);
+
+        }
+        $appSettings_model->fill($requested_data)->save();
+        return redirect()->back()->with('success', 'App Setting Update Successfully');
     }
 
     /**
@@ -90,7 +96,5 @@ class AppSettingsController extends Controller
      */
     public function destroy($id)
     {
-        $appSettings = AppSettings::findOrFail($id)->delete();
-        return response()->json($appSettings, 200);
     }
 }

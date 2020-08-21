@@ -19,7 +19,9 @@ class AppSettings extends Migration
             $table->string('application_name');
             $table->string('application_email');
             $table->string('application_phone');
-            $table->string('application_address');
+            $table->text('application_address');
+            $table->text('about');
+            $table->integer('vat');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->nullable();
