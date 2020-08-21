@@ -1,84 +1,11 @@
 $(document).ready(function () {
-    $("#current_password").keyup(function () {
-        var current_password = $(this).val();
-        $.ajax({
-            url: "profile/pass",
-            type: "get",
-            data: {
-                current_password: current_password,
-            },
-            success: function (data) {
-                if (data == "matched") {
-                    $("#icon").html(
-                        "<i style='color:green' class ='fa fa-check-circle'></i>"
-                    );
-                    $("#submit").attr("disabled", "disabled");
-                    $("#new_password").removeAttr("disabled", "disabled");
-                    $("#retype_password").removeAttr("disabled", "disabled");
-
-                    $("#retype_password").keyup(function () {
-                        var retype_password = $(this).val();
-                        var new_password = $("#new_password").val();
-
-                        if (
-                            retype_password != "" &&
-                            retype_password == new_password
-                        ) {
-                            $("#re_icon").html(
-                                "<i style='color:green' class ='fa fa-check-circle'></i>"
-                            );
-                            $("#submit").removeAttr("disabled", "disabled");
-                        } else {
-                            $("#re_icon").html(
-                                "<i style='color:red' class ='fa fa-check-circle-o'></i>"
-                            );
-                            $("#submit").attr("disabled", "disabled");
-                        }
-                    });
-                } else {
-                    $("#icon").html(
-                        "<i style='color:red' class ='fa fa-check-circle'></i>"
-                    );
-                    $("#submit").attr("disabled", "disabled");
-                    $("#new_password").attr("disabled", "disabled");
-                    $("#retype_password").attr("disabled", "disabled");
-                }
-                if (data == "matched") {
-                    $("#icon").html(
-                        "<i style='color:green' class ='fa fa-check-circle'></i>"
-                    );
-                    $("#submit").attr("disabled", "disabled");
-                    $("#new_password").removeAttr("disabled", "disabled");
-                    $("#retype_password").removeAttr("disabled", "disabled");
-
-                    $("#retype_password").keyup(function () {
-                        var retype_password = $(this).val();
-                        var new_password = $("#new_password").val();
-
-                        if (
-                            retype_password != "" &&
-                            retype_password == new_password
-                        ) {
-                            $("#re_icon").html(
-                                "<i style='color:green' class ='fa fa-check-circle'></i>"
-                            );
-                            $("#submit").removeAttr("disabled", "disabled");
-                        } else {
-                            $("#re_icon").html(
-                                "<i style='color:red' class ='fa fa-check-circle-o'></i>"
-                            );
-                            $("#submit").attr("disabled", "disabled");
-                        }
-                    });
-                }
-            },
-        });
-    });
     $("#addProfile").submit(function (e) {
         e.preventDefault();
         var name = $("#name").val();
-        var contact = $("#contact").val();
-        var gender = $("input[name='gender']:checked").val();
+        var user_first_name = $("#user_first_name").val();
+        var user_last_name = $("#user_last_name").val();
+        var number = $("#number").val();
+        var user_gender = $("input[name='user_gender']:checked").val();
 
         if (
             $("#retype_password").val() != "" &&
@@ -91,8 +18,10 @@ $(document).ready(function () {
                 type: "post",
                 data: {
                     name: name,
-                    contact: contact,
-                    gender: gender,
+                    user_first_name: user_first_name,
+                    user_last_name: user_last_name,
+                    number: number,
+                    user_gender: user_gender,
                     password: new_password,
                 },
                 dataType: "json",
@@ -108,8 +37,10 @@ $(document).ready(function () {
                 type: "post",
                 data: {
                     name: name,
-                    contact: contact,
-                    gender: gender,
+                    user_first_name: user_first_name,
+                    user_last_name: user_last_name,
+                    number: number,
+                    user_gender: user_gender,
                 },
                 dataType: "json",
                 success: function (data) {

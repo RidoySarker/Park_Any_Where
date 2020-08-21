@@ -30,8 +30,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/vehicle', 'VehicleController');
 
         Route::resource('/profile', 'ProfileController');
-        Route::post('profile/store', 'ProfileController@store');
-        Route::get('profile/pass', 'ProfileController@show');
+
 
         Route::resource('/package', 'PackagesController');
 

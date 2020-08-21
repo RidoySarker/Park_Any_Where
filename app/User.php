@@ -17,14 +17,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'email_verified', 'email_verified_at', 'email_verification_token',
+        'name', 'email', 'password', 'user_first_name', 'user_last_name', 'user_gender', 'number', 'user_img', 'email_verified', 'email_verified_at', 'email_verification_token',
     ];
 
     public function loginValidation()
     {
         return [
-            "email" => "required|email" ,
-            "password" => "required" ,
+            "email" => "required|email",
+            "password" => "required",
         ];
     }
 
