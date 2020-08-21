@@ -12,7 +12,7 @@ class ProfileController extends Controller
 
     public function index()
     {
-        return view('admin.Profile.profile');
+        return view('admin.Profile.Profile');
     }
     public function create()
     {
@@ -20,36 +20,54 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        //dd($request->all());
         $request->validate(
             [
                 'name'     => 'required',
-                'contact'  => 'required',
-                'gender'   => 'required'
+                'user_first_name'     => 'required',
+                'user_last_name'     => 'required',
+                'user_gender'     => 'required',
+                'number'     => 'required',
+                'user_img'     => 'required',
+                'email'    => 'required',
             ],
             [
-                'name.required'     => 'Name Type Required',
-                'contact.required'  => 'Contact Required',
-                'gender.required'   => 'Gender Period Required',
+                'name.required' => ' Name Required',
+                'user_first_name.required' => 'First Name Required',
+                'user_last_name.required' => 'Last Name Required',
+                'user_gender.required' => 'Gender Required',
+                'number.required' => 'Number Required',
+                'user_img.required' => 'Image Required',
+                'email.required' => 'Email  Required',
             ]
         );
         $input = [
             'name'      => $request->name,
-            'contact'   => $request->contact,
-            'gender'    => $request->gender
+            'user_first_name'      => $request->user_first_name,
+            'user_last_name'      => $request->user_last_name,
+            'user_gender'      => $request->user_gender,
+            'number'      => $request->number,
+            'user_img'   => $request->user_img,
         ];
 
         if ($request->password) {
             $update = [
                 'name'      => $request->name,
-                'contact'   => $request->contact,
-                'gender'    => $request->gender,
+                'user_first_name'      => $request->user_first_name,
+                'user_last_name'      => $request->user_last_name,
+                'user_gender'      => $request->user_gender,
+                'number'      => $request->number,
+                'user_img'   => $request->user_img,
                 'password'  => Hash::make($request->password),
             ];
         } else {
             $update = [
                 'name'      => $request->name,
-                'contact'   => $request->contact,
-                'gender'    => $request->gender
+                'user_first_name'      => $request->user_first_name,
+                'user_last_name'      => $request->user_last_name,
+                'user_gender'      => $request->user_gender,
+                'number'      => $request->number,
+                'user_img'   => $request->user_img,
             ];
         }
 
