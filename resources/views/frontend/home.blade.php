@@ -327,10 +327,6 @@ $(".showMapByGeoLocation").click(function() {
 
                 modal.find('.modal-body').html(body);
             },
-            error: function(xhr)
-            {
-                alert('failed...');
-            }
         }); 
     });
 });

@@ -16,12 +16,17 @@ class ParkingPrice extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('location_zone_status', 1);
+        return $query->where('price_status', 1);
     }
 
     public function parkingzone()
     {
         return $this->belongsTo("App\ParkingZone", "parking_name");
+    }
+
+    public function vehicleprice()
+    {
+        return $this->hasMany("App\PriceVechileInfo", "parking_price_id");
     }
 
     public static function boot()

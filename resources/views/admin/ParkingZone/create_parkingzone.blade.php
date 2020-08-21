@@ -109,7 +109,7 @@
                                         <textarea class="form-control" id="parking_note" name="parking_note"
                                                   placeholder="Type Package Note"></textarea>
                                     </div>
-                                    <div class="form-group">
+{{--                                     <div class="form-group">
                                         <label for="inputState" class="col-form-label">Status</label>
                                         <select id="parking_status" name="parking_status" class="form-control">
                                             <option selected disabled hidden>Select</option>
@@ -117,7 +117,7 @@
                                             <option value="0">Inactive</option>
                                         </select>
                                         <span class="help-block" id="parking_status_error" style="color:red;"></span>
-                                    </div>
+                                    </div> --}}
                                     <button type="submit" class="submit btn btn-primary mr-2 mt-15">Submit</button>
                                     <button type="reset" class="btn btn-danger mt-15">Reset</button>
                                 </form>

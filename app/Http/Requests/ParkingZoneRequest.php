@@ -29,7 +29,7 @@ class ParkingZoneRequest extends FormRequest
             'longitude' => 'required',
             'parking_limit' => 'required',
             'parking_address' => 'required',
-            'parking_status' => 'required',
+            // 'parking_status' => 'required',
         ];
     }
 }

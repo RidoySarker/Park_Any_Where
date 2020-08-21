@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(document).on("submit", "#application_settings", function (e) {
+    $(document).on("submit", "#app_setting", function (e) {
         e.preventDefault();
         let data = $(this).serializeArray();
         $.each(data, function (i, message) {
@@ -13,9 +13,6 @@ $(document).ready(function () {
             success: function (response) {
                 console.log(response);
                 toastr.success("Settings Changed successfully", "Success!");
-                $("#application_settings").trigger("reset");
-                $("#settingsModal").modal("hide");
-                loaddata();
             },
             error: function (error) {
                 $.each(error.responseJSON.errors, function (i, message) {
@@ -71,55 +68,4 @@ $(document).ready(function () {
         });
     });
 
-    $("#datalist").on("click", ".delete", function () {
-        var data = $(this).attr("data");
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.value) {
-                $.ajax({
-                    url: "/admin/appsettings/" + data,
-                    data: data,
-                    type: "delete",
-                    dataType: "json",
-                    success: function (response) {
-                        toastr.success(
-                            "Settings deleted successfully",
-                            "Success!"
-                        );
-                        loaddata();
-                    },
-                });
-            }
-        });
-    });
-
-    $("#datalist").on("click", ".page-link", function (e) {
-        e.preventDefault();
-        var pagelink = $(this).attr("href");
-        console.log(pagelink);
-        loaddata(pagelink);
-    });
-
-    $("#search").keyup(function () {
-        loaddata();
-    });
-
-    loaddata();
 });
-function loaddata(pagelink = "/admin/appsettings/create") {
-    $.ajax({
-        url: pagelink,
-        type: "get",
-        dataType: "html",
-        success: function (data) {
-            $("#datalist").html(data);
-        },
-    });
-}

@@ -23,7 +23,7 @@ class CreateParkingZonesTable extends Migration
             $table->Integer('parking_limit');
             $table->text('parking_address');
             $table->text('parking_note')->nullable();
-            $table->boolean('parking_status')->default(1);
+            $table->boolean('parking_status')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->nullable();
