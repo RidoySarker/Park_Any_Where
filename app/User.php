@@ -16,8 +16,9 @@ class User extends Authenticatable
      *
      * @var array
      */
+    protected $primaryKey='id';
     protected $fillable = [
-        'name', 'email', 'password', 'user_first_name', 'user_last_name', 'user_gender', 'number', 'user_img', 'email_verified', 'email_verified_at', 'email_verification_token',
+        'name', 'email', 'password', 'gender', 'number', 'profile_image', 'email_verified', 'email_verified_at', 'email_verification_token','created_by','updated_by'
     ];
 
     public function loginValidation()
@@ -27,6 +28,7 @@ class User extends Authenticatable
             "password" => "required",
         ];
     }
+
 
     /**
      * The attributes that should be hidden for arrays.

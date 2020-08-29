@@ -12,7 +12,7 @@ class AppSettingSeeder extends Seeder
     public function run()
     {
         DB::table('app_settings')->insert([
-        	'application_logo' => '',
+        	'application_logo' => 'images/app_setting/app_1598468332.png',
         	'application_name' => 'Park Any Where',
         	'application_email' => 'csridoy42@gmail.com',
         	'application_phone' => '01883448329',

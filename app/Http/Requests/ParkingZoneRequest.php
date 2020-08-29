@@ -25,6 +25,7 @@ class ParkingZoneRequest extends FormRequest
     {
         return [
             'parking_name' => 'required',
+            'location_zone_name' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
             'parking_limit' => 'required',

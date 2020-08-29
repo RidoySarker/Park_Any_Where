@@ -1,9 +1,9 @@
         <div class="ecaps-sidemenu-area">
             <!-- Desktop Logo -->
             <div class="ecaps-logo">
-                <a href="{{url('admin')}}"><img style="max-height: 42px;" class="desktop-logo" src="{{asset('backend_assets/img/core-img/logo2.png')}}" alt="Desktop Logo"> <img class="small-logo" src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
+                <a href="{{url('admin')}}"><img style="max-height: 42px;" class="desktop-logo" src="{{asset($appsettings->application_logo)}}" alt="Desktop Logo"> <img class="small-logo" src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
             </div>
-
+{{-- asset('backend_assets/img/core-img/logo2.png') --}}
             <!-- Side Nav -->
             <div class="ecaps-sidenav" id="ecapsSideNav">
                 <!-- Side Menu Area -->
@@ -23,6 +23,17 @@
                             </li>
                             <li class="{{ (request()->is('admin/parkingprice')) ? 'active' : '' }}"><a href="{{url('/admin/parkingprice')}}"><i class='bx bx-car'></i><span>Parking Price</span></a></li>
                             <li class="{{ (request()->is('admin/locationzone')) ? 'active' : '' }}"><a href="{{url('/admin/locationzone')}}"><i class='bx bxs-location-plus'></i> Zone Location</a></li>
+
+                            <li class="{{ (request()->is('admin/booking_list')) ? 'active' : '' }} treeview">
+                                <a href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>Booking</span> <i class="fa fa-angle-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li class="{{ (request()->is('admin/today-booking')) ? 'active' : '' }}"><a href="{{url('/admin/today-booking')}}">Today Booking</a></li>
+                                    <li class="{{ (request()->is('admin/active-booking')) ? 'active' : '' }}"><a href="{{url('/admin/active-booking')}}">Active Booking</a></li>
+                                    <li class="{{ (request()->is('admin/booking_list')) ? 'active' : '' }}"><a href="{{url('/admin/booking_list')}}">Booking List</a></li>
+                                </ul>
+                            </li>
+
+
                             <li class="treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-slider-alt'></i> <span>Settings</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
