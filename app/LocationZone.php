@@ -11,8 +11,7 @@ class LocationZone extends Model
     protected $fillable=['location_zone_name','location_zone_description','location_zone_status','created_by','updated_by'];
 
     public function scopeSearch($query, $search){
-        return $query->where('location_zone_name', 'LIKE', '%' . $search . '%')
-                    ->orwhere('location_zone_description', 'like' ,'%'.$search. '%');
+        return $query->where('location_zone_name', 'LIKE', '%' . $search . '%');
     }
 
     public function scopeActive($query)

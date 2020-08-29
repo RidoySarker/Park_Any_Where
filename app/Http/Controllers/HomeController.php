@@ -10,6 +10,8 @@ use App\ParkingSpace;
 use App\PriceVechileInfo;
 use App\ParkingPrice;
 use App\paymentMethod;
+use App\LocationZone;
+
 class HomeController extends Controller
 {
     /**
@@ -17,38 +19,37 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['parkingzone'] = ParkingZone::active()->get();
-        // dd($data);
-        $data['parkingzone_data'] = ParkingZone::active()->select('parking_name as title','latitude as lat','longitude as lng')->with('ParkingSpace')->get();
-        return view('frontend.home',$data);
+
+        // dd($request->search);
+        $parkingzone = ParkingZone::active()->where(function ($parkingzone) use ($request) {
+            if ($request->search) {
+                $parkingzone->where('location_zone_name', $request->search);
+            }
+
+        })->paginate(8);
+        $zone_location = LocationZone::active()->select('location_zone_id', 'location_zone_name')->get();
+        $parkingzone_data = ParkingZone::active()->select('parking_name as title', 'latitude as lat', 'longitude as lng')->get();
+        //return response()->json($parkingzone_data);
+        return view('frontend.home', ['parkingzone' => $parkingzone, 'parkingzone_data' => $parkingzone_data, 'zone_location' => $zone_location]);
     }
 
 
     public function pricelist($id)
     {
-        $price_data = PriceVechileInfo::where('parking_name' ,$id)->with('vehicletype')->get();
+        $price_data = PriceVechileInfo::where('parking_name', $id)->with('vehicletype')->get();
 
         return response()->json($price_data, 200);
     }
 
     public function periodprice($id)
     {
-        $periodprice = PriceVechileInfo::where('price_vechile_info_id' ,$id)->first();
+        $periodprice = PriceVechileInfo::where('price_vechile_info_id', $id)->first();
         return response()->json($periodprice, 200);
     }
 
-    public function booking($id)
-    {
 
-    }
-
-    public function bookingstore(Request $request) 
-    {
-        dd($request->all());
-    }
-    
     public function verifyemail($token = null)
     {
         // $user = User::where('email_verification_token', $token)->first();
@@ -63,7 +64,7 @@ class HomeController extends Controller
         //     } else {
         //         return view('errors.404');
         //     }
-            
+
         // } else {
         //     return view('errors.404');
         // }
@@ -72,38 +73,38 @@ class HomeController extends Controller
 
             session()->flash('message', 'Invalid Token.');
             session()->flash('type', 'danger');
-    
+
             return redirect()->route('login');
-            }
-    
-            $user = User::where('email_verification_token', $token)->first();
-    
-            if ($user == null) {
-    
+        }
+
+        $user = User::where('email_verification_token', $token)->first();
+
+        if ($user == null) {
+
             session()->flash('message', 'Invalid Token.');
             session()->flash('type', 'danger');
-    
+
             return redirect()->route('login');
-            }
-    
-            $user->update([
-                'email_verified' => 1,
-                'email_verified_at' => Carbon::now(),
-                'email_verification_token' => '',
-            ]);
-    
-            session()->flash('type', 'success');
-            session()->flash('message', 'Your Account is Activated, You Can Login Now!!');
-    
-            return redirect()->route('login');
-        
+        }
+
+        $user->update([
+            'email_verified' => 1,
+            'email_verified_at' => Carbon::now(),
+            'email_verification_token' => '',
+        ]);
+
+        session()->flash('type', 'success');
+        session()->flash('message', 'Your Account is Activated, You Can Login Now!!');
+
+        return redirect()->route('login');
+
     }
 
 
-    public function park($id) 
+    public function park($id)
     {
         dd($id);
 
-        return ;
+        return;
     }
 }

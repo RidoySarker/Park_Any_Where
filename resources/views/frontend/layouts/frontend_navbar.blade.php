@@ -40,13 +40,29 @@
                 @endguest
 
                 @auth
-                <li style="margin:7px;" class="nav-item">
+{{--                 <li style="margin:7px;" class="nav-item">
 
                 <form action="{{route('logout')}}" method="post" >
                     @csrf
                 <button type="submit" class=" btn btn-info">Sign-out</button>
                 </form>
-                </li>
+                </li> --}}
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img src="{{ Auth::user()->profile_image ==''? '/images/app_setting/blank_avatar.png' : '/'.Auth::user()->profile_image }}" style=" max-width: 36px; border-radius: 50%; " > </button>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <div class="user-profile-area">
+                                    <a href="{{url('/myprofile')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> My Profile</a>
+                                    <a href="{{url('/booking-history')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> Booking History</a>
+                                    <a href="{{url('/rentuser-parkingzone')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> Add Parking Zone</a>
+{{--                                     <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>
+                                    <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a> --}}
+                                    <form action="{{route('logout')}}" method="post" >
+                                        @csrf
+                                    <button class="dropdown-item" type="submit"><i class="bx bx-power-off font-15" aria-hidden="true"></i>Sign-out</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </li>
                 @endauth
             </ul>
         </div>

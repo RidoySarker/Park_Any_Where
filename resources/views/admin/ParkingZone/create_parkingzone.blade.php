@@ -68,7 +68,7 @@
 
                                                 </div>
                                                 <button type="button" onclick="placeMarker()" class="btn btn-primary">
-                                                    +
+                                                    <i class="fa fa-hand-pointer-o"></i>
                                                 </button>
                                             </div>
                                             <span class="help-block" id="Longitude_error" style="color:red;"></span>
@@ -148,6 +148,7 @@
         @endsection
 
         @section('script')
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDXkzEIj9sB3J_ohqT0woVWqAJQiyRmAE&maptype=roadmap&libraries=places&callback=initMap"></script>
             <script type="text/javascript" src="{{asset('ajax/parkingzone.js')}}"></script>
             
 @endsection

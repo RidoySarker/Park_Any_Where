@@ -24,8 +24,8 @@ class ParkingZoneController extends Controller
      */
     public function index()
     {
-        $data['parkingzone_data'] = ParkingZone::orderBy('parking_zone_id', 'desc')->get();
-        return view('admin.ParkingZone.parkingzone_list', $data);
+        $parkingzone_data = ParkingZone::orderBy('parking_zone_id', 'desc')->get();
+        return view('admin.ParkingZone.parkingzone_list', ['parkingzone_data' => $parkingzone_data]);
     }
 
     /**
@@ -35,8 +35,8 @@ class ParkingZoneController extends Controller
      */
     public function create()
     {
-        $data['location_zone'] = LocationZone::Active()->get();
-        return view('admin.ParkingZone.create_parkingzone', $data);
+        $location_zone = LocationZone::Active()->get();
+        return view('admin.ParkingZone.create_parkingzone', ['location_zone' => $location_zone]);
     }
 
     public function vehicle_data($id)
@@ -61,29 +61,29 @@ class ParkingZoneController extends Controller
     {
         $parking_model = new ParkingZone;
         $request_data = $request->all();
-            DB::beginTransaction();
-            $parking_model->fill($request_data)->save();
+        DB::beginTransaction();
+        $parking_model->fill($request_data)->save();
 
-            $parking_space_data = explode(',', $request->parking_space);
-            $data = array_pop($parking_space_data);
-            $parking_space = [];
-            foreach ($parking_space_data as $key => $parking_space_value) {
-                $parking_space[] = [
-                    'parking_name' => $parking_model->parking_zone_id,
-                    'parking_space' => $parking_space_value,
-                    'created_by' => Auth::user()->id,
-                    'updated_by' => Auth::user()->id,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ];
-            }
-            ParkingSpace::insert($parking_space);
-            DB::commit();
-            $status = 201;
-            $response = [
-                "status" => $status,
+        $parking_space_data = explode(',', $request->parking_space);
+        $data = array_pop($parking_space_data);
+        $parking_space = [];
+        foreach ($parking_space_data as $key => $parking_space_value) {
+            $parking_space[] = [
+                'parking_name' => $parking_model->parking_zone_id,
+                'parking_space' => $parking_space_value,
+                'created_by' => Auth::user()->id,
+                'updated_by' => Auth::user()->id,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
-        
+        }
+        ParkingSpace::insert($parking_space);
+        DB::commit();
+        $status = 201;
+        $response = [
+            "status" => $status,
+        ];
+
 
         return response()->json($response, $status);
     }
@@ -132,33 +132,33 @@ class ParkingZoneController extends Controller
     {
         $parking_model = ParkingZone::findOrFail($id);
         $request_data = $request->all();
-            DB::beginTransaction();
-            $parking_model->fill($request_data)->save();
-            $data = $parking_model->where('parking_limit', $request->parking_limit)->first();
+        DB::beginTransaction();
+        $parking_model->fill($request_data)->save();
+        $data = $parking_model->where('parking_limit', $request->parking_limit)->first();
 
-            ParkingSpace::where('parking_name', $request->parking_zone_id)->delete();
-            $parking_space_data = explode(',', $request->parking_space);
+        ParkingSpace::where('parking_name', $request->parking_zone_id)->delete();
+        $parking_space_data = explode(',', $request->parking_space);
 
-            $data = array_pop($parking_space_data);
+        $data = array_pop($parking_space_data);
 
-            $parking_space = [];
-            foreach ($parking_space_data as $key => $parking_space_value) {
-                $parking_space[] = [
-                    'parking_name' => $parking_model->parking_zone_id,
-                    'parking_space' => $parking_space_value,
-                    'created_by' => Auth::user()->id,
-                    'updated_by' => Auth::user()->id,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ];
-            }
-            ParkingSpace::insert($parking_space);
-            DB::commit();
-            $status = 201;
-            $response = [
-                "status" => $status,
+        $parking_space = [];
+        foreach ($parking_space_data as $key => $parking_space_value) {
+            $parking_space[] = [
+                'parking_name' => $parking_model->parking_zone_id,
+                'parking_space' => $parking_space_value,
+                'created_by' => Auth::user()->id,
+                'updated_by' => Auth::user()->id,
+                'created_at' => date('Y-m-d H:i:s'),
+                'updated_at' => date('Y-m-d H:i:s'),
             ];
-        
+        }
+        ParkingSpace::insert($parking_space);
+        DB::commit();
+        $status = 201;
+        $response = [
+            "status" => $status,
+        ];
+
 
         return response()->json($response, $status);
     }

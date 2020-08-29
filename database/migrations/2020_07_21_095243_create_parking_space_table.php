@@ -18,7 +18,7 @@ class CreateParkingSpaceTable extends Migration
             $table->unsignedBigInteger('parking_name');
             $table->foreign('parking_name')->references('parking_zone_id')->on('parking_zones')->onDelete('cascade');
             $table->Integer('parking_space');
-            $table->boolean('booking_status')->default(1);
+            $table->boolean('booking_status')->default(0);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedBigInteger('updated_by')->nullable();

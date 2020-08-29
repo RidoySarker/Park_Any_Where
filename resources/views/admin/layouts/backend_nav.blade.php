@@ -2,7 +2,7 @@
                 <div class="left-side-content-area d-flex align-items-center">
                     <!-- Mobile Logo -->
                     <div class="mobile-logo mr-3 mr-sm-4">
-                        <a href="index.html"><img src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
+                        <a href="{{url('/admin')}}"><img src="{{asset('backend_assets/img/core-img/small-logo.png')}}" alt="Mobile Logo"></a>
                     </div>
 
                     <!-- Triggers -->
@@ -16,12 +16,12 @@
                     </div>
 
                     <!-- Left Side Nav -->
-                    <ul class="left-side-navbar d-flex align-items-center">
+{{--                     <ul class="left-side-navbar d-flex align-items-center">
                         <li class="hide-phone app-search">
                             <input type="text" class="form-control" placeholder="Search...">
                             <span class="bx bx-search-alt"></span>
                         </li>
-                    </ul>
+                    </ul> --}}
                 </div>
 
                 <div class="right-side-navbar d-flex align-items-center justify-content-end">
@@ -41,7 +41,7 @@
 
 
 
-                        <li class="nav-item dropdown">
+{{--                         <li class="nav-item dropdown">
                             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='bx bx-bell bx-tada'></i> <span class="active-status"></span></button>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <!-- Top Notifications Area -->
@@ -89,15 +89,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item dropdown">
-                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{asset('backend_assets/img/member-img/contact-2.jpg')}}" alt=""></button>
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ Auth::user()->profile_image ==''? '/images/app_setting/blank_avatar.png' : '/'.Auth::user()->profile_image }}" alt=""></button>
                             <div class="dropdown-menu profile dropdown-menu-right">
                                 <div class="user-profile-area">
                                     <a href="{{route('profile.index')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> My profile</a>
-                                    <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>
-                                    <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a>
+{{--                                     <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>
+                                    <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a> --}}
                                     <form action="{{route('logout')}}" method="post" >
                                         @csrf
                                     <button class="dropdown-item" type="submit"><i class="bx bx-power-off font-15" aria-hidden="true"></i>Sign-out</button>

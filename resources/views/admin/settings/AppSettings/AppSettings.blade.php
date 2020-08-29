@@ -49,7 +49,7 @@
                                 <div class="form-group">
                                     <label for="application_email">Application Email</label>
                                     <input id="application_email" class="form-control" name="application_email" type="text" value="{{$app_data->application_email}}" placeholder="Enter Email" >
-                                    <span class="help-block" style="color:red;"></span>
+                                    <span class="help-block" style="color:red;">{{$errors->first('application_email')}}</span>
                                 </div>
                                 <div class="form-group">
                                     <label for="application_phone">Phone</label>

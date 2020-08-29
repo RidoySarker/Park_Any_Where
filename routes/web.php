@@ -12,16 +12,25 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/parking_zone', 'HomeController@ParkingZone');
 Route::get('/pricelist/{id}', 'HomeController@pricelist');
 Route::get('/periodprice/{id}', 'HomeController@periodprice');
-Route::get('/vehicleperiod/{id}', 'BookingController@vehicleperiod');
-Route::get('/vehicleprice/{id}/{booking_id}', 'BookingController@vehicleprice');
+Route::get('/vehicleperiod/{id}/{parking_name}', 'BookingController@vehicleperiod');
+Route::get('/vehicleprice/{id}', 'BookingController@vehicleprice');
 
-Route::resource('/booking', 'BookingController');
+Route::resource('/rentuser-parkingzone', 'RentUserController');
+
+Route::resource('/booking', 'BookingController')->middleware('auth');
+Route::resource('/uservehicle', 'UserVehicleController');
+Route::post('/bookingvehicle', 'BookingController@booking');
+Route::get('/confiramation/{id}', 'BookingController@Confiramation');
+
+Route::get('/booking-history', 'ProfileController@bookinghistory');
 
 Auth::routes();
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/myprofile', 'ProfileController@myprofile');
 
 Route::get('/admin/login', 'AdminController@adminLogin');
 
@@ -30,7 +39,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('/vehicle', 'VehicleController');
 
         Route::resource('/profile', 'ProfileController');
-
+        Route::get('pass', 'ProfileController@checkpass')->name('pass');
 
         Route::resource('/package', 'PackagesController');
 
@@ -45,7 +54,17 @@ Route::prefix('admin')->group(function () {
         Route::resource('/appsettings', 'AppSettingsController');
 
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
+
         Route::get('/parkingzone/package_data/{id}', 'ParkingZoneController@package_data');
+        //Booking List
+        Route::get('/booking_list', 'BookingController@booking_list');
+        //Booking Release
+        Route::get('/booking_release/{id}', 'BookingController@booking_release');
+        //Active Booking
+        Route::get('/active-booking', 'BookingController@activebooking');
+        //Today Booking
+        Route::get('/today-booking', 'BookingController@todaybooking');
+
     });
 });
 
