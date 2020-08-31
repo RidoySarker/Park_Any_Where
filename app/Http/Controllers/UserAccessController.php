@@ -3,41 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use Auth;
-use App\Booking;
-use Redirect;
-use Carbon\Carbon;
-class AdminController extends Controller
+use App\User;
+use Spatie\Permission\Models\Role;
+class UserAccessController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth')->except(['adminLogin']);
-    // }
-
     public function index()
     {
-        if (!Auth::check()) :
-            return Redirect::to('/admin/login');
-        endif;
-        $data = Booking::get();
-        $data['total_booking'] = collect($data)->count();
-        $data['active_booking'] = collect($data)->where('booking_status', 0)->count();
-        $data['release_booking'] = collect($data)->where('booking_status', 0)->count();
-        $data['total_amount'] = collect($data)->sum('invoice_sub_total');
-        $data['today_booking']= Booking::whereDate('created_at', Carbon::today())->count();
-        return view('admin.dashboard',$data);
-    }
-
-    public function adminLogin()
-    {
-
-        return view('auth.Admin.admin_login');
+        $roles=Role::all();
+        return view('admin.RBAC.UserAccess.useraccess',['roles' => $roles]);
     }
 
     /**
@@ -45,15 +23,21 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $users=User::where(function ($users) use ($request) {
+            if ($request->search) {
+                $users->where('email', 'LIKE', '%' . $request->search . '%');
+            }
+        })->with('roles')->get()->toArray();
+
+        return view('admin.RBAC.UserAccess.useraccess_list',['users' => $users]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,7 +48,7 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -75,30 +59,37 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $user=User::whereId($id)->with('roles')->get()->toArray();
+        return response()->json($user, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $user_model=User::findOrFail($id);
+        if($request->old_role)
+        {
+            $user_model->removeRole($request->old_role);
+        }
+        $user_model->assignRole($request->role);
+        return response()->json($user_model, 201);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
