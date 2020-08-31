@@ -65,11 +65,21 @@ Route::prefix('admin')->group(function () {
         //Today Booking
         Route::get('/today-booking', 'BookingController@todaybooking');
 
+        Route::resource('/role', 'RoleController');
+
+        Route::resource('/permission', 'PermissionController');
+
+        Route::resource('/role-permission', 'RolePermissionController');
+
+        Route::resource('/user-access', 'UserAccessController');
+
     });
 });
 
 Route::get('/verifyemail/{token}', 'HomeController@verifyemail')->name('verifyemail');
 
 Route::resource('/customer_register', 'CustomerController');
+
 Route::post("/customer_login", "CustomerController@login");
+
 Route::get("/rent_register", "CustomerController@rent_register");

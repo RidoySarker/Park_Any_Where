@@ -38,7 +38,7 @@
             "debug": false,
             "newestOnTop": false,
             "progressBar": true,
-            "positionClass": "toast-top-right",
+            "positionClass": "toast-bottom-right",
             "preventDuplicates": true,
             "onclick": null,
             "showDuration": "300",

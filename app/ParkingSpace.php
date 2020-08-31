@@ -12,7 +12,7 @@ class ParkingSpace extends Model
 
     public function scopeActive($query)
     {
-        return $query->where('booking_status', 1);
+        return $query->where('booking_status', 0);
     }
 
 
