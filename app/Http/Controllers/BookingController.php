@@ -19,6 +19,7 @@ use Carbon\Carbon;
 use Validator;
 use Redirect;
 use DB;
+use App\User;
 
 class BookingController extends Controller
 {
@@ -29,21 +30,36 @@ class BookingController extends Controller
      */
     public function booking_list()
     {
+        $user = User::find(Auth::user()->id);
+        if ($user->can('BookingList')) {
         $booking_data = Booking::with('parkingname', 'parkingspace', 'invoiceInfo')->get();
         return view('admin.Booking.booking_list', ['booking_data' => $booking_data]);
+        }else{
+            abort(403);
+        }
     }
 
 
     public function activebooking()
     {
+        $user = User::find(Auth::user()->id);
+        if ($user->can('ActiveBooking')) {
         $booking_data = Booking::active()->with('parkingname', 'parkingspace', 'invoiceInfo')->get();
         return view('admin.Booking.active_booking', ['booking_data' => $booking_data]);
+        }else{
+            abort(403);
+        }
     }
 
     public function todaybooking()
     {
+        $user = User::find(Auth::user()->id);
+        if ($user->can('TodayBooking')) {
         $booking_data = Booking::active()->whereDate('created_at', Carbon::today())->with('parkingname', 'parkingspace', 'invoiceInfo')->get();
         return view('admin.Booking.today_booking', ['booking_data' => $booking_data]);
+        }else{
+            abort(403);
+        }
     }
 
 

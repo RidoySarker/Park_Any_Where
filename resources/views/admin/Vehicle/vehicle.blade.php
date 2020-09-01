@@ -24,7 +24,7 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            @can('insert')
+                            @can('AddVehicle')
                             <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Vehicle</button>
                             @endcan
                             <br/>
