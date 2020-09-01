@@ -36,22 +36,38 @@ Route::get('/admin/login', 'AdminController@adminLogin');
 
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
-        Route::resource('/vehicle', 'VehicleController');
+
+        Route::group(['middleware' => ['role:Supper Admin']], function () {
+    
+            Route::resource('/role', 'RoleController');
+
+            Route::resource('/permission', 'PermissionController');
+
+            Route::resource('/role-permission', 'RolePermissionController');
+
+            Route::resource('/user-access', 'UserAccessController');
+
+        });
+
+        Route::group(['middleware' => ['role:Supper Admin|Admin','permission:Vehicle|ParkingPrice|ZoneLocation|PaymentMethod|AppSettings']], function () {
+            
+            Route::resource('/vehicle', 'VehicleController');
+
+            Route::resource('/payment_method', 'PaymentMethodController');
+
+            Route::resource('/appsettings', 'AppSettingsController');
+
+            Route::resource('/parkingprice', 'ParkingPriceController');
+
+            Route::resource('/locationzone', 'LocationZoneController');
+
+        });
 
         Route::resource('/profile', 'ProfileController');
+
         Route::get('pass', 'ProfileController@checkpass')->name('pass');
 
-        Route::resource('/package', 'PackagesController');
-
         Route::resource('/parkingzone', 'ParkingZoneController');
-
-        Route::resource('/parkingprice', 'ParkingPriceController');
-
-        Route::resource('/payment_method', 'PaymentMethodController');
-
-        Route::resource('/locationzone', 'LocationZoneController');
-
-        Route::resource('/appsettings', 'AppSettingsController');
 
         Route::get('/parkingzone/vehicle_data/{id}', 'ParkingZoneController@vehicle_data');
 
@@ -64,14 +80,6 @@ Route::prefix('admin')->group(function () {
         Route::get('/active-booking', 'BookingController@activebooking');
         //Today Booking
         Route::get('/today-booking', 'BookingController@todaybooking');
-
-        Route::resource('/role', 'RoleController');
-
-        Route::resource('/permission', 'PermissionController');
-
-        Route::resource('/role-permission', 'RolePermissionController');
-
-        Route::resource('/user-access', 'UserAccessController');
 
     });
 });

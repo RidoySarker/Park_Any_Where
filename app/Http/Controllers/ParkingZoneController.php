@@ -14,6 +14,7 @@ use Illuminate\Support\Arr;
 use Validator;
 use DB;
 use App\LocationZone;
+use App\User;
 
 class ParkingZoneController extends Controller
 {
@@ -24,8 +25,14 @@ class ParkingZoneController extends Controller
      */
     public function index()
     {
-        $parkingzone_data = ParkingZone::orderBy('parking_zone_id', 'desc')->get();
-        return view('admin.ParkingZone.parkingzone_list', ['parkingzone_data' => $parkingzone_data]);
+        $user = User::find(Auth::user()->id);
+        if ($user->can('ParkingZoneList')) {
+            $parkingzone_data = ParkingZone::orderBy('parking_zone_id', 'desc')->get();
+            return view('admin.ParkingZone.parkingzone_list', ['parkingzone_data' => $parkingzone_data]);
+        }else{
+            abort(403);
+        }
+
     }
 
     /**
@@ -35,8 +42,13 @@ class ParkingZoneController extends Controller
      */
     public function create()
     {
+        $user = User::find(Auth::user()->id);
+        if ($user->can('AddParkingZone')) {
         $location_zone = LocationZone::Active()->get();
         return view('admin.ParkingZone.create_parkingzone', ['location_zone' => $location_zone]);
+        }else{
+            abort(403);
+        }
     }
 
     public function vehicle_data($id)
