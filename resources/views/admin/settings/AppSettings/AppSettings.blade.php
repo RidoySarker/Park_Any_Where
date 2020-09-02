@@ -74,9 +74,11 @@
                                     </div>
                                     <span class="help-block"  style="color:red;">{{$errors->first('vat')}}</span>
                                 </div>
+
                                 @can('AppSettingsUpdate')
                                     <button type="submit" class="submit btn btn-primary mr-2 mt-15">Update</button>
                                 @endcan
+
                                 </form>
                             </div>
                         </div>

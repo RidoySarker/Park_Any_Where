@@ -24,9 +24,11 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
+
                             @can('ParkingPriceAdd')
                                 <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Parking Price</button>
                             @endcan
+
                             <br/>
                             <h4 class="card-title mb-3">Parking Price List</h4>
                             <label>Search:<input type="search" id="search" name="search" class="form-control form-control-sm" placeholder="" aria-controls="selection-datatable"></label>

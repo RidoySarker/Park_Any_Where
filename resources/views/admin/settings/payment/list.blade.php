@@ -24,6 +24,7 @@
                 @endif
             </td>
             <td class="text-center">
+
                 @can('PaymentStatus')
                     @if ($paymentmethod->payment_method_status == 1)
                         <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="payment_method_status" data="{{$paymentmethod->payment_method_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -31,9 +32,11 @@
                         <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="payment_method_status" data="{{$paymentmethod->payment_method_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
                     @endif
                 @endcan
+
                 @can('PaymentStatus')
                     <button type="button" class="edit btn btn-rounded btn-outline-info mb-2 mr-2" data="{{ $paymentmethod->payment_method_id }}" data-toggle="modal" data-target="#edit">Edit</button>
                 @endcan
+
                 @can('PaymentStatus')
                     <button type="button" class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete" data="{{ $paymentmethod->payment_method_id }}">Delete</button>
                 @endcan

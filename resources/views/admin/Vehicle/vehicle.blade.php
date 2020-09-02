@@ -24,9 +24,11 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
+
                             @can('AddVehicle')
-                            <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Vehicle</button>
+                                <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Vehicle</button>
                             @endcan
+
                             <br/>
                             <h4 class="card-title mb-3">Vehicle List</h4>
                             <label>Search:<input type="search" id="search" name="search" class="form-control form-control-sm" placeholder="" aria-controls="selection-datatable"></label>
@@ -58,7 +60,7 @@
                         <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Enter Vehicle Type" >
                         <span class="help-block" id="vehicle_type_error" style="color:red;"></span>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="inputCity" class="col-form-label">Time</label>
@@ -82,7 +84,7 @@
                             </select>
                             <span class="help-block" id="vehicle_period_error" style="color:red;"></span>
                         </div>
-                         
+
                     </div>
 
                     <div class="form-row">
@@ -97,7 +99,7 @@
                             </div>
                             <span class="help-block" id="vehicle_charge_error" style="color:red;"></span>
                         </div>
-                        
+
                         <div class="form-group col-md-6">
                             <label for="inputState" class="col-form-label">Status</label>
                             <select id="vehicle_status" name="vehicle_status" class="form-control">
@@ -107,7 +109,7 @@
                             </select>
                              <span class="help-block" id="vehicle_status_error" style="color:red;"></span>
                         </div>
-                        
+
 
                     </div>
                     <div class="modal-footer">
@@ -199,7 +201,7 @@
         </div>
     </div>
 </div>
-@endsection 
+@endsection
 
 @section('script')
 <script type="text/javascript" src="{{asset('ajax/vehicle.js')}}"></script>

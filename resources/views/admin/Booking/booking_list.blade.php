@@ -61,8 +61,10 @@
                                                     <span class="badge badge-info badge-pill">Active</span>
                                                     <br>
                                                     @can('ReleaseStatus')
+
                                                         <a href="{{url('/admin/booking_release',$value->booking_id)}}"
                                                        class="badge badge-warning badge-pill">Release</a>
+
                                                     @endcan
                                                 @else
 

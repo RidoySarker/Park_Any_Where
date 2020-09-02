@@ -24,6 +24,7 @@
                 @endif
             </td>
             <td class="text-center">
+
                 @can('ZoneStatus')
                     @if ($locationzone->location_zone_status == 1)
                         <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="location_zone_status" data="{{$locationzone->location_zone_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
@@ -31,12 +32,15 @@
                         <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="location_zone_status" data="{{$locationzone->location_zone_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
                     @endif
                 @endcan
+
                 @can('ZoneEdit')
                     <button type="button" class="edit btn btn-rounded btn-outline-info mb-2 mr-2" data="{{ $locationzone->location_zone_id }}" data-toggle="modal" data-target="#edit">Edit</button>
                 @endcan
+
                 @can('ZoneDelete')
                     <button type="button" class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete" data="{{ $locationzone->location_zone_id }}">Delete</button>
                 @endcan
+
             </td>
             @endforeach
         </tr>
