@@ -21,14 +21,19 @@
                 @endif
             </td>
             <td class="text-center">
-                @if ($value->price_status == 1)
-                    <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="price_status" data="{{$value->parking_price_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                @else
-                    <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="price_status" data="{{$value->parking_price_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
-                @endif
-                <a  href="{{route('parkingprice.edit',$value->parking_price_id)}}" class="btn btn-rounded btn-outline-info mb-2 mr-2">Edit</a>
-                <button type="button" class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete" data="{{ $value->parking_price_id }}">Delete</button>
-
+                @can('ParkingPriceStatus')
+                    @if ($value->price_status == 1)
+                        <button class="btn btn-rounded btn-outline-success mb-2 mr-2" id="price_status" data="{{$value->parking_price_id}}"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    @else
+                        <button class="btn btn-rounded btn-outline-primary mb-2 mr-2" id="price_status" data="{{$value->parking_price_id}}"> <i class="fa fa-refresh" aria-hidden="true"></i></button>
+                    @endif
+                @endcan
+                @can('ParkingPriceEdit')
+                    <a  href="{{route('parkingprice.edit',$value->parking_price_id)}}" class="btn btn-rounded btn-outline-info mb-2 mr-2">Edit</a>
+                @endcan
+                @can('ParkingPriceDelete')
+                    <button type="button" class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete" data="{{ $value->parking_price_id }}">Delete</button>
+                @endcan
             </td>
             @endforeach
         </tr>

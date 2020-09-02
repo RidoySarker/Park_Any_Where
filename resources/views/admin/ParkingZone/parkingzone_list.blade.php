@@ -57,24 +57,29 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                @if ($value->parking_status == 1)
-                                                    <button type="submit"
-                                                            class="btn btn-rounded btn-outline-success mb-2 mr-2"
-                                                            id="parking_status" data="{{$value->parking_zone_id}}"><i
-                                                            class="fa fa-refresh" aria-hidden="true"></i></button>
-                                                @else
+                                                @can('ParkingZoneStatus')
+                                                    @if ($value->parking_status == 1)
+                                                        <button type="submit"
+                                                                class="btn btn-rounded btn-outline-success mb-2 mr-2"
+                                                                id="parking_status" data="{{$value->parking_zone_id}}"><i
+                                                                class="fa fa-refresh" aria-hidden="true"></i></button>
+                                                    @else
                                                     <button type="submit"
                                                             class="btn btn-rounded btn-outline-danger mb-2 mr-2"
                                                             id="parking_status" data="{{$value->parking_zone_id}}"><i
                                                             class="fa fa-refresh" aria-hidden="true"></i></button>
-                                                @endif
-                                                <a href="{{route('parkingzone.edit',$value->parking_zone_id)}}"
+                                                    @endif
+                                                @endcan
+                                                @can('ParkingZoneEdit')
+                                                    <a href="{{route('parkingzone.edit',$value->parking_zone_id)}}"
                                                    class="btn btn-rounded btn-outline-info mb-2 mr-2">Edit</a>
-                                                <button type="submit"
-                                                        class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete"
-                                                        data="{{ $value->parking_zone_id }}">Delete
-                                                </button>
-
+                                                @endcan
+                                                @can('ParkingZoneDelete')
+                                                    <button type="submit"
+                                                            class="btn btn-rounded btn-outline-danger mb-2 mr-2 delete"
+                                                            data="{{ $value->parking_zone_id }}">Delete
+                                                    </button>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endforeach
