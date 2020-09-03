@@ -24,7 +24,11 @@
                 <div class="col-12 box-margin">
                     <div class="card">
                         <div class="card-body">
-                            <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Parking Price</button>
+
+                            @can('ParkingPriceAdd')
+                                <button type="button" class="btn btn-rounded btn-primary mb-2 mr-2 pull-right" data-toggle="modal" data-target="#addModal">Add Parking Price</button>
+                            @endcan
+
                             <br/>
                             <h4 class="card-title mb-3">Parking Price List</h4>
                             <label>Search:<input type="search" id="search" name="search" class="form-control form-control-sm" placeholder="" aria-controls="selection-datatable"></label>
@@ -61,10 +65,10 @@
                         </select>
                         <span class="help-block" id="parking_name_error" style="color:red;"></span>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                        
+
                         <div class="form-group" id="price">
                             <div class="row VehicleInfo">
                                 <div class="col-sm-3">
@@ -100,7 +104,7 @@
                                         <option value="year">Year (s)</option>
                                     </select>
                                     </div>
-                                                                    </div> 
+                                                                    </div>
                                 <div class="col-sm-2">
                                     <label for="price">Vehicle Charge </label>
                                     <div class="form-line  ">
@@ -114,7 +118,7 @@
                             </div>
                         </div>
                         </div>
-                         
+
                     </div>
 
                     <div class="form-row">
@@ -127,7 +131,7 @@
                             </select>
                              <span class="help-block" id="price_status_error" style="color:red;"></span>
                         </div>
-                        
+
 
                     </div>
                     <div class="modal-footer">
@@ -162,10 +166,10 @@
                         </select>
                         <span class="help-block" id="parking_name_error" style="color:red;"></span>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="form-group col-md-12">
-                        
+
                         <div class="form-group" id="price">
                             <div class="row VehicleInfo">
                                 <div class="col-sm-3">
@@ -201,7 +205,7 @@
                                         <option value="year">Year (s)</option>
                                     </select>
                                     </div>
-                                                                    </div> 
+                                                                    </div>
                                 <div class="col-sm-2">
                                     <label for="price">Vehicle Charge </label>
                                     <div class="form-line  ">
@@ -215,7 +219,7 @@
                             </div>
                         </div>
                         </div>
-                         
+
                     </div>
 
                     <div class="form-row">
@@ -228,7 +232,7 @@
                             </select>
                              <span class="help-block" id="price_status_error" style="color:red;"></span>
                         </div>
-                        
+
 
                     </div>
                     <div class="modal-footer">
@@ -242,7 +246,7 @@
         </div>
     </div>
 </div>
-@endsection 
+@endsection
 
 @section('script')
 <script type="text/javascript" src="{{asset('ajax/parkingprice.js')}}"></script>

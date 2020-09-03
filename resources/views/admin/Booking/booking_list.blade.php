@@ -58,13 +58,18 @@
                                             <td>{{$value->release_time}}</td>
                                             <td>
                                                 @if ($value->booking_status == 1)
-                                                    <span class="badge badge-info badge-pill">Active</span><br>
+                                                    <span class="badge badge-info badge-pill">Active</span>
+                                                    <br>
+                                                    @can('ReleaseStatus')
 
-                                                    <a href="{{url('/admin/booking_release',$value->booking_id)}}"
+                                                        <a href="{{url('/admin/booking_release',$value->booking_id)}}"
                                                        class="badge badge-warning badge-pill">Release</a>
 
+                                                    @endcan
                                                 @else
-                                                    <span class="badge badge-success badge-pill">Released</span>
+
+                                                        <span class="badge badge-success badge-pill">Released</span>
+
                                                 @endif
                                             </td>
 
