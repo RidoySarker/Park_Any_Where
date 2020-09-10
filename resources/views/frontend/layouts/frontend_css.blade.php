@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/bootstrap.min.css') }}">
     <link rel="icon" href="{{ asset('frontend_assets/images/favicon2.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_assets/booking_section/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_assets/booking_section/vendor/jquery-ui/jquery-ui.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend_assets/booking_section/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend_assets/fonts/material-icon/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}">
     @yield('css')
     <link rel="stylesheet" href="{{ asset('frontend_assets/css/font-awesome.css') }}">
     <!--===============================================================================================-->

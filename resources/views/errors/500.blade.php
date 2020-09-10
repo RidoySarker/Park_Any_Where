@@ -33,7 +33,7 @@
           <img class="wing rightwing"
                src="{{asset('frontend_assets/errors/500/img/bat-wing.png')}}">
         </div>
-        <img class="foregroundimg" src="{{asset('frontend_assets/errors/500/img/HauntedHouseForeground.png')}}" alt="haunted house">
+        <img class="foregroundimg" src="{{asset('frontend_assets/errors/500/img/HauntedHouseBackground.png')}}" alt="haunted house">
         
       </div>
       <h1 class="errorcode">ERROR 500</h1>

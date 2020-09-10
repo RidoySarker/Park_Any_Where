@@ -91,3 +91,5 @@ Route::resource('/customer_register', 'CustomerController');
 Route::post("/customer_login", "CustomerController@login");
 
 Route::get("/rent_register", "CustomerController@rent_register");
+Route::get("/rent_register", "CustomerController@rent_register");
+Route::get("/about", "aboutController@index")->name('about');
