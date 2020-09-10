@@ -4,7 +4,7 @@
     <!-- Preloader -->
     
 {{-- Navbar Start --}}
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top menubar">
         <a class="navbar-brand" href="{{ route('home') }}">
             <img src="{{ asset('frontend_assets/images/logo5.png') }}" alt="Logo" style="width:220px;">
         </a>
@@ -19,7 +19,7 @@
                     <a class="nav-link text-muted" href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="#">About</a>
+                    <a class="nav-link text-muted" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-muted" href="/rent_register">Rent out your driveway</a>

@@ -1,12 +1,11 @@
 @extends('frontend.layouts.frontend_main')
 @section('title') Park AnyWhere @endsection
 @section('css')
-
 @endsection
 @section('content')
     {{-- Main Wrapper Start Hero Section--}}
-    <div class="main backimg">
-        <div class="container bookbox">
+    <div class="main backimg clearfix">
+        <div class="bookbox">
             <ul class="nav nav-tabs nav-justified">
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#hourly">HOURLY/DAILY</a>
@@ -24,44 +23,36 @@
                 <form id="hourly" role="tab-panel" class="container tab-pane active booking-form" method="get">
                     <div class="form-group">
                         <div class="form-destination">
-                            <label for="destination">PARKING AT</label>
+                            <label for="lication">PARKING AT</label>
                             {{-- <input type="text" id="destination" name="destination" placeholder="EG. Dhaka" /> --}}
                             <select id="lication" name="location_zone_name" class="form-control">
                                 @foreach ($zone_location as $element)
                                     <option
-                                        value="{{$element->location_zone_id}}">{{$element->location_zone_name}}</option>
+                                        value="{{$element->location_zone_id}}">{{$element->location_zone_name}}
+                                    </option>
                                 @endforeach
 
                             </select>
                         </div>
-                        {{--                             <div class="form-date-from form-icon">
-                                                        <label for="date_from">From Date</label>
-                                                        <input type="text" id="date_from" class="date_from" placeholder="Pick a date" />
-                                                    </div>
-                                                    <div class="form-date-to form-icon">
-                                                        <label for="date_to">To Date</label>
-                                                        <input type="text" id="date_to" class="date_to" placeholder="Pick a date" />
-                                                    </div> --}}
                         <div class="form-submit">
                             <input type="submit" id="submit" class="submit" value="Show Parking"/>
                         </div>
                     </div>
                 </form>
+
                 <form id="monthly" role="tab-panel" class="container tab-pane fade booking-form" method="POST">
                     <div class="form-group">
                         <div class="form-destination">
-                            <label for="destination">PARKING AT</label>
-                            <input type="text" id="destination" name="destination" placeholder="EG. Dhaka"/>
-                        </div>
-                        <div class="form-date-from form-icon">
-                            <label for="date_from">From Date</label>
-                            <input type="text" id="date_from" class="date_from" placeholder="Pick a date"/>
-                            {{-- <span class="icon"><i class="zmdi zmdi-calendar-alt"></i></span>
-                            --}}
-                        </div>
-                        <div class="form-date-to form-icon">
-                            <label for="date_to">To Date</label>
-                            <input type="text" id="date_to" class="date_to" placeholder="Pick a date"/>
+                            <label for="lication">PARKING AT</label>
+                            {{-- <input type="text" id="destination" name="destination" placeholder="EG. Dhaka" /> --}}
+                            <select id="lication" name="location_zone_name" class="form-control">
+                                @foreach ($zone_location as $element)
+                                    <option
+                                        value="{{$element->location_zone_id}}">{{$element->location_zone_name}}
+                                    </option>
+                                @endforeach
+
+                            </select>
                         </div>
                         <div class="form-submit">
                             <input type="submit" id="submit" class="submit" value="Show Parking"/>
@@ -73,18 +64,20 @@
     </div>
     {{-- Main Wrapper Start Hero Section--}}
 
+    {{-- Google Map SECTION START--}}
+<div class="container-fluid">
     <div class="row">
         <!-- PARKING PLACES -->
-        <div style="margin-left: 50px" class="col-sm-12">
+        <div class="col-sm-12">
             <div class="profiles-details">
-                <table class="table table-condensed table-bordered table-hover">
+                <table class="table table-condensed table-bordered table-hover map-action">
                     <thead>
                     <tr class="bg-indigo">
                         <th><i class="glyphicon glyphicon-flag"></i> Parking Lots</th>
                         <th class="hidden-xs">Total</th>
                         <th class="hidden-xs">Booking</th>
-                        <th>Available</th>
-                        <th><i class="material-icons">Action</i></th>
+                        <th class="hidden-xs">Available</th>
+                        <th class="hidden-xs">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -147,7 +140,8 @@
             </div>
         </div>
     </div>
-
+    </div>
+{{-- Google Map SECTION END--}}
 
     {{-- info_section start --}}
     <div class="container-fluid">
