@@ -34,6 +34,8 @@ Route::get('/myprofile', 'ProfileController@myprofile');
 
 Route::get('/admin/login', 'AdminController@adminLogin');
 
+Route::post('/admin-login', 'AdminController@Login');
+
 Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
 
@@ -46,6 +48,9 @@ Route::prefix('admin')->group(function () {
             Route::resource('/role-permission', 'RolePermissionController');
 
             Route::resource('/user-access', 'UserAccessController');
+
+            Route::resource('/adduser', 'UserController');
+
 
         });
 

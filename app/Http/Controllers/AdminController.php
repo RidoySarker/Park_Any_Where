@@ -8,6 +8,9 @@ use Auth;
 use App\Booking;
 use Redirect;
 use Carbon\Carbon;
+use App\User;
+use Validator;
+
 class AdminController extends Controller
 {
     /**
@@ -40,14 +43,46 @@ class AdminController extends Controller
         return view('auth.Admin.admin_login');
     }
 
+    public function Login(Request $request)
+    {
+        $login_data = $request->only('email', 'password');
+        $user_model = new User;
+        $validation = Validator::make($login_data, $user_model->loginValidation());
+        if ($validation->fails()) {
+            $status = 400;
+            $response = [
+                "status" => $status,
+                "errors" => $validation->errors(),
+            ];
+        } else {
+            $user_data = [
+                'email' => $request->email,
+                'password' => $request->password,
+                'status' => 1,
+                'user_type' => 1,
+            ];
+
+            if (Auth::attempt($user_data)) {
+                $status = 200;
+                $response = [
+                    "status" => $status,
+                    "data" => $user_data,
+                ];
+            }
+        }
+
+        return response()->json($response, $status);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
-        //
+
     }
 
     /**
@@ -58,7 +93,6 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**
@@ -69,7 +103,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -80,7 +114,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -92,7 +126,6 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
     }
 
     /**
@@ -103,6 +136,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

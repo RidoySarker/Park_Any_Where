@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Permission\Traits\HasRoles;
 class User extends Authenticatable
 {
-    use Notifiable,  SoftDeletes, HasRoles;
+    use Notifiable, HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -18,7 +18,7 @@ class User extends Authenticatable
      */
     protected $primaryKey='id';
     protected $fillable = [
-        'name', 'email', 'password', 'gender', 'number', 'profile_image', 'email_verified', 'email_verified_at', 'email_verification_token','created_by','updated_by'
+        'name', 'email', 'password', 'gender','user_type', 'number', 'profile_image', 'email_verified', 'email_verified_at', 'email_verification_token','status','created_by','updated_by'
     ];
 
     public function loginValidation()
@@ -27,6 +27,13 @@ class User extends Authenticatable
             "email" => "required|email",
             "password" => "required",
         ];
+    }
+
+
+    public function scopeSearch($query, $search){
+        return $query->where('name', 'LIKE', '%' . $search . '%')
+                    ->orwhere('email', 'like' ,'%'.$search. '%')
+                    ->orwhere('number', 'like' ,'%'.$search. '%');
     }
 
 
