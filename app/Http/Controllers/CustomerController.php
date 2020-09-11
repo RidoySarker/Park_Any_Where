@@ -53,6 +53,7 @@ class CustomerController extends Controller
                 'email' => $request->email,
                 'password' => $request->password,
                 'status' => 1,
+                'user_type' => 3,
             ];
 
             if (Auth::attempt($user_data)) {
@@ -88,6 +89,7 @@ class CustomerController extends Controller
     {
         $customer_model = new User;
         $customer_model->name = $request->name;
+        $add_user->user_type = 3;
         $customer_model->email = $request->email;
         $customer_model->number = $request->number;
         $customer_model->password = Hash::make($request->password);

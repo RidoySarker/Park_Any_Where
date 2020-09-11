@@ -62,7 +62,7 @@
             $("#" + message.name + "_error").html(message = "");
         })
         $.ajax({
-            url: "/customer_login",
+            url: "/admin-login",
             data: data,
             type: "POST",
             dataType: "json",

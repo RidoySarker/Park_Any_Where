@@ -16,6 +16,7 @@
                             <li class="{{ (request()->is('admin/booking_list')) ? 'active' : '' }} treeview">
                                 <a href="javascript:void(0)"><i class='bx bx-briefcase-alt-2'></i> <span>RBAC</span> <i class="fa fa-angle-right"></i></a>
                                 <ul class="treeview-menu">
+                                    <li class="{{ (request()->is('admin/adduser')) ? 'active' : '' }}"><a href="{{url('/admin/adduser')}}">Add User</a></li>
                                     @can('Role')
                                     <li class="{{ (request()->is('admin/role')) ? 'active' : '' }}"><a href="{{url('/admin/role')}}">Role</a></li>
                                     @endcan
