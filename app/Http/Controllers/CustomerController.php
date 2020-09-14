@@ -27,14 +27,6 @@ class CustomerController extends Controller
         return view('auth.Customer.customer_login');
     }
 
-    public function rent_register()
-    {
-        if (Auth::check()) :
-            return Redirect::to('/');
-        endif;
-        return view('auth.RentCustomer.rent_customer');
-    }
-
 
     public function login(Request $request)
     {
@@ -89,7 +81,7 @@ class CustomerController extends Controller
     {
         $customer_model = new User;
         $customer_model->name = $request->name;
-        $add_user->user_type = 3;
+        $customer_model->user_type = 3;
         $customer_model->email = $request->email;
         $customer_model->number = $request->number;
         $customer_model->password = Hash::make($request->password);

@@ -22,7 +22,7 @@
                     <a class="nav-link text-muted" href="{{ route('about') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-muted" href="/rent_register">Rent out your driveway</a>
+                    <a class="nav-link text-muted" href="/rent-user/login">Rent out your driveway</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link text-muted" href="#">Help</a>
@@ -53,7 +53,9 @@
                                 <div class="user-profile-area">
                                     <a href="{{url('/myprofile')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> My Profile</a>
                                     <a href="{{url('/booking-history')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> Booking History</a>
+                                    @if(Auth::user()->user_type == 2)
                                     <a href="{{url('/rentuser-parkingzone')}}" class="dropdown-item"><i class="bx bx-user font-15" aria-hidden="true"></i> Add Parking Zone</a>
+                                    @endif
 {{--                                     <a href="#" class="dropdown-item"><i class="bx bx-wallet font-15" aria-hidden="true"></i> My wallet</a>
                                     <a href="#" class="dropdown-item"><i class="bx bx-wrench font-15" aria-hidden="true"></i> settings</a> --}}
                                     <form action="{{route('logout')}}" method="post" >
