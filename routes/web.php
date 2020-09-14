@@ -95,6 +95,12 @@ Route::resource('/customer_register', 'CustomerController');
 
 Route::post("/customer_login", "CustomerController@login");
 
-Route::get("/rent_register", "CustomerController@rent_register");
-Route::get("/rent_register", "CustomerController@rent_register");
+Route::get("/rent-user/login", "RentUserController@rent_login");
+
+Route::post("/rent-login", "RentUserController@RentLogin");
+
+Route::get("/rent_register", "RentUserController@rent_register");
+
+Route::post("/rent_register", "RentUserController@store");
+
 Route::get("/about", "aboutController@index")->name('about');

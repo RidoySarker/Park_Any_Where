@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register | Park Any where</title>
+    <title>RentUser Register | Park Any where</title>
     <!--===============================================================================================-->
     <link rel="stylesheet"
           href="{{asset('backend_assets/reg/fonts/material-icon/css/material-design-iconic-font.min.css')}}"/>
@@ -76,7 +76,7 @@
                 <div class="signup-image">
                     <figure><img src="{{asset('backend_assets/reg/images/signup-image.jpg')}}" alt="sing up image">
                     </figure>
-                    <a href="{{url('login')}}" class="signup-image-link">I am already member</a>
+                    <a href="{{url('rent-user/login')}}" class="signup-image-link">I am already member</a>
                 </div>
             </div>
         </div>
@@ -152,7 +152,7 @@
                 $("#" + message.name + "_error").html(message = "");
             })
             $.ajax({
-                url: "/customer_register",
+                url: "/rent_register",
                 data: data,
                 type: "POST",
                 dataType: "json",
