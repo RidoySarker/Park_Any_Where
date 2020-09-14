@@ -43,7 +43,7 @@
                 <div class="signup-image">
                     <figure><img src="{{asset('backend_assets/reg/images/signup-image.jpg')}}" alt="sing up image">
                     </figure>
-                    <a href="{{url('login')}}" class="signup-image-link">Create New Account</a>
+                    <a href="{{url('register')}}" class="signup-image-link">Create New Account</a>
                 </div>
             </div>
         </div>
